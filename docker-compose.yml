@@ -1,0 +1,53 @@
+services:
+  # Base de datos
+  db:
+    image: postgres:15
+    container_name: fintech-db
+    environment:
+      # Docker inyecta automáticamente lo que hay en el archivo .env
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./infrastructure/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - fintech-network
+
+  # Java / Spring Boot
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fintech-backend
+    ports:
+      - "8080:8080"
+    environment:
+      # Aquí también usamos las mismas variables para que Java sepa cómo conectarse
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - ML_API_URL=http://data-science:5000
+    depends_on:
+      - db
+    networks:
+      - fintech-network
+
+  # Python
+  data-science:
+    build:
+      context: ./data-science
+      dockerfile: Dockerfile
+    container_name: fintech-ml-api
+    ports:
+      - "5000:5000"
+    networks:
+      - fintech-network
+
+volumes:
+  pgdata:
+
+networks:
+  fintech-network:
+    driver: bridge
