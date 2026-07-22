@@ -17,7 +17,35 @@ Los valores financieros (`monto`, `valor`, `total_ingresos`, `monto_objetivo`) s
 Toda fecha que se maneja en los JSON debe respetar el formato (`YYYY/MM/DD`).
 
 **Manejo de espacios y formato**
-Para que el modelo predictivo y las reglas de negocoi funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case`.
+Para que el modelo predictivo y las reglas de negocoi funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case` junto con las palabras en mayúsculas. 
+
+Los enumerados a usar son los siguientes
+  ```
+    Categorías
+  ALIMENTACION
+  TRANSPORTE
+  SALUD
+  VIVIENDA
+  EDUCACION
+  OCIO
+  SERVICIOS
+  DEUDAS  
+  ```
+  ```
+    tipo
+  INGRESO
+  EGRESO  
+  ```
+  ```
+    Cualidad
+  FIJO_VITAL
+  FIJO_NO_VITAL
+  VARIABLE
+
+    #En el caso de los "INGRESOS" se usarán lo siguiente:
+  FIJO
+  VARIABLE
+  ```
 
 **Manejo de Nulos**
 Para evitar excepciones por valores nulos se debe considerar que si un dato no existe se debe omitir en el JSON, o enviarse explícitamente como nulo de forma controlada. Nunca se deberán enviar objetos vacíos o en forma de texto.

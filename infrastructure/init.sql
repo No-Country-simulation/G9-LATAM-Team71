@@ -68,9 +68,12 @@ CREATE TABLE IF NOT EXISTS transacciones (
     CONSTRAINT fk_usuario_transaccion FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     CONSTRAINT fk_categoria_transaccion FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE SET NULL,
     
-    -- Normalización de datos
+    -- Candados condicionales para la integridad del dinero
     CONSTRAINT chk_tipo_flujo CHECK (tipo_flujo IN ('INGRESO', 'EGRESO')),
-    CONSTRAINT chk_cualidad_flujo CHECK (cualidad_flujo IN ('FIJO_VITAL', 'FIJO_NO_VITAL', 'VARIABLE'))
+    CONSTRAINT chk_cualidad_flujo CHECK (
+        (tipo_flujo = 'EGRESO' AND cualidad_flujo IN ('FIJO_VITAL', 'FIJO_NO_VITAL', 'VARIABLE')) OR
+        (tipo_flujo = 'INGRESO' AND cualidad_flujo IN ('FIJO', 'VARIABLE'))
+    )
 );
 
 -- INDICES
