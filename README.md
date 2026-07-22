@@ -22,7 +22,7 @@ Entendemos que las finanzas personales pueden ser abrumadoras para el usuario co
 
 ---
 
-## 🏗️ Arquitectura del Sistema (Microservicios)
+## Arquitectura del Sistema (Microservicios)
 
 Para garantizar un rendimiento fluido y escalabilidad, el sistema adopta una arquitectura basada en microservicios, separando las responsabilidades de ingeniería y ciencia de datos:
 
