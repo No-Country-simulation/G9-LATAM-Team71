@@ -17,7 +17,7 @@ Los valores financieros (`monto`, `valor`, `total_ingresos`, `monto_objetivo`) s
 Toda fecha que se maneja en los JSON debe respetar el formato (`YYYY/MM/DD`).
 
 **Manejo de espacios y formato**
-Para que el modelo predictivo y las reglas de negocoi funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case` junto con las palabras en mayúsculas. 
+Para que el modelo predictivo y las reglas de negocio funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case` junto con las palabras en mayúsculas. 
 
 Los enumerados a usar son los siguientes
   ```
@@ -29,14 +29,12 @@ Los enumerados a usar son los siguientes
   EDUCACION
   OCIO
   SERVICIOS
-  DEUDAS  
-  ```
-  ```
-    tipo
+  DEUDAS
+  
+    Tipo
   INGRESO
   EGRESO  
-  ```
-  ```
+  
     Cualidad
   FIJO_VITAL
   FIJO_NO_VITAL
@@ -90,6 +88,7 @@ La URL inicial a la que se le añadirán los controladores es la siguiente
       "fecha_limite": "2026-12-31"
     }
     ```
+  No se deben aceptar valores vacíos en ningún campo.
 * **Response (201 Created):**
     ```json
     {
@@ -113,6 +112,7 @@ Recibe una transacción. El Back-End guarda el registro y consulta al microservi
       "descripcion": "Compra en supermercado"
     }
     ```
+    No se deben aceptar valores vacíos en ningún campo.
 * **Response (201 Created):**
     ```json
     {
@@ -120,8 +120,7 @@ Recibe una transacción. El Back-End guarda el registro y consulta al microservi
       "mensaje": "Transacción registrada y clasificada correctamente.",
       "clasificacion_ia": {
         "categoria": "Alimentación",
-        "cualidad": "VARIABLE",
-        "confianza": 0.95
+        "cualidad": "VARIABLE"
       }
     }
     ```
