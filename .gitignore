@@ -1,1 +1,36 @@
+#    JAVA / SPRING BOOT   
+/backend/target/
+/backend/*.jar
+/backend/*.war
+/backend/.mvn/
+/backend/mvnw
+/backend/mvnw.cmd
+
+#    PYTHON / DATA SCIENCE   
+/data-science/__pycache__/
+/data-science/*.py[cod]
+/data-science/*$py.class
+/data-science/.venv/
+/data-science/venv/
+/data-science/ENV/
+/data-science/*.pkl
+/data-science/*.onnx
+/data-science/.pytest_cache/
+
+#    ARCHIVOS DE ENTORNO Y SECRETOS   
 .env
+*.pem
+*.key
+*.p12
+
+#    IDES Y SISTEMA OPERATIVO   
+.vscode/
+.idea/
+*.iws
+*.iml
+*.ipr
+.DS_Store
+Thumbs.db
+
+#    DOCKER   
+/infrastructure/pgdata/
