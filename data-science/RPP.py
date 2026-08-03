@@ -111,6 +111,7 @@ historial_transacciones = [
     {"id": 10, "flujo": "INGRESO", "monto": 2000.00, "fecha": "2026-07-01", "descripcion": "Salario"}
 ]
 
+
 # Supongamos que el usuario consulta su app el 10 de Agosto de 2026
 fecha_hoy = "2026-08-10"
 

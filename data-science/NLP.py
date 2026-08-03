@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, accuracy_score
 
+
 # 1. Cargar los datos
 # Asegúrate de que el archivo CSV esté en el mismo directorio que este script
 df = pd.read_csv("financeai_datos_entrenamiento.csv")

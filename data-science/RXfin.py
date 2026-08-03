@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import matplotlib.pyplot as plt
 
+
 def generar_radiografia_gastos(datos_transacciones, ingreso_mensual):
     """
     Analiza las transacciones de un usuario para generar una radiografía 

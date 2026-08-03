@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
 
+
 # =====================================================================
 # 1. GENERACIÓN DE DATOS SINTÉTICOS (Para entrenar el modelo)
 # =====================================================================

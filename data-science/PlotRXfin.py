@@ -3,6 +3,7 @@ def graficar_radiografia(resultado_radiografia):
     etiquetas = list(desglose.keys())
     valores = list(desglose.values())
     
+    
     # Definir colores semánticos (Rojo: Vital/Difícil de cortar, Amarillo: No vital, Verde: Variable/Cortable)
     colores = ['#FF6B6B', '#FFD93D', '#6BCB77']
     
