@@ -8,7 +8,7 @@
 * **500 Internal Error:** Falla en el servidor (Java o Python).
 
 ### Contratos para los JSON
-Hay una serie de reglas que se deben de cumplir para mantener el orden adecuado para el uso de JSONS
+En este apartado se encuentran las reglas que se deben de cumplir para mantener el orden adecuado para el uso de JSONS
 
 **Tipos de datos (Montos Monetarios):** 
 Los valores financieros (`monto`, `valor`, `total_ingresos`, `monto_objetivo`) siempre deben enviarse y recibirse como valores numéricos (`float`).
@@ -17,9 +17,10 @@ Los valores financieros (`monto`, `valor`, `total_ingresos`, `monto_objetivo`) s
 Toda fecha que se maneja en los JSON debe respetar el formato (`YYYY/MM/DD`).
 
 **Manejo de espacios y formato**
-Para que el modelo predictivo y las reglas de negocio funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case` junto con las palabras en mayúsculas. 
+Para que el modelo predictivo y las reglas de negocio funcionen, las claves del JSON que agrupan varias palabras se deberá usar la nomenclatura de `snake_case` junto con las palabras en minúsculas.
 
-Los enumerados a usar son los siguientes
+**Enumerados y claves**
+Las claves del JSON (enumerados) a usar son los siguientes:
   ```
     Categorías
   ALIMENTACION
@@ -44,6 +45,7 @@ Los enumerados a usar son los siguientes
   FIJO
   VARIABLE
   ```
+  Es importante respetar el uso de mayúsculas y el formato de `snake_case`.
 
 **Manejo de Nulos**
 Para evitar excepciones por valores nulos se debe considerar que si un dato no existe se debe omitir en el JSON, o enviarse explícitamente como nulo de forma controlada. Nunca se deberán enviar objetos vacíos o en forma de texto.
@@ -63,7 +65,8 @@ La URL inicial a la que se le añadirán los controladores es la siguiente
       "contrasena": "Secreta123!" 
     }
     ```
-  En la parte del correo se verificará que tenga el formato válido de correo electrónico; por la parte de la contraseña no se aceptarán valores nulos o solo espacios.
+  En la parte del correo se verificará que tenga el formato válido de correo electrónico.
+  Por la parte de la contraseña no se aceptarán valores nulos o espacios vacíos.
 * **Response (200 OK):**
     ```json
     {
@@ -89,6 +92,8 @@ La URL inicial a la que se le añadirán los controladores es la siguiente
     }
     ```
   No se deben aceptar valores vacíos en ningún campo.
+
+  
 * **Response (201 Created):**
     ```json
     {
