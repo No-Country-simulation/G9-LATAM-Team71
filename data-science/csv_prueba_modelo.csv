@@ -1,52 +1,52 @@
 descripcion,categoria,tipo,cualidad,monto,fecha
-compra refresco oxxo,alimentacion,gasto,variable,50,7/20/2026
-despensa bodega aurrera,alimentacion,egreso,variable,1365.16,4/1/2026
+compra refresco oxxo,alimentacion,egreso,variable,50,7/20/2026
+despensa bodega aurrera,alimentacion,egreso,fijo_vital,1365.16,4/1/2026
 refresco en tienda,alimentacion,egreso,variable,112.98,4/1/2026
 didi hacia el trabajo,transporte,egreso,variable,92.87,4/1/2026
-mensualidad gimnasio smartfit,salud,egreso,variable,400,4/2/2026
+mensualidad gimnasio smartfit,salud,egreso,fijo_no_vital,400,4/2/2026
 starbucks,alimentacion,egreso,variable,46.47,4/2/2026
-carga de gasolina,transporte,egreso,variable,787.59,4/3/2026
+carga de gasolina,transporte,egreso,fijo_vital,787.59,4/3/2026
 antojo en la calle,alimentacion,egreso,variable,70.85,4/3/2026
 comida en restaurante,alimentacion,egreso,variable,656.75,4/3/2026
 viaje en uber,transporte,egreso,variable,67.42,4/3/2026
 pizza por uber eats,alimentacion,egreso,variable,152.33,4/3/2026
-pago de renta mensual,vivienda,egreso,variable,5000,4/5/2026
+pago de renta mensual,vivienda,egreso,fijo_vital,5000,4/5/2026
 cena con amigos,alimentacion,egreso,variable,598.69,4/5/2026
 refresco en tienda,alimentacion,egreso,variable,47.64,4/6/2026
 galletas y papas oxxo,alimentacion,egreso,variable,119,4/7/2026
 comida a domicilio,alimentacion,egreso,variable,181.29,4/7/2026
-suscripción netflix standard,ocio,egreso,variable,219,4/8/2026
+suscripcion netflix standard,ocio,egreso,fijo_no_vital,219,4/8/2026
 pizza por uber eats,alimentacion,egreso,variable,171.78,4/8/2026
 tacos de canasta,alimentacion,egreso,variable,38.96,4/9/2026
 viaje en uber,transporte,egreso,variable,158.44,4/9/2026
-recibo de luz cfe,servicios,egreso,variable,355.6,4/10/2026
-carga de gasolina,transporte,egreso,variable,489.23,4/10/2026
+recibo de luz cfe,servicios,egreso,fijo_vital,355.6,4/10/2026
+carga de gasolina,transporte,egreso,fijo_vital,489.23,4/10/2026
 café matutino,alimentacion,egreso,variable,125.6,4/10/2026
-spotify premium,ocio,egreso,variable,129,4/11/2026
+spotify premium,ocio,egreso,fijo_no_vital,129,4/11/2026
 antojo en la calle,alimentacion,egreso,variable,139.7,4/11/2026
 uber de regreso de fiesta,transporte,egreso,variable,343.71,4/11/2026
-recibo de agua,servicios,egreso,variable,285.91,4/12/2026
+recibo de agua,servicios,egreso,fijo_vital,285.91,4/12/2026
 antojo en la calle,alimentacion,egreso,variable,22.49,4/12/2026
 tacos de canasta,alimentacion,egreso,variable,130.97,4/13/2026
-pago de quincena,servicios,ingreso,variable,8494.26,4/15/2026
-internet en casa,servicios,egreso,variable,450,4/15/2026
+pago de quincena,servicios,ingreso,fijo_vital,8494.26,4/15/2026
+internet en casa,servicios,egreso,fijo_vital,450,4/15/2026
 galletas y papas oxxo,alimentacion,egreso,variable,141.83,4/15/2026
-despensa bodega aurrera,alimentacion,egreso,variable,1596.08,4/16/2026
+despensa bodega aurrera,alimentacion,egreso,fijo_vital,1596.08,4/16/2026
 refresco en tienda,alimentacion,egreso,variable,126.77,4/16/2026
 didi hacia el trabajo,transporte,egreso,variable,168.16,4/16/2026
-carga de gasolina,transporte,egreso,variable,712.75,4/17/2026
+carga de gasolina,transporte,egreso,fijo_vital,712.75,4/17/2026
 comida a domicilio,alimentacion,egreso,variable,213.42,4/17/2026
 agua embotellada,alimentacion,egreso,variable,129.49,4/18/2026
 salida al antro,ocio,egreso,variable,408.63,4/18/2026
 tacos de canasta,alimentacion,egreso,variable,125.66,4/19/2026
 taxi de emergencia,transporte,egreso,variable,73.69,4/19/2026
 galletas y papas oxxo,alimentacion,egreso,variable,117.06,4/20/2026
-pago tarjeta de crédito,deudas,egreso,variable,1054.83,4/20/2026
+pago tarjeta de crédito,deudas,egreso,fijo_vital,1054.83,4/20/2026
 café matutino,alimentacion,egreso,variable,142.82,4/21/2026
 viaje en uber,transporte,egreso,variable,151.52,4/21/2026
 pizza por uber eats,alimentacion,egreso,variable,227.11,4/21/2026
 refresco en tienda,alimentacion,egreso,variable,43.8,4/23/2026
-gasolinera bp,transporte,egreso,variable,621.83,4/24/2026
+gasolinera bp,transporte,egreso,fijo_vital,621.83,4/24/2026
 galletas y papas oxxo,alimentacion,egreso,variable,45.04,4/24/2026
 antojo en la calle,alimentacion,egreso,variable,34.68,4/25/2026
 uber de regreso de fiesta,transporte,egreso,variable,340.55,4/26/2026
@@ -55,55 +55,55 @@ refresco en tienda,alimentacion,egreso,variable,123.8,4/27/2026
 rappi hamburguesas,alimentacion,egreso,variable,244.38,4/27/2026
 galletas y papas oxxo,alimentacion,egreso,variable,71.68,4/28/2026
 pizza por uber eats,alimentacion,egreso,variable,297.97,4/29/2026
-pago de quincena,servicios,ingreso,variable,8251.19,4/30/2026
+pago de quincena,servicios,ingreso,fijo_vital,8251.19,4/30/2026
 agua embotellada,alimentacion,egreso,variable,87.92,4/30/2026
 venta de artículo usado,servicios,ingreso,variable,884.85,4/8/2026
-gasolinera bp,transporte,egreso,variable,581.34,5/1/2026
-supermercado chedraui,alimentacion,egreso,variable,2144.34,5/1/2026
-mensualidad gimnasio smartfit,salud,egreso,variable,400,5/2/2026
+gasolinera bp,transporte,egreso,fijo_vital,581.34,5/1/2026
+supermercado chedraui,alimentacion,egreso,fijo_vital,2144.34,5/1/2026
+mensualidad gimnasio smartfit,salud,egreso,fijo_no_vital,400,5/2/2026
 starbucks,alimentacion,egreso,variable,64.31,5/2/2026
 cinepolis boletos y dulceria,ocio,egreso,variable,445.93,5/2/2026
 taxi de emergencia,transporte,egreso,variable,96.79,5/2/2026
 galletas y papas oxxo,alimentacion,egreso,variable,114.15,5/3/2026
 viaje en uber,transporte,egreso,variable,133.95,5/3/2026
 tacos de canasta,alimentacion,egreso,variable,65.12,5/4/2026
-pago de renta mensual,vivienda,egreso,variable,5000,5/5/2026
+pago de renta mensual,vivienda,egreso,fijo_vital,5000,5/5/2026
 antojo en la calle,alimentacion,egreso,variable,34.31,5/5/2026
 starbucks,alimentacion,egreso,variable,45.84,5/6/2026
 agua embotellada,alimentacion,egreso,variable,88.65,5/7/2026
 viaje en uber,transporte,egreso,variable,71.31,5/7/2026
-suscripción netflix standard,ocio,egreso,variable,219,5/8/2026
-gasolina mobil,transporte,egreso,variable,746.27,5/8/2026
+suscripcion netflix standard,ocio,egreso,fijo_no_vital,219,5/8/2026
+gasolina mobil,transporte,egreso,fijo_vital,746.27,5/8/2026
 uber de regreso de fiesta,transporte,egreso,variable,717.93,5/8/2026
 salida al antro,ocio,egreso,variable,493.06,5/9/2026
-recibo de luz cfe,servicios,egreso,variable,281.95,5/10/2026
+recibo de luz cfe,servicios,egreso,fijo_vital,281.95,5/10/2026
 cinepolis boletos y dulceria,ocio,egreso,variable,516.96,5/10/2026
 taxi de emergencia,transporte,egreso,variable,69.4,5/10/2026
-spotify premium,ocio,egreso,variable,129,5/11/2026
-recibo de agua,servicios,egreso,variable,179.11,5/12/2026
+spotify premium,ocio,egreso,fijo_no_vital,129,5/11/2026
+recibo de agua,servicios,egreso,fijo_vital,179.11,5/12/2026
 antojo en la calle,alimentacion,egreso,variable,105.75,5/12/2026
 galletas y papas oxxo,alimentacion,egreso,variable,135.7,5/13/2026
 comida a domicilio,alimentacion,egreso,variable,151.75,5/13/2026
 café matutino,alimentacion,egreso,variable,53.33,5/14/2026
-pago de quincena,servicios,ingreso,variable,8243.69,5/15/2026
-internet en casa,servicios,egreso,variable,450,5/15/2026
-gasolina mobil,transporte,egreso,variable,693.29,5/15/2026
+pago de quincena,servicios,ingreso,fijo_vital,8243.69,5/15/2026
+internet en casa,servicios,egreso,fijo_vital,450,5/15/2026
+gasolina mobil,transporte,egreso,fijo_vital,693.29,5/15/2026
 agua embotellada,alimentacion,egreso,variable,63.63,5/15/2026
-supermercado chedraui,alimentacion,egreso,variable,1214.38,5/16/2026
+supermercado chedraui,alimentacion,egreso,fijo_vital,1214.38,5/16/2026
 starbucks,alimentacion,egreso,variable,115.88,5/16/2026
 uber de regreso de fiesta,transporte,egreso,variable,353.12,5/16/2026
 didi hacia el trabajo,transporte,egreso,variable,102.27,5/16/2026
 agua embotellada,alimentacion,egreso,variable,51.25,5/17/2026
-suscripción disney+,ocio,egreso,variable,179,5/18/2026
+suscripcion disney+,ocio,egreso,fijo_no_vital,179,5/18/2026
 antojo en la calle,alimentacion,egreso,variable,61.53,5/18/2026
 didi hacia el trabajo,transporte,egreso,variable,89.35,5/19/2026
 pizza por uber eats,alimentacion,egreso,variable,180.44,5/19/2026
 antojo en la calle,alimentacion,egreso,variable,75.19,5/20/2026
-pago tarjeta de crédito,deudas,egreso,variable,1940.1,5/20/2026
+pago tarjeta de crédito,deudas,egreso,fijo_vital,1940.1,5/20/2026
 starbucks,alimentacion,egreso,variable,52.17,5/21/2026
 viaje en uber,transporte,egreso,variable,93.53,5/21/2026
 comida a domicilio,alimentacion,egreso,variable,277.86,5/21/2026
-carga de gasolina,transporte,egreso,variable,622.71,5/22/2026
+carga de gasolina,transporte,egreso,fijo_vital,622.71,5/22/2026
 starbucks,alimentacion,egreso,variable,46.3,5/22/2026
 cena con amigos,alimentacion,egreso,variable,714.7,5/23/2026
 didi hacia el trabajo,transporte,egreso,variable,132.19,5/23/2026
@@ -115,21 +115,21 @@ pizza por uber eats,alimentacion,egreso,variable,300.37,5/26/2026
 agua embotellada,alimentacion,egreso,variable,32.03,5/28/2026
 paracetamol y antigripal,salud,egreso,variable,627.57,5/28/2026
 rappi hamburguesas,alimentacion,egreso,variable,211.48,5/28/2026
-gasolinera bp,transporte,egreso,variable,538.08,5/29/2026
+gasolinera bp,transporte,egreso,fijo_vital,538.08,5/29/2026
 café matutino,alimentacion,egreso,variable,115.42,5/29/2026
-pago de quincena,servicios,ingreso,variable,8162.01,5/30/2026
+pago de quincena,servicios,ingreso,fijo_vital,8162.01,5/30/2026
 starbucks,alimentacion,egreso,variable,61.52,5/30/2026
 galletas y papas oxxo,alimentacion,egreso,variable,106.11,5/31/2026
 didi hacia el trabajo,transporte,egreso,variable,165.72,5/31/2026
-compras para la casa en soriana,alimentacion,egreso,variable,1480.83,6/1/2026
+compras para la casa en soriana,alimentacion,egreso,fijo_vital,1480.83,6/1/2026
 galletas y papas oxxo,alimentacion,egreso,variable,35.34,6/1/2026
-mensualidad gimnasio smartfit,salud,egreso,variable,400,6/2/2026
+mensualidad gimnasio smartfit,salud,egreso,fijo_no_vital,400,6/2/2026
 refresco en tienda,alimentacion,egreso,variable,127.34,6/2/2026
 farmacia san pablo,salud,egreso,variable,532.5,6/2/2026
 taxi de emergencia,transporte,egreso,variable,134.43,6/2/2026
 agua embotellada,alimentacion,egreso,variable,88.15,6/4/2026
-pago de renta mensual,vivienda,egreso,variable,5000,6/5/2026
-gasolina mobil,transporte,egreso,variable,717.79,6/5/2026
+pago de renta mensual,vivienda,egreso,fijo_vital,5000,6/5/2026
+gasolina mobil,transporte,egreso,fijo_vital,717.79,6/5/2026
 tacos de canasta,alimentacion,egreso,variable,134.3,6/5/2026
 cinepolis boletos y dulceria,ocio,egreso,variable,380.77,6/5/2026
 comida a domicilio,alimentacion,egreso,variable,271.66,6/5/2026
@@ -138,15 +138,15 @@ didi hacia el trabajo,transporte,egreso,variable,105.36,6/6/2026
 tacos de canasta,alimentacion,egreso,variable,37.12,6/7/2026
 paracetamol y antigripal,salud,egreso,variable,607.59,6/7/2026
 viaje en uber,transporte,egreso,variable,167.37,6/7/2026
-suscripción netflix standard,ocio,egreso,variable,219,6/8/2026
+suscripcion netflix standard,ocio,egreso,fijo_no_vital,219,6/8/2026
 viaje en uber,transporte,egreso,variable,89.54,6/8/2026
 tacos de canasta,alimentacion,egreso,variable,76.89,6/9/2026
-recibo de luz cfe,servicios,egreso,variable,263.56,6/10/2026
+recibo de luz cfe,servicios,egreso,fijo_vital,263.56,6/10/2026
 starbucks,alimentacion,egreso,variable,42.13,6/10/2026
-spotify premium,ocio,egreso,variable,129,6/11/2026
+spotify premium,ocio,egreso,fijo_no_vital,129,6/11/2026
 tacos de canasta,alimentacion,egreso,variable,95.85,6/11/2026
-recibo de agua,servicios,egreso,variable,284.49,6/12/2026
-gasolinera bp,transporte,egreso,variable,425.38,6/12/2026
+recibo de agua,servicios,egreso,fijo_vital,284.49,6/12/2026
+gasolinera bp,transporte,egreso,fijo_vital,425.38,6/12/2026
 tacos de canasta,alimentacion,egreso,variable,130.26,6/12/2026
 salida al antro,ocio,egreso,variable,355.74,6/12/2026
 comida en restaurante,alimentacion,egreso,variable,556.22,6/13/2026
@@ -154,21 +154,21 @@ didi hacia el trabajo,transporte,egreso,variable,111.06,6/13/2026
 comida a domicilio,alimentacion,egreso,variable,239.18,6/13/2026
 tacos de canasta,alimentacion,egreso,variable,90.2,6/14/2026
 comida en restaurante,alimentacion,egreso,variable,288.62,6/14/2026
-pago de quincena,servicios,ingreso,variable,8100.01,6/15/2026
-internet en casa,servicios,egreso,variable,450,6/15/2026
+pago de quincena,servicios,ingreso,fijo_vital,8100.01,6/15/2026
+internet en casa,servicios,egreso,fijo_vital,450,6/15/2026
 agua embotellada,alimentacion,egreso,variable,109.47,6/15/2026
-compras para la casa en soriana,alimentacion,egreso,variable,1592.96,6/16/2026
+compras para la casa en soriana,alimentacion,egreso,fijo_vital,1592.96,6/16/2026
 agua embotellada,alimentacion,egreso,variable,37.28,6/16/2026
 café matutino,alimentacion,egreso,variable,95.81,6/17/2026
 pizza por uber eats,alimentacion,egreso,variable,264.12,6/17/2026
 antojo en la calle,alimentacion,egreso,variable,137.37,6/18/2026
 taxi de emergencia,transporte,egreso,variable,82.01,6/18/2026
-gasolina mobil,transporte,egreso,variable,706.28,6/19/2026
+gasolina mobil,transporte,egreso,fijo_vital,706.28,6/19/2026
 agua embotellada,alimentacion,egreso,variable,45.27,6/19/2026
 cena con amigos,alimentacion,egreso,variable,553.52,6/19/2026
 uber de regreso de fiesta,transporte,egreso,variable,597.7,6/20/2026
 pizza por uber eats,alimentacion,egreso,variable,151.3,6/20/2026
-pago tarjeta de crédito,deudas,egreso,variable,1227.98,6/20/2026
+pago tarjeta de crédito,deudas,egreso,fijo_vital,1227.98,6/20/2026
 cervezas en bar,ocio,egreso,variable,342.15,6/21/2026
 farmacia san pablo,salud,egreso,variable,556.79,6/21/2026
 taxi de emergencia,transporte,egreso,variable,97.28,6/21/2026
@@ -178,26 +178,26 @@ agua embotellada,alimentacion,egreso,variable,135.91,6/24/2026
 refresco en tienda,alimentacion,egreso,variable,114.03,6/25/2026
 viaje en uber,transporte,egreso,variable,163.32,6/25/2026
 curso en línea udemy,educacion,egreso,variable,206.57,6/25/2026
-gasolina mobil,transporte,egreso,variable,602.32,6/26/2026
+gasolina mobil,transporte,egreso,fijo_vital,602.32,6/26/2026
 tacos de canasta,alimentacion,egreso,variable,78.62,6/26/2026
 cena con amigos,alimentacion,egreso,variable,548.6,6/26/2026
 agua embotellada,alimentacion,egreso,variable,29.66,6/28/2026
 cena con amigos,alimentacion,egreso,variable,553.71,6/28/2026
 didi hacia el trabajo,transporte,egreso,variable,154.59,6/28/2026
 café matutino,alimentacion,egreso,variable,111.39,6/29/2026
-pago de quincena,servicios,ingreso,variable,8372.01,6/30/2026
+pago de quincena,servicios,ingreso,fijo_vital,8372.01,6/30/2026
 refresco en tienda,alimentacion,egreso,variable,82.45,6/30/2026
 rappi hamburguesas,alimentacion,egreso,variable,334.3,6/30/2026
-sueldo mensual,ingreso,ingreso,variable,10000,1/4/2026
-renta departamento,vivienda,egreso,variable,1800,1/4/2026
-pago de agua,vivienda,egreso,variable,250,2/4/2026
-pago luz cfe,vivienda,egreso,variable,150,2/4/2026
-gas lp,vivienda,egreso,variable,200,3/4/2026
-internet telmex,servicios,egreso,variable,500,3/4/2026
-plan de datos celular,servicios,egreso,variable,200,4/4/2026
-netflix,ocio,egreso,variable,150,4/4/2026
-spotify,ocio,egreso,variable,120,5/4/2026
-gimnasio,ocio,egreso,variable,400,5/4/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/4/2026
+renta departamento,vivienda,egreso,fijo_vital,1800,1/4/2026
+pago de agua,vivienda,egreso,fijo_vital,250,2/4/2026
+pago luz cfe,vivienda,egreso,fijo_vital,150,2/4/2026
+gas lp,vivienda,egreso,fijo_vital,200,3/4/2026
+internet telmex,servicios,egreso,fijo_vital,500,3/4/2026
+plan de datos celular,servicios,egreso,fijo_no_vital,200,4/4/2026
+netflix,ocio,egreso,fijo_no_vital,150,4/4/2026
+spotify,ocio,egreso,fijo_no_vital,120,5/4/2026
+gimnasio,ocio,egreso,fijo_no_vital,400,5/4/2026
 tacos de canasta,alimentacion,egreso,variable,60,6/4/2026
 refresco oxxo,alimentacion,egreso,variable,18,6/4/2026
 comida en oxxo,alimentacion,egreso,variable,45,6/4/2026
@@ -224,9 +224,9 @@ agua de sabor,alimentacion,egreso,variable,12,13-04-26
 galletas gamesa,alimentacion,egreso,variable,18,13-04-26
 chicles,alimentacion,egreso,variable,6,14-04-26
 dulces,alimentacion,egreso,variable,10,14-04-26
-camiónes,transporte,egreso,variable,32,14-04-26
+camiones,transporte,egreso,variable,32,14-04-26
 leche nutri,transporte,egreso,variable,16.5,15-04-26
-bono mensual,ingreso,ingreso,variable,500,15-04-26
+bono mensual,ingreso,ingreso,fijo_vital,500,15-04-26
 metrobús,transporte,egreso,variable,15,15-04-26
 taxi,transporte,egreso,variable,80,15-04-26
 uber,transporte,egreso,variable,120,16-04-26
@@ -243,31 +243,31 @@ consultorio médico,salud,egreso,variable,500,19-04-26
 dentista,salud,egreso,variable,800,19-04-26
 medicina simi,salud,egreso,variable,75,20-04-26
 paracetamol,salud,egreso,variable,40,20-04-26
-antibióticos,salud,egreso,variable,120,20-04-26
+antibioticos,salud,egreso,variable,120,20-04-26
 vitaminas,salud,egreso,variable,90,21-04-26
 examen de sangre,salud,egreso,variable,350,21-04-26
-psicólogo,salud,egreso,variable,600,21-04-26
+psicologo,salud,egreso,variable,600,21-04-26
 terapia física,salud,egreso,variable,450,22-04-26
 reparacion lentes,salud,egreso,variable,200,22-04-26
 audífonos auditivos,salud,egreso,variable,150,22-04-26
-seguro de salud,salud,egreso,variable,300,23-04-26
+seguro de salud,salud,egreso,fijo_vital,300,23-04-26
 cita médica particular,salud,egreso,variable,550,23-04-26
-colegiaturas,educacion,egreso,variable,1500,23-04-26
-inscripción semestral,educacion,egreso,variable,360,24-04-26
+colegiaturas,educacion,egreso,fijo_vital,1500,23-04-26
+inscripcion semestral,educacion,egreso,fijo_vital,360,24-04-26
 libros,educacion,egreso,variable,600,24-04-26
 útiles escolares,educacion,egreso,variable,200,24-04-26
-cursos en línea,educacion,egreso,variable,350,25-04-26
-plataforma educativa,educacion,egreso,variable,250,25-04-26
-examen de admisión,educacion,egreso,variable,450,25-04-26
-certificación oracle,educacion,egreso,variable,700,26-04-26
+cursos en línea,educacion,egreso,fijo_vital,350,25-04-26
+plataforma educativa,educacion,egreso,fijo_vital,250,25-04-26
+examen de admision,educacion,egreso,variable,450,25-04-26
+certificacion oracle,educacion,egreso,variable,700,26-04-26
 taller de arte,educacion,egreso,variable,300,26-04-26
-clase de inglés,educacion,egreso,variable,600,26-04-26
+clase de inglés,educacion,egreso,fijo_vital,600,26-04-26
 clase de música,educacion,egreso,variable,400,27-04-26
 diplomado,educacion,egreso,variable,1200,27-04-26
 cine,ocio,egreso,variable,100,27-04-26
-amazon prime,ocio,egreso,variable,130,28-04-26
-disney+,ocio,egreso,variable,150,28-04-26
-hbo max,ocio,egreso,variable,120,28-04-26
+amazon prime,ocio,egreso,fijo_no_vital,130,28-04-26
+disney+,ocio,egreso,fijo_no_vital,150,28-04-26
+hbo max,ocio,egreso,fijo_no_vital,120,28-04-26
 cerveza,ocio,egreso,variable,40,29-04-26
 antro,ocio,egreso,variable,300,29-04-26
 concierto,ocio,egreso,variable,800,29-04-26
@@ -278,19 +278,19 @@ videojuegos,ocio,egreso,variable,500,30-04-26
 salida a cenar,ocio,egreso,variable,350,1/5/2026
 bar,ocio,egreso,variable,200,1/5/2026
 cafetería,ocio,egreso,variable,80,1/5/2026
-teléfono celular,servicios,egreso,variable,200,2/5/2026
-recolección de basura,servicios,egreso,variable,150,2/5/2026
-mantenimiento de elevador,servicios,egreso,variable,100,2/5/2026
-cuota de condominio,servicios,egreso,variable,500,3/5/2026
-seguro de auto,servicios,egreso,variable,350,3/5/2026
-seguro de vida,servicios,egreso,variable,250,3/5/2026
-pago tarjeta de crédito,deudas,egreso,variable,2000,4/5/2026
-abono a préstamo,deudas,egreso,variable,500,4/5/2026
+teléfono celular,servicios,egreso,fijo_vital,200,2/5/2026
+recoleccion de basura,servicios,egreso,fijo_vital,150,2/5/2026
+mantenimiento de elevador,servicios,egreso,fijo_vital,100,2/5/2026
+cuota de condominio,servicios,egreso,fijo_vital,500,3/5/2026
+seguro de auto,servicios,egreso,fijo_vital,350,3/5/2026
+seguro de vida,servicios,egreso,fijo_vital,250,3/5/2026
+pago tarjeta de crédito,deudas,egreso,fijo_vital,2000,4/5/2026
+abono a préstamo,deudas,egreso,fijo_vital,500,4/5/2026
 intereses,deudas,egreso,variable,200,4/5/2026
 cobertura de deuda,deudas,egreso,variable,300,5/5/2026
-pago a coppel,deudas,egreso,variable,400,5/5/2026
-pago a electra,deudas,egreso,variable,350,5/5/2026
-pago a crédito departamental,deudas,egreso,variable,250,6/5/2026
+pago a coppel,deudas,egreso,fijo_vital,400,5/5/2026
+pago a electra,deudas,egreso,fijo_vital,350,5/5/2026
+pago a crédito departamental,deudas,egreso,fijo_vital,250,6/5/2026
 tacos de pastor,alimentacion,egreso,variable,70,6/5/2026
 quesadillas,alimentacion,egreso,variable,45,6/5/2026
 gorditas,alimentacion,egreso,variable,50,7/5/2026
@@ -303,7 +303,7 @@ enchiladas,alimentacion,egreso,variable,90,9/5/2026
 mole,alimentacion,egreso,variable,100,9/5/2026
 medio kilo de barbacoa,alimentacion,egreso,variable,120,9/5/2026
 carnitas,alimentacion,egreso,variable,110,10/5/2026
-coctel de camarón,alimentacion,egreso,variable,200,10/5/2026
+coctel de camaron,alimentacion,egreso,variable,200,10/5/2026
 ceviche,alimentacion,egreso,variable,150,10/5/2026
 pescado frito,alimentacion,egreso,variable,130,11/5/2026
 torta de tamal,alimentacion,egreso,variable,35,11/5/2026
@@ -337,7 +337,7 @@ chocolate,alimentacion,egreso,variable,25,20-05-26
 cajeta,alimentacion,egreso,variable,18,20-05-26
 dulce de leche,alimentacion,egreso,variable,22,21-05-26
 mazapán,alimentacion,egreso,variable,10,21-05-26
-despensa,alimentacion,egreso,variable,236,21-05-26
+despensa,alimentacion,egreso,fijo_vital,236,21-05-26
 pulque,alimentacion,egreso,variable,30,22-05-26
 tequila,alimentacion,egreso,variable,200,22-05-26
 mezcal,alimentacion,egreso,variable,250,22-05-26
@@ -422,10 +422,10 @@ carne de res,alimentacion,egreso,variable,120,17-06-26
 cerdo,alimentacion,egreso,variable,100,18-06-26
 cordero,alimentacion,egreso,variable,150,18-06-26
 pescado,alimentacion,egreso,variable,90,18-06-26
-camarón,alimentacion,egreso,variable,200,19-06-26
+camaron,alimentacion,egreso,variable,200,19-06-26
 pulpo,alimentacion,egreso,variable,180,19-06-26
 calamar,alimentacion,egreso,variable,140,19-06-26
-mejillón,alimentacion,egreso,variable,120,20-06-26
+mejillon,alimentacion,egreso,variable,120,20-06-26
 ostras,alimentacion,egreso,variable,160,20-06-26
 almeja,alimentacion,egreso,variable,110,20-06-26
 langosta,alimentacion,egreso,variable,300,21-06-26
@@ -434,340 +434,340 @@ jaiba,alimentacion,egreso,variable,220,21-06-26
 cosas para comer,alimentacion,egreso,variable,89,22 -06-26
 pegamento,servicios,egreso,variable,23,22-06-26
 madera,servicios,egreso,variable,680,22-06-26
-tortillas,alimentacion,egreso,variable,18,22-06-26
+tortillas,alimentacion,egreso,fijo_vital,18,22-06-26
 desodorante,salud,egreso,variable,45,22-06-26
 bono trabajo,servicios,ingreso,variable,50,22-06-26
 compra material gran bodega,servicios,egreso,variable,40,22-06-26
 compra de herramienta,servicios,egreso,variable,350,23-06-26
-pagar la recoleccion de basura,servicios,egreso,variable,10,23-06-26
+pagar la recoleccion de basura,servicios,egreso,fijo_vital,10,23-06-26
 insumos en amazon,servicios,egreso,variable,300,23-06-26
-nomina,ingreso,ingreso,variable,10000,23-06-26
-youtube premium,ocio,egreso,variable,120,23-06-26
-compra gaseosa y galletas en tambo,alimentacion,gasto,variable,7.5,7/20/2026
-recibo de agua sedapal,servicios,gasto,variable,85,7/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,7/1/2026
-pasaje metropolitano a miraflores,transporte,gasto,variable,3.5,6/28/2026
-almuerzo menu ejecutivo san isidro,alimentacion,gasto,variable,16,7/19/2026
-pasaje combi por javier prado,transporte,gasto,variable,2.5,7/19/2026
-yape a bodega don pepe verduras,alimentacion,gasto,variable,34.5,7/18/2026
-recibo de luz luz del sur,servicios,gasto,variable,142,7/17/2026
-pension universidad san marcos,educacion,gasto,variable,110,7/16/2026
-pago cuota tarjeta bcp,deudas,gasto,variable,450,7/15/2026
-compras quincena plaza vea,alimentacion,gasto,variable,285.6,7/15/2026
-consulta medica clinica ricardo palma,salud,gasto,variable,120,7/14/2026
-medicina farmacia inkafarma,salud,gasto,variable,68.4,7/14/2026
-pollo a la brasa pardos chicken,alimentacion,gasto,variable,89,7/13/2026
-recarga bitel ilimitado,servicios,gasto,variable,30,7/12/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,7/10/2026
-salida a cineplanet san miguel,ocio,gasto,variable,42,7/9/2026
-cancha de futbol sintético con amigos,ocio,gasto,variable,25,7/8/2026
-pago mantenimiento del edificio,vivienda,gasto,variable,180,7/7/2026
+nomina,ingreso,ingreso,fijo_vital,10000,23-06-26
+youtube premium,ocio,egreso,fijo_no_vital,120,23-06-26
+compra gaseosa y galletas en tambo,alimentacion,egreso,variable,7.5,7/20/2026
+recibo de agua sedapal,servicios,egreso,fijo_vital,85,7/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,7/1/2026
+pasaje metropolitano a miraflores,transporte,egreso,fijo_vital,3.5,6/28/2026
+almuerzo menu ejecutivo san isidro,alimentacion,egreso,variable,16,7/19/2026
+pasaje combi por javier prado,transporte,egreso,variable,2.5,7/19/2026
+yape a bodega don pepe verduras,alimentacion,egreso,variable,34.5,7/18/2026
+recibo de luz luz del sur,servicios,egreso,fijo_vital,142,7/17/2026
+pension universidad san marcos,educacion,egreso,fijo_vital,110,7/16/2026
+pago cuota tarjeta bcp,deudas,egreso,fijo_vital,450,7/15/2026
+compras quincena plaza vea,alimentacion,egreso,variable,285.6,7/15/2026
+consulta medica clinica ricardo palma,salud,egreso,variable,120,7/14/2026
+medicina farmacia inkafarma,salud,egreso,variable,68.4,7/14/2026
+pollo a la brasa pardos chicken,alimentacion,egreso,variable,89,7/13/2026
+recarga bitel ilimitado,servicios,egreso,variable,30,7/12/2026
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,7/10/2026
+salida a cineplanet san miguel,ocio,egreso,variable,42,7/9/2026
+cancha de futbol sintético con amigos,ocio,egreso,variable,25,7/8/2026
+pago mantenimiento del edificio,vivienda,egreso,fijo_vital,180,7/7/2026
 cobro trabajo freelance diseno web,servicios,ingreso,variable,850,7/5/2026
-pasaje corredor rojo,transporte,gasto,variable,2.3,7/4/2026
-compras de fruta en mercado de surquillo,alimentacion,gasto,variable,45,7/3/2026
-suscripcion netflix familiar,ocio,gasto,variable,44.9,7/2/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,6/30/2026
-pago internet claro fibra optica,servicios,gasto,variable,95,6/29/2026
-corte de cabello en barberia,ocio,gasto,variable,35,6/27/2026
-desayuno chicharron en lurin,alimentacion,gasto,variable,65,6/26/2026
-pasaje taxi colectivo a la victoria,transporte,gasto,variable,6,6/25/2026
-compra en mifarma analgesicos,salud,gasto,variable,22.5,6/24/2026
-cuota prestamo personal interbank,deudas,gasto,variable,380,6/23/2026
-gas propano balon solgas,vivienda,gasto,variable,55,6/22/2026
-curso ingles britanico mensualidad,educacion,gasto,variable,290,6/21/2026
-pago arbitrios municipales,vivienda,gasto,variable,65,6/20/2026
-cebiche en huarique de chorrillos,alimentacion,gasto,variable,48,6/19/2026
-yape a chofer de mototaxi,transporte,gasto,variable,4,6/19/2026
+pasaje corredor rojo,transporte,egreso,variable,2.3,7/4/2026
+compras de fruta en mercado de surquillo,alimentacion,egreso,variable,45,7/3/2026
+suscripcion netflix familiar,ocio,egreso,variable,44.9,7/2/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,6/30/2026
+pago internet claro fibra optica,servicios,egreso,fijo_vital,95,6/29/2026
+corte de cabello en barberia,ocio,egreso,variable,35,6/27/2026
+desayuno chicharron en lurin,alimentacion,egreso,variable,65,6/26/2026
+pasaje taxi colectivo a la victoria,transporte,egreso,variable,6,6/25/2026
+compra en mifarma analgesicos,salud,egreso,variable,22.5,6/24/2026
+cuota prestamo personal interbank,deudas,egreso,fijo_vital,380,6/23/2026
+gas propano balon solgas,vivienda,egreso,fijo_vital,55,6/22/2026
+curso ingles britanico mensualidad,educacion,egreso,fijo_vital,290,6/21/2026
+pago arbitrios municipales,vivienda,egreso,variable,65,6/20/2026
+cebiche en huarique de chorrillos,alimentacion,egreso,variable,48,6/19/2026
+yape a chofer de mototaxi,transporte,egreso,variable,4,6/19/2026
 ingreso por venta de ropa usada,ocio,ingreso,variable,120,6/18/2026
-pension colegio de los ninos,educacion,gasto,variable,550,6/17/2026
-reparacion fuga de agua gasfitero,vivienda,gasto,variable,90,6/16/2026
-almuerzo chifa central lince,alimentacion,gasto,variable,38,6/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,6/15/2026
-compra de utiles escolares en tai loy,educacion,gasto,variable,78.5,6/14/2026
-entrada a concierto en estadio nacional,ocio,gasto,variable,180,6/12/2026
-viaje de fin de semana a lunahuana,ocio,gasto,variable,320,6/11/2026
-pasaje pasamayito combi,transporte,gasto,variable,3.5,6/10/2026
-pago gas natural calidda,servicios,gasto,variable,38,6/9/2026
-analisis de laboratorio roe,salud,gasto,variable,150,6/8/2026
-compra en supermercado tottus,alimentacion,gasto,variable,210.4,6/7/2026
-recarga tarjeta lima pass,transporte,gasto,variable,20,6/6/2026
+pension colegio de los ninos,educacion,egreso,fijo_vital,550,6/17/2026
+reparacion fuga de agua gasfitero,vivienda,egreso,variable,90,6/16/2026
+almuerzo chifa central lince,alimentacion,egreso,variable,38,6/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,6/15/2026
+compra de utiles escolares en tai loy,educacion,egreso,variable,78.5,6/14/2026
+entrada a concierto en estadio nacional,ocio,egreso,variable,180,6/12/2026
+viaje de fin de semana a lunahuana,ocio,egreso,variable,320,6/11/2026
+pasaje pasamayito combi,transporte,egreso,variable,3.5,6/10/2026
+pago gas natural calidda,servicios,egreso,variable,38,6/9/2026
+analisis de laboratorio roe,salud,egreso,variable,150,6/8/2026
+compra en supermercado tottus,alimentacion,egreso,variable,210.4,6/7/2026
+recarga tarjeta lima pass,transporte,egreso,variable,20,6/6/2026
 venta de postres caseros,alimentacion,ingreso,variable,230,6/5/2026
-pago seguro de salud eps,salud,gasto,variable,210,6/4/2026
-compra de zapatillas en ripley,ocio,gasto,variable,229,6/3/2026
-salida a bar en barranco,ocio,gasto,variable,95,6/2/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,5/31/2026
-alquiler de cancha de padel,ocio,gasto,variable,60,5/30/2026
-recibo de agua sedapal,servicios,gasto,variable,82,5/28/2026
-compra en mercado de productores santa anita,alimentacion,gasto,variable,185,5/27/2026
-pasaje combi abancay,transporte,gasto,variable,2,5/26/2026
-pago plan postpago entel,servicios,gasto,variable,59.9,5/25/2026
-tarjeta ripley pago minimo,deudas,gasto,variable,210,5/24/2026
-reparacion de llanta pinchada taller,transporte,gasto,variable,15,5/23/2026
-compra libro en libreria crisol,educacion,gasto,variable,59,5/22/2026
-plato mostrito en polleria de barrio,alimentacion,gasto,variable,14,5/21/2026
-atencion odontologica limpieza,salud,gasto,variable,100,5/20/2026
-pago de mantenimiento auto taller,transporte,gasto,variable,350,5/19/2026
-servicio de lavanderia por kilo,vivienda,gasto,variable,28,5/18/2026
-pago matricula senati,educacion,gasto,variable,320,5/17/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,5/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,5/15/2026
-yape a empanadas y cafe en la calle,alimentacion,gasto,variable,9.5,5/14/2026
-gasolinera primax tanqueo parcial,transporte,gasto,variable,80,5/13/2026
-suscripcion spotify premium,ocio,gasto,variable,20.9,5/12/2026
-compra ropa de abrigo en gamarra,ocio,gasto,variable,145,5/11/2026
-manta de alpaca regalo,ocio,gasto,variable,85,5/10/2026
-pago impuesto predial sat,vivienda,gasto,variable,112,5/9/2026
-veterinaria vacuna perro,salud,gasto,variable,65,5/8/2026
-pago cuota prestamo falabella,deudas,gasto,variable,290,5/7/2026
-compras semanales metro,alimentacion,gasto,variable,195,5/6/2026
-pasaje linea 1 metro de lima,transporte,gasto,variable,1.5,5/5/2026
-clases de natacion academia,educacion,gasto,variable,160,5/4/2026
-pago seguro vehicular rímac,transporte,gasto,variable,180,5/3/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,4/30/2026
-almuerzo makis libre miraflores,alimentacion,gasto,variable,65,4/29/2026
-recibo luz enel,servicios,gasto,variable,135,4/28/2026
-cambio de aceite carro,transporte,gasto,variable,110,4/27/2026
-yape helado d'onofrio en parque,alimentacion,gasto,variable,6,4/26/2026
-pago de internet movistar,servicios,gasto,variable,89,4/25/2026
-pago tarjeta bbva cuota,deudas,gasto,variable,520,4/24/2026
-compra zapatillas running marathon,ocio,gasto,variable,310,4/23/2026
-pension universidad san marcos,educacion,gasto,variable,110,4/22/2026
-examen de vista optica,salud,gasto,variable,50,4/21/2026
-lentes de medida nuevos,salud,gasto,variable,280,4/20/2026
-salida a bowling plaza norte,ocio,gasto,variable,35,4/19/2026
-compras de verduras en mercado local,alimentacion,gasto,variable,42,4/18/2026
-platinazo de anticuchos en la esquina,alimentacion,gasto,variable,18,4/17/2026
+pago seguro de salud eps,salud,egreso,fijo_vital,210,6/4/2026
+compra de zapatillas en ripley,ocio,egreso,variable,229,6/3/2026
+salida a bar en barranco,ocio,egreso,variable,95,6/2/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,5/31/2026
+alquiler de cancha de padel,ocio,egreso,variable,60,5/30/2026
+recibo de agua sedapal,servicios,egreso,fijo_vital,82,5/28/2026
+compra en mercado de productores santa anita,alimentacion,egreso,variable,185,5/27/2026
+pasaje combi abancay,transporte,egreso,variable,2,5/26/2026
+pago plan postpago entel,servicios,egreso,variable,59.9,5/25/2026
+tarjeta ripley pago minimo,deudas,egreso,variable,210,5/24/2026
+reparacion de llanta pinchada taller,transporte,egreso,variable,15,5/23/2026
+compra libro en libreria crisol,educacion,egreso,variable,59,5/22/2026
+plato mostrito en polleria de barrio,alimentacion,egreso,variable,14,5/21/2026
+atencion odontologica limpieza,salud,egreso,fijo_vital,100,5/20/2026
+pago de mantenimiento auto taller,transporte,egreso,variable,350,5/19/2026
+servicio de lavanderia por kilo,vivienda,egreso,variable,28,5/18/2026
+pago matricula senati,educacion,egreso,variable,320,5/17/2026
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,5/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,5/15/2026
+yape a empanadas y cafe en la calle,alimentacion,egreso,variable,9.5,5/14/2026
+gasolinera primax tanqueo parcial,transporte,egreso,variable,80,5/13/2026
+suscripcion spotify premium,ocio,egreso,variable,20.9,5/12/2026
+compra ropa de abrigo en gamarra,ocio,egreso,variable,145,5/11/2026
+manta de alpaca regalo,ocio,egreso,variable,85,5/10/2026
+pago impuesto predial sat,vivienda,egreso,fijo_vital,112,5/9/2026
+veterinaria vacuna perro,salud,egreso,variable,65,5/8/2026
+pago cuota prestamo falabella,deudas,egreso,fijo_vital,290,5/7/2026
+compras semanales metro,alimentacion,egreso,variable,195,5/6/2026
+pasaje linea 1 metro de lima,transporte,egreso,variable,1.5,5/5/2026
+clases de natacion academia,educacion,egreso,variable,160,5/4/2026
+pago seguro vehicular rímac,transporte,egreso,fijo_vital,180,5/3/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,4/30/2026
+almuerzo makis libre miraflores,alimentacion,egreso,variable,65,4/29/2026
+recibo luz enel,servicios,egreso,fijo_vital,135,4/28/2026
+cambio de aceite carro,transporte,egreso,fijo_vital,110,4/27/2026
+yape helado d'onofrio en parque,alimentacion,egreso,variable,6,4/26/2026
+pago de internet movistar,servicios,egreso,fijo_vital,89,4/25/2026
+pago tarjeta bbva cuota,deudas,egreso,fijo_vital,520,4/24/2026
+compra zapatillas running marathon,ocio,egreso,variable,310,4/23/2026
+pension universidad san marcos,educacion,egreso,fijo_vital,110,4/22/2026
+examen de vista optica,salud,egreso,variable,50,4/21/2026
+lentes de medida nuevos,salud,egreso,variable,280,4/20/2026
+salida a bowling plaza norte,ocio,egreso,variable,35,4/19/2026
+compras de verduras en mercado local,alimentacion,egreso,variable,42,4/18/2026
+platinazo de anticuchos en la esquina,alimentacion,egreso,variable,18,4/17/2026
 ingreso por asesoria profesional externa,servicios,ingreso,variable,600,4/16/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,4/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,4/15/2026
-gastos de cerrajero cambio de chapa,vivienda,gasto,variable,75,4/14/2026
-pasaje aplicativo cabify,transporte,gasto,variable,22,4/13/2026
-recarga tarjeta metropolitano,transporte,gasto,variable,30,4/12/2026
-pago servicio streaming disney plus,ocio,gasto,variable,27.9,4/11/2026
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,4/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,4/15/2026
+gastos de cerrajero cambio de chapa,vivienda,egreso,variable,75,4/14/2026
+pasaje aplicativo cabify,transporte,egreso,variable,22,4/13/2026
+recarga tarjeta metropolitano,transporte,egreso,variable,30,4/12/2026
+pago servicio streaming disney plus,ocio,egreso,variable,27.9,4/11/2026
 saldo a favor cashback tarjeta,servicios,ingreso,variable,35,4/10/2026
-reparacion de laptop en wilson,educacion,gasto,variable,140,4/9/2026
-compra de carne en carniceria,alimentacion,gasto,variable,68,4/8/2026
-pago cuota credito hipotecario,deudas,gasto,variable,1650,4/7/2026
-matrícula taller de pintura,educacion,gasto,variable,120,4/6/2026
-medicina jarabe para la tos inkafarma,salud,gasto,variable,28,4/5/2026
-pago gas natural calidda,servicios,gasto,variable,35,4/4/2026
-taxi colectivo hacia centro de lima,transporte,gasto,variable,7,4/3/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,3/31/2026
-almuerzo caldo de gallina la victoria,alimentacion,gasto,variable,18,3/30/2026
-pension colegio de los ninos,educacion,gasto,variable,550,3/29/2026
-compra en makro por mayor,alimentacion,gasto,variable,340,3/28/2026
-tarjeta diners pago mensual,deudas,gasto,variable,310,3/27/2026
-recibo de agua sedapal,servicios,gasto,variable,79,3/26/2026
-compra de focos led promart,vivienda,gasto,variable,45,3/25/2026
-yape a emolientero de la mañana,alimentacion,gasto,variable,3.5,3/24/2026
-polera de marca promart,ocio,gasto,variable,89,3/23/2026
-consulta dermatologica clinica,salud,gasto,variable,130,3/22/2026
-bloqueador solar en boticas peru,salud,gasto,variable,52,3/21/2026
-salida a parque de las leyendas,ocio,gasto,variable,48,3/20/2026
-pasaje combi angamos,transporte,gasto,variable,2.5,3/19/2026
-pago de luz enel,servicios,gasto,variable,128,3/18/2026
-pago mantenimiento departamento,vivienda,gasto,variable,180,3/17/2026
+reparacion de laptop en wilson,educacion,egreso,variable,140,4/9/2026
+compra de carne en carniceria,alimentacion,egreso,variable,68,4/8/2026
+pago cuota credito hipotecario,deudas,egreso,fijo_vital,1650,4/7/2026
+matrícula taller de pintura,educacion,egreso,variable,120,4/6/2026
+medicina jarabe para la tos inkafarma,salud,egreso,variable,28,4/5/2026
+pago gas natural calidda,servicios,egreso,variable,35,4/4/2026
+taxi colectivo hacia centro de lima,transporte,egreso,variable,7,4/3/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,3/31/2026
+almuerzo caldo de gallina la victoria,alimentacion,egreso,variable,18,3/30/2026
+pension colegio de los ninos,educacion,egreso,fijo_vital,550,3/29/2026
+compra en makro por mayor,alimentacion,egreso,variable,340,3/28/2026
+tarjeta diners pago mensual,deudas,egreso,fijo_vital,310,3/27/2026
+recibo de agua sedapal,servicios,egreso,fijo_vital,79,3/26/2026
+compra de focos led promart,vivienda,egreso,variable,45,3/25/2026
+yape a emolientero de la mañana,alimentacion,egreso,variable,3.5,3/24/2026
+polera de marca promart,ocio,egreso,variable,89,3/23/2026
+consulta dermatologica clinica,salud,egreso,variable,130,3/22/2026
+bloqueador solar en boticas peru,salud,egreso,variable,52,3/21/2026
+salida a parque de las leyendas,ocio,egreso,variable,48,3/20/2026
+pasaje combi angamos,transporte,egreso,variable,2.5,3/19/2026
+pago de luz enel,servicios,egreso,fijo_vital,128,3/18/2026
+pago mantenimiento departamento,vivienda,egreso,fijo_vital,180,3/17/2026
 venta de bicicleta usada olx,ocio,ingreso,variable,350,3/16/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,3/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,3/15/2026
-desayuno tamales domingo,alimentacion,gasto,variable,16,3/14/2026
-peaje vía de evitamiento,transporte,gasto,variable,6.6,3/13/2026
-gasolina repsol 95 octanos,transporte,gasto,variable,120,3/12/2026
-compras wong fin de semana,alimentacion,gasto,variable,260,3/11/2026
-pago suscripcion hbo max,ocio,gasto,variable,29.9,3/10/2026
-cuota prestamo banco de comercio,deudas,gasto,variable,220,3/9/2026
-reparacion de pintura de pared,vivienda,gasto,variable,150,3/8/2026
-atencion urgencias clinica,salud,gasto,variable,200,3/7/2026
-compra de cuaderno y lapiceros,educacion,gasto,variable,15,3/6/2026
-pago de celular postpago movistar,servicios,gasto,variable,65,3/5/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,2/28/2026
-salida a polleria norky's,alimentacion,gasto,variable,72,2/27/2026
-pasaje linea 1 metro,transporte,gasto,variable,1.5,2/26/2026
-tarjeta oh pago cuota,deudas,gasto,variable,180,2/25/2026
-compra en mass productos basicos,alimentacion,gasto,variable,88.5,2/24/2026
-yape por picarones en parque,alimentacion,gasto,variable,10,2/23/2026
-pago mensualidad gimnasio smartfit,salud,gasto,variable,109,2/22/2026
-pension universidad san marcos,educacion,gasto,variable,110,2/21/2026
-recibo agua sedapal,servicios,gasto,variable,81,2/20/2026
-pago gas calidda,servicios,gasto,variable,32,2/19/2026
-viaje en uber nocturno,transporte,gasto,variable,28,2/18/2026
-almuerzo menestron y segundo en mercado,alimentacion,gasto,variable,12,2/17/2026
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,3/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,3/15/2026
+desayuno tamales domingo,alimentacion,egreso,variable,16,3/14/2026
+peaje vía de evitamiento,transporte,egreso,variable,6.6,3/13/2026
+gasolina repsol 95 octanos,transporte,egreso,variable,120,3/12/2026
+compras wong fin de semana,alimentacion,egreso,variable,260,3/11/2026
+pago suscripcion hbo max,ocio,egreso,variable,29.9,3/10/2026
+cuota prestamo banco de comercio,deudas,egreso,variable,220,3/9/2026
+reparacion de pintura de pared,vivienda,egreso,variable,150,3/8/2026
+atencion urgencias clinica,salud,egreso,variable,200,3/7/2026
+compra de cuaderno y lapiceros,educacion,egreso,variable,15,3/6/2026
+pago de celular postpago movistar,servicios,egreso,variable,65,3/5/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,2/28/2026
+salida a polleria norky's,alimentacion,egreso,variable,72,2/27/2026
+pasaje linea 1 metro,transporte,egreso,variable,1.5,2/26/2026
+tarjeta oh pago cuota,deudas,egreso,variable,180,2/25/2026
+compra en mass productos basicos,alimentacion,egreso,variable,88.5,2/24/2026
+yape por picarones en parque,alimentacion,egreso,variable,10,2/23/2026
+pago mensualidad gimnasio smartfit,salud,egreso,variable,109,2/22/2026
+pension universidad san marcos,educacion,egreso,fijo_vital,110,2/21/2026
+recibo agua sedapal,servicios,egreso,fijo_vital,81,2/20/2026
+pago gas calidda,servicios,egreso,fijo_vital,32,2/19/2026
+viaje en uber nocturno,transporte,egreso,variable,28,2/18/2026
+almuerzo menestron y segundo en mercado,alimentacion,egreso,variable,12,2/17/2026
 devolucion de dinero prestado por amigo,servicios,ingreso,variable,100,2/16/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,2/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,2/15/2026
-compra de sabanas en falabella,vivienda,gasto,variable,110,2/14/2026
-cena romantica dia del amor san isidro,ocio,gasto,variable,220,2/14/2026
-pago plan internet bitel casa,servicios,gasto,variable,79,2/13/2026
-vitamina c e inmunofem farmacias universal,salud,gasto,variable,45,2/12/2026
-pasaje combi grau,transporte,gasto,variable,2,2/11/2026
-pago mantenimiento carro frenos,transporte,gasto,variable,280,2/10/2026
-salida a piscina en cieneguilla,ocio,gasto,variable,130,2/9/2026
-compra en vivanda,alimentacion,gasto,variable,175,2/8/2026
-pago tarjeta cencosud,deudas,gasto,variable,140,2/7/2026
-inscripcion a maraton de lima,ocio,gasto,variable,80,2/6/2026
-curso udemy desarrollo web,educacion,gasto,variable,49.9,2/5/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,1/31/2026
-pago seguro vida ley,salud,gasto,variable,85,1/30/2026
-compras en bodega cerca a casa,alimentacion,gasto,variable,28,1/29/2026
-salida a discoteca miraflores,ocio,gasto,variable,150,1/28/2026
-recibo luz del sur,servicios,gasto,variable,140,1/27/2026
-pasaje combi aviación,transporte,gasto,variable,2.5,1/26/2026
-compra de pescado en minka callao,alimentacion,gasto,variable,75,1/25/2026
-yape por raspadilla en la playa,alimentacion,gasto,variable,5,1/24/2026
-peaje ticket viaje sur,transporte,gasto,variable,6.6,1/23/2026
-alquiler casa de playa fin de semana,ocio,gasto,variable,450,1/22/2026
-gasolina primax,transporte,gasto,variable,110,1/21/2026
-pago tarjeta bcp saldo total,deudas,gasto,variable,680,1/20/2026
-medicina antigripal mifarma,salud,gasto,variable,18,1/19/2026
-compras quincena plaza vea,alimentacion,gasto,variable,290,1/18/2026
-pago matricula colegio ninos,educacion,gasto,variable,600,1/17/2026
+pago alquiler departamento lince,vivienda,egreso,variable,1400,2/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,2/15/2026
+compra de sabanas en falabella,vivienda,egreso,variable,110,2/14/2026
+cena romantica dia del amor san isidro,ocio,egreso,variable,220,2/14/2026
+pago plan internet bitel casa,servicios,egreso,fijo_vital,79,2/13/2026
+vitamina c e inmunofem farmacias universal,salud,egreso,variable,45,2/12/2026
+pasaje combi grau,transporte,egreso,variable,2,2/11/2026
+pago mantenimiento carro frenos,transporte,egreso,variable,280,2/10/2026
+salida a piscina en cieneguilla,ocio,egreso,variable,130,2/9/2026
+compra en vivanda,alimentacion,egreso,variable,175,2/8/2026
+pago tarjeta cencosud,deudas,egreso,variable,140,2/7/2026
+inscripcion a maraton de lima,ocio,egreso,variable,80,2/6/2026
+curso udemy desarrollo web,educacion,egreso,variable,49.9,2/5/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,1/31/2026
+pago seguro vida ley,salud,egreso,fijo_vital,85,1/30/2026
+compras en bodega cerca a casa,alimentacion,egreso,variable,28,1/29/2026
+salida a discoteca miraflores,ocio,egreso,variable,150,1/28/2026
+recibo luz del sur,servicios,egreso,fijo_vital,140,1/27/2026
+pasaje combi aviacion,transporte,egreso,variable,2.5,1/26/2026
+compra de pescado en minka callao,alimentacion,egreso,variable,75,1/25/2026
+yape por raspadilla en la playa,alimentacion,egreso,variable,5,1/24/2026
+peaje ticket viaje sur,transporte,egreso,variable,6.6,1/23/2026
+alquiler casa de playa fin de semana,ocio,egreso,variable,450,1/22/2026
+gasolina primax,transporte,egreso,variable,110,1/21/2026
+pago tarjeta bcp saldo total,deudas,egreso,variable,680,1/20/2026
+medicina antigripal mifarma,salud,egreso,variable,18,1/19/2026
+compras quincena plaza vea,alimentacion,egreso,variable,290,1/18/2026
+pago matricula colegio ninos,educacion,egreso,fijo_vital,600,1/17/2026
 trabajo independiente traduccion texto,servicios,ingreso,variable,300,1/16/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,1/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,1/15/2026
-compra ventilador sodimac,vivienda,gasto,variable,129,1/14/2026
-almuerzo ceviche y jora,alimentacion,gasto,variable,55,1/13/2026
-pago servicio agua sedapal,servicios,gasto,variable,83,1/12/2026
-soat digital auto interseguro,transporte,gasto,variable,95,1/11/2026
-recarga tarjeta lima pass,transporte,gasto,variable,25,1/10/2026
-compra de mochila para el colegio,educacion,gasto,variable,89,1/9/2026
-pago plan movistar hogar,servicios,gasto,variable,99,1/8/2026
-cuota credito consumo bbva,deudas,gasto,variable,410,1/7/2026
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,1/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,1/15/2026
+compra ventilador sodimac,vivienda,egreso,variable,129,1/14/2026
+almuerzo ceviche y jora,alimentacion,egreso,variable,55,1/13/2026
+pago servicio agua sedapal,servicios,egreso,fijo_vital,83,1/12/2026
+soat digital auto interseguro,transporte,egreso,fijo_vital,95,1/11/2026
+recarga tarjeta lima pass,transporte,egreso,variable,25,1/10/2026
+compra de mochila para el colegio,educacion,egreso,variable,89,1/9/2026
+pago plan movistar hogar,servicios,egreso,variable,99,1/8/2026
+cuota credito consumo bbva,deudas,egreso,fijo_vital,410,1/7/2026
 pago gratificacion navidad acumulado,servicios,ingreso,variable,1800,1/5/2026
-salida a juego de escape room,ocio,gasto,variable,50,1/4/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,12/31/2025
-cena fin de ano pavo y ensalada,alimentacion,gasto,variable,180,12/30/2025
-uvas y cotillon para senambles,ocio,gasto,variable,35,12/29/2025
-compras de regalos de navidad ripley,ocio,gasto,variable,420,12/24/2025
-paneton d'onofrio en caja,alimentacion,gasto,variable,32,12/23/2025
-pago luz enel,servicios,gasto,variable,130,12/22/2025
-pago agua sedapal,servicios,gasto,variable,80,12/21/2025
-pago tarjeta bcp,deudas,gasto,variable,550,12/20/2025
-pago alquiler departamento lince,vivienda,gasto,variable,1400,12/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,12/15/2025
-ingreso gratificacion diciembre,servicios,ingreso,variable,1800,12/15/2025
-pago mantenimiento edificio,vivienda,gasto,variable,180,12/14/2025
-pasaje metropolitano,transporte,gasto,variable,3.5,12/13/2025
-compras metro utiles hogar,alimentacion,gasto,variable,210,12/12/2025
-almuerzo pollo a la brasa villa chicken,alimentacion,gasto,variable,79,12/11/2025
-pago plan entel,servicios,gasto,variable,59.9,12/10/2025
-compra zapatillas converse oferta,ocio,gasto,variable,169,12/9/2025
-consulta ginecologica / urologica,salud,gasto,variable,140,12/8/2025
-medicina inkafarma recetada,salud,gasto,variable,72,12/7/2025
-pension colegio de los ninos,educacion,gasto,variable,550,12/6/2025
-pasaje taxi indrive a miraflores,transporte,gasto,variable,18,12/5/2025
+salida a juego de escape room,ocio,egreso,variable,50,1/4/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,12/31/2025
+cena fin de ano pavo y ensalada,alimentacion,egreso,variable,180,12/30/2025
+uvas y cotillon para senambles,ocio,egreso,variable,35,12/29/2025
+compras de regalos de navidad ripley,ocio,egreso,variable,420,12/24/2025
+paneton d'onofrio en caja,alimentacion,egreso,variable,32,12/23/2025
+pago luz enel,servicios,egreso,fijo_vital,130,12/22/2025
+pago agua sedapal,servicios,egreso,fijo_vital,80,12/21/2025
+pago tarjeta bcp,deudas,egreso,fijo_vital,550,12/20/2025
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,12/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,12/15/2025
+ingreso gratificacion diciembre,servicios,ingreso,fijo_vital,1800,12/15/2025
+pago mantenimiento edificio,vivienda,egreso,fijo_vital,180,12/14/2025
+pasaje metropolitano,transporte,egreso,fijo_vital,3.5,12/13/2025
+compras metro utiles hogar,alimentacion,egreso,fijo_vital,210,12/12/2025
+almuerzo pollo a la brasa villa chicken,alimentacion,egreso,variable,79,12/11/2025
+pago plan entel,servicios,egreso,fijo_vital,59.9,12/10/2025
+compra zapatillas converse oferta,ocio,egreso,variable,169,12/9/2025
+consulta ginecologica / urologica,salud,egreso,fijo_vital,140,12/8/2025
+medicina inkafarma recetada,salud,egreso,fijo_vital,72,12/7/2025
+pension colegio de los ninos,educacion,egreso,fijo_vital,550,12/6/2025
+pasaje taxi indrive a miraflores,transporte,egreso,variable,18,12/5/2025
 venta de televisor viejo,ocio,ingreso,variable,400,12/4/2025
-pago gas calidda,servicios,gasto,variable,34,12/3/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,11/30/2025
-recibo luz enel,servicios,gasto,variable,125,11/28/2025
-recibo agua sedapal,servicios,gasto,variable,78,11/27/2025
-pasaje combi universitaria,transporte,gasto,variable,2,11/26/2025
-pago cuota prestamo interbank,deudas,gasto,variable,380,11/25/2025
-almuerzo buffet criollo,alimentacion,gasto,variable,62,11/24/2025
-yape pago cancha sintética,ocio,gasto,variable,20,11/23/2025
-compras tottus fin de semana,alimentacion,gasto,variable,230,11/22/2025
-pension universidad san marcos,educacion,gasto,variable,110,11/21/2025
-pago internet claro,servicios,gasto,variable,95,11/20/2025
-analisis de sangre laboratorio,salud,gasto,variable,90,11/19/2025
-compra foco y herramientas maestro,vivienda,gasto,variable,65,11/18/2025
-desayuno pan con chicharron esquina,alimentacion,gasto,variable,12,11/17/2025
-pago alquiler departamento lince,vivienda,gasto,variable,1400,11/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,11/15/2025
-ingreso cts deposito bancario,servicios,ingreso,variable,900,11/15/2025
-reparacion de freno de mano carro,transporte,gasto,variable,130,11/14/2025
-gasolina primax 90,transporte,gasto,variable,90,11/13/2025
-pago seguro medico rimac,salud,gasto,variable,210,11/12/2025
-salida a teatro en barranco,ocio,gasto,variable,60,11/11/2025
-yape a emoliente y pan con queso,alimentacion,gasto,variable,4.5,11/10/2025
-compras en tambo snacks,alimentacion,gasto,variable,11.2,11/9/2025
-pago tarjeta falabella cuota,deudas,gasto,variable,250,11/8/2025
-recarga bitel internet,servicios,gasto,variable,20,11/7/2025
-compra libro tecnico programacion,educacion,gasto,variable,85,11/6/2025
-pago gas calidda,servicios,gasto,variable,31,11/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,10/31/2025
-turron de dona pepa san josé,alimentacion,gasto,variable,25,10/30/2025
-almuerzo anticuchos señor de los milagros,alimentacion,gasto,variable,32,10/29/2025
-pasaje metropolitano alimentador,transporte,gasto,variable,1.5,10/28/2025
-recibo luz del sur,servicios,gasto,variable,138,10/27/2025
-recibo sedapal agua,servicios,gasto,variable,84,10/26/2025
-compra de verduras y carnes mercado,alimentacion,gasto,variable,160,10/25/2025
-cuota prestamo consumo bbva,deudas,gasto,variable,410,10/24/2025
-atencion medica pediatraria nino,salud,gasto,variable,110,10/23/2025
-jarabe y vitaminas boticas peru,salud,gasto,variable,54,10/22/2025
-pension colegio de los ninos,educacion,gasto,variable,550,10/21/2025
-pago mantenimiento edificio,vivienda,gasto,variable,180,10/20/2025
-pago internet fibra optica,servicios,gasto,variable,89,10/19/2025
-suscripcion spotify,ocio,gasto,variable,20.9,10/18/2025
-almuerzo chifa menu familiar,alimentacion,gasto,variable,58,10/17/2025
-pago alquiler departamento lince,vivienda,gasto,variable,1400,10/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,10/15/2025
+pago gas calidda,servicios,egreso,fijo_vital,34,12/3/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,11/30/2025
+recibo luz enel,servicios,egreso,fijo_vital,125,11/28/2025
+recibo agua sedapal,servicios,egreso,fijo_vital,78,11/27/2025
+pasaje combi universitaria,transporte,egreso,variable,2,11/26/2025
+pago cuota prestamo interbank,deudas,egreso,fijo_vital,380,11/25/2025
+almuerzo buffet criollo,alimentacion,egreso,variable,62,11/24/2025
+yape pago cancha sintética,ocio,egreso,variable,20,11/23/2025
+compras tottus fin de semana,alimentacion,egreso,fijo_vital,230,11/22/2025
+pension universidad san marcos,educacion,egreso,fijo_vital,110,11/21/2025
+pago internet claro,servicios,egreso,fijo_vital,95,11/20/2025
+analisis de sangre laboratorio,salud,egreso,fijo_vital,90,11/19/2025
+compra foco y herramientas maestro,vivienda,egreso,fijo_vital,65,11/18/2025
+desayuno pan con chicharron esquina,alimentacion,egreso,variable,12,11/17/2025
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,11/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,11/15/2025
+ingreso cts deposito bancario,servicios,ingreso,fijo_vital,900,11/15/2025
+reparacion de freno de mano carro,transporte,egreso,fijo_vital,130,11/14/2025
+gasolina primax 90,transporte,egreso,fijo_vital,90,11/13/2025
+pago seguro medico rimac,salud,egreso,fijo_vital,210,11/12/2025
+salida a teatro en barranco,ocio,egreso,variable,60,11/11/2025
+yape a emoliente y pan con queso,alimentacion,egreso,variable,4.5,11/10/2025
+compras en tambo snacks,alimentacion,egreso,variable,11.2,11/9/2025
+pago tarjeta falabella cuota,deudas,egreso,fijo_vital,250,11/8/2025
+recarga bitel internet,servicios,egreso,fijo_vital,20,11/7/2025
+compra libro tecnico programacion,educacion,egreso,variable,85,11/6/2025
+pago gas calidda,servicios,egreso,variable,31,11/5/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,10/31/2025
+turron de dona pepa san josé,alimentacion,egreso,variable,25,10/30/2025
+almuerzo anticuchos señor de los milagros,alimentacion,egreso,variable,32,10/29/2025
+pasaje metropolitano alimentador,transporte,egreso,fijo_vital,1.5,10/28/2025
+recibo luz del sur,servicios,egreso,fijo_vital,138,10/27/2025
+recibo sedapal agua,servicios,egreso,variable,84,10/26/2025
+compra de verduras y carnes mercado,alimentacion,egreso,variable,160,10/25/2025
+cuota prestamo consumo bbva,deudas,egreso,variable,410,10/24/2025
+atencion medica pediatraria nino,salud,egreso,variable,110,10/23/2025
+jarabe y vitaminas boticas peru,salud,egreso,variable,54,10/22/2025
+pension colegio de los ninos,educacion,egreso,fijo_vital,550,10/21/2025
+pago mantenimiento edificio,vivienda,egreso,fijo_vital,180,10/20/2025
+pago internet fibra optica,servicios,egreso,fijo_vital,89,10/19/2025
+suscripcion spotify,ocio,egreso,variable,20.9,10/18/2025
+almuerzo chifa menu familiar,alimentacion,egreso,variable,58,10/17/2025
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,10/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,10/15/2025
 ingreso por dictado de taller online,educacion,ingreso,variable,450,10/14/2025
-pasaje taxi yango,transporte,gasto,variable,14,10/13/2025
-gasolina shell 95,transporte,gasto,variable,100,10/12/2025
-compra en plaza vea abarrotes,alimentacion,gasto,variable,240,10/11/2025
-atencion veterinaria gato,salud,gasto,variable,70,10/10/2025
-pago tarjeta ripley cuota,deudas,gasto,variable,190,10/9/2025
-compra de pintura para retoque cuarto,vivienda,gasto,variable,68,10/8/2025
-recarga tarjeta lima pass,transporte,gasto,variable,20,10/7/2025
-pago gas calidda,servicios,gasto,variable,33,10/6/2025
-salida a cine uvk,ocio,gasto,variable,38,10/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,9/30/2025
-pago cuota credito hipotecario,deudas,gasto,variable,1650,9/29/2025
-recibo agua sedapal,servicios,gasto,variable,82,9/28/2025
-recibo luz enel,servicios,gasto,variable,131,9/27/2025
-pasaje linea 1 metro,transporte,gasto,variable,1.5,9/26/2025
-compras semanales wong,alimentacion,gasto,variable,210,9/25/2025
-almuerzo menu ejecutivo lince,alimentacion,gasto,variable,15,9/24/2025
-yape a vendedor de marcoyas y frutas,alimentacion,gasto,variable,6,9/23/2025
-pension universidad san marcos,educacion,gasto,variable,110,9/22/2025
-examen medico anual preventivo,salud,gasto,variable,180,9/21/2025
-medicina inkafarma,salud,gasto,variable,42,9/20/2025
-pago celular entel,servicios,gasto,variable,59.9,9/19/2025
-compra de escritorio para estudio,vivienda,gasto,variable,220,9/18/2025
-pago mantenimiento departamento,vivienda,gasto,variable,180,9/17/2025
-salida a concierto local de cumbia,ocio,gasto,variable,50,9/16/2025
-pago alquiler departamento lince,vivienda,gasto,variable,1400,9/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,9/15/2025
+pasaje taxi yango,transporte,egreso,variable,14,10/13/2025
+gasolina shell 95,transporte,egreso,variable,100,10/12/2025
+compra en plaza vea abarrotes,alimentacion,egreso,variable,240,10/11/2025
+atencion veterinaria gato,salud,egreso,variable,70,10/10/2025
+pago tarjeta ripley cuota,deudas,egreso,variable,190,10/9/2025
+compra de pintura para retoque cuarto,vivienda,egreso,variable,68,10/8/2025
+recarga tarjeta lima pass,transporte,egreso,variable,20,10/7/2025
+pago gas calidda,servicios,egreso,variable,33,10/6/2025
+salida a cine uvk,ocio,egreso,variable,38,10/5/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,9/30/2025
+pago cuota credito hipotecario,deudas,egreso,fijo_vital,1650,9/29/2025
+recibo agua sedapal,servicios,egreso,variable,82,9/28/2025
+recibo luz enel,servicios,egreso,fijo_vital,131,9/27/2025
+pasaje linea 1 metro,transporte,egreso,fijo_vital,1.5,9/26/2025
+compras semanales wong,alimentacion,egreso,variable,210,9/25/2025
+almuerzo menu ejecutivo lince,alimentacion,egreso,variable,15,9/24/2025
+yape a vendedor de marcoyas y frutas,alimentacion,egreso,variable,6,9/23/2025
+pension universidad san marcos,educacion,egreso,fijo_vital,110,9/22/2025
+examen medico anual preventivo,salud,egreso,fijo_vital,180,9/21/2025
+medicina inkafarma,salud,egreso,variable,42,9/20/2025
+pago celular entel,servicios,egreso,variable,59.9,9/19/2025
+compra de escritorio para estudio,vivienda,egreso,variable,220,9/18/2025
+pago mantenimiento departamento,vivienda,egreso,fijo_vital,180,9/17/2025
+salida a concierto local de cumbia,ocio,egreso,variable,50,9/16/2025
+pago alquiler departamento lince,vivienda,egreso,fijo_vital,1400,9/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,9/15/2025
 ingreso por venta de muebles usados,vivienda,ingreso,variable,280,9/14/2025
-pasaje combi arequipa,transporte,gasto,variable,2.5,9/13/2025
-gasolina repsol 90,transporte,gasto,variable,85,9/12/2025
-compra en makro abarrotes,alimentacion,gasto,variable,310,9/11/2025
-pago tarjeta bbva cuota,deudas,gasto,variable,490,9/10/2025
-suscripcion netflix,ocio,gasto,variable,44.9,9/9/2025
-clases de ingles britanico mensual,educacion,gasto,variable,290,9/8/2025
-pago gas calidda,servicios,gasto,variable,36,9/7/2025
-almuerzo salchipapa especial tambo,alimentacion,gasto,variable,11.5,9/6/2025
-compra de polo en saga falabella,ocio,gasto,variable,49,9/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,8/31/2025
-pension colegio de los ninos,educacion,gasto,variable,550,8/30/2025
-recibo agua sedapal,servicios,gasto,variable,79,8/29/2025
-recibo luz luz del sur,servicios,gasto,variable,136,8/28/2025
-pasaje metropolitano,transporte,gasto,variable,3.5,8/27/2025
-compras en mercado central lima,alimentacion,gasto,variable,145,8/26/2025
-almuerzo ceviche en mercado,alimentacion,gasto,variable,25,8/25/2025
-pago cuota prestamo interbank,deudas,gasto,variable,380,8/24/2025
-curacion dental odontologo,salud,gasto,variable,120,8/23/2025
-pago plan movistar internet,servicios,gasto,variable,89,8/22/2025
-compra de juego de platos promart,vivienda,gasto,variable,75,8/21/2025
-yape a canchita popcorn cine,ocio,gasto,variable,15,8/20/2025
-pago alquiler departamento lince,vivienda,gasto,variable,1400,8/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,8/15/2025
-pasaje taxi aplicativo cabify,transporte,gasto,variable,20,8/14/2025
-gasolina primax,transporte,gasto,variable,100,8/13/2025
-compras semanales metro,alimentacion,gasto,variable,225,8/12/2025
-pago cuota tarjeta oh,deudas,gasto,variable,160,8/11/2025
-pago seguro eps pacifico,salud,gasto,variable,210,8/10/2025
-taller de capacitacion profesional,educacion,gasto,variable,150,8/9/2025
-pago gas calidra,servicios,gasto,variable,30,8/8/2025
-almuerzo menu ejecutivo san borja,alimentacion,gasto,variable,17,8/7/2025
-compra en oxxo bebidas y snacks,alimentacion,gasto,variable,14.5,8/6/2025
-descripcion,categoria,tipo,variable,monto,fecha
-sueldo mensual,ingreso,ingreso,variable,10000,1/8/2026
-renta de departamento,vivienda,egreso,variable,3000,1/8/2026
-pago de luz cfe,vivienda,egreso,variable,350,2/8/2026
-pago de agua potable,vivienda,egreso,variable,200,2/8/2026
-gas lp,vivienda,egreso,variable,280,2/8/2026
-internet telmex,servicios,egreso,variable,500,3/8/2026
-plan celular at&t,servicios,egreso,variable,250,3/8/2026
+pasaje combi arequipa,transporte,egreso,variable,2.5,9/13/2025
+gasolina repsol 90,transporte,egreso,fijo_vital,85,9/12/2025
+compra en makro abarrotes,alimentacion,egreso,variable,310,9/11/2025
+pago tarjeta bbva cuota,deudas,egreso,variable,490,9/10/2025
+suscripcion netflix,ocio,egreso,variable,44.9,9/9/2025
+clases de ingles britanico mensual,educacion,egreso,variable,290,9/8/2025
+pago gas calidda,servicios,egreso,variable,36,9/7/2025
+almuerzo salchipapa especial tambo,alimentacion,egreso,variable,11.5,9/6/2025
+compra de polo en saga falabella,ocio,egreso,variable,49,9/5/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,8/31/2025
+pension colegio de los ninos,educacion,egreso,fijo_vital,550,8/30/2025
+recibo agua sedapal,servicios,egreso,fijo_vital,79,8/29/2025
+recibo luz luz del sur,servicios,egreso,fijo_vital,136,8/28/2025
+pasaje metropolitano,transporte,egreso,fijo_vital,3.5,8/27/2025
+compras en mercado central lima,alimentacion,egreso,variable,145,8/26/2025
+almuerzo ceviche en mercado,alimentacion,egreso,variable,25,8/25/2025
+pago cuota prestamo interbank,deudas,egreso,variable,380,8/24/2025
+curacion dental odontologo,salud,egreso,variable,120,8/23/2025
+pago plan movistar internet,servicios,egreso,variable,89,8/22/2025
+compra de juego de platos promart,vivienda,egreso,variable,75,8/21/2025
+yape a canchita popcorn cine,ocio,egreso,variable,15,8/20/2025
+pago alquiler departamento lince,vivienda,egreso,variable,1400,8/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,8/15/2025
+pasaje taxi aplicativo cabify,transporte,egreso,variable,20,8/14/2025
+gasolina primax,transporte,egreso,variable,100,8/13/2025
+compras semanales metro,alimentacion,egreso,variable,225,8/12/2025
+pago cuota tarjeta oh,deudas,egreso,variable,160,8/11/2025
+pago seguro eps pacifico,salud,egreso,fijo_vital,210,8/10/2025
+taller de capacitacion profesional,educacion,egreso,variable,150,8/9/2025
+pago gas calidda,servicios,egreso,variable,30,8/8/2025
+almuerzo menu ejecutivo san borja,alimentacion,egreso,variable,17,8/7/2025
+compra en oxxo bebidas y snacks,alimentacion,egreso,variable,14.5,8/6/2025
+descripcion,categoria,tipo,cualidad,monto,fecha
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/8/2026
+renta de departamento,vivienda,egreso,fijo_vital,3000,1/8/2026
+pago de luz cfe,vivienda,egreso,fijo_vital,350,2/8/2026
+pago de agua potable,vivienda,egreso,fijo_vital,200,2/8/2026
+gas lp,vivienda,egreso,fijo_vital,280,2/8/2026
+internet telmex,servicios,egreso,fijo_vital,500,3/8/2026
+plan celular at&t,servicios,egreso,fijo_vital,250,3/8/2026
 bono por productividad,ingreso,ingreso,variable,300,3/8/2026
 recarga de saldo telcel,servicios,egreso,variable,50,4/8/2026
 recarga de saldo movistar,servicios,egreso,variable,40,4/8/2026
@@ -783,7 +783,7 @@ gansito,alimentacion,egreso,variable,12,6/8/2026
 reembolso de gasolina,ingreso,ingreso,variable,100,7/8/2026
 metro cdmx,transporte,egreso,variable,5,7/8/2026
 metrobús,transporte,egreso,variable,7,7/8/2026
-camión rtp,transporte,egreso,variable,6,7/8/2026
+camion rtp,transporte,egreso,variable,6,7/8/2026
 uber,transporte,egreso,variable,120,8/8/2026
 didi,transporte,egreso,variable,110,8/8/2026
 gasolina magna,transporte,egreso,variable,400,8/8/2026
@@ -794,42 +794,42 @@ peaje autopista,transporte,egreso,variable,100,9/8/2026
 taxi de sitio,transporte,egreso,variable,70,9/8/2026
 bicicleta pública,transporte,egreso,variable,30,10/8/2026
 consulta médico general,salud,egreso,variable,400,10/8/2026
-consulta cardiólogo,salud,egreso,variable,800,10/8/2026
+consulta cardiologo,salud,egreso,variable,800,10/8/2026
 dentista limpieza,salud,egreso,variable,600,10/8/2026
 bono de puntualidad,ingreso,ingreso,variable,200,11/8/2026
-dentista extracción,salud,egreso,variable,700,11/8/2026
+dentista extraccion,salud,egreso,variable,700,11/8/2026
 medicamento genérico,salud,egreso,variable,80,11/8/2026
 medicamento simi,salud,egreso,variable,45,11/8/2026
 paracetamol,salud,egreso,variable,30,12/8/2026
-antibióticos,salud,egreso,variable,120,12/8/2026
+antibioticos,salud,egreso,variable,120,12/8/2026
 vitaminas,salud,egreso,variable,90,12/8/2026
 examen de sangre,salud,egreso,variable,350,12/8/2026
 examen de orina,salud,egreso,variable,200,13-08-26
 ultrasonido,salud,egreso,variable,550,13-08-26
 venta de mueble usado,ingreso,ingreso,variable,150,13-08-26
 terapia física,salud,egreso,variable,450,13-08-26
-psicólogo,salud,egreso,variable,600,14-08-26
-nutriólogo,salud,egreso,variable,500,14-08-26
+psicologo,salud,egreso,variable,600,14-08-26
+nutriologo,salud,egreso,variable,500,14-08-26
 lentes de contacto,salud,egreso,variable,300,14-08-26
-solución salina,salud,egreso,variable,40,14-08-26
-seguro de gastos médicos,salud,egreso,variable,350,15-08-26
+solucion salina,salud,egreso,variable,40,14-08-26
+seguro de gastos médicos,salud,egreso,fijo_vital,350,15-08-26
 reembolso de viáticos,ingreso,ingreso,variable,120,15-08-26
-colegiatura,educacion,egreso,variable,1500,15-08-26
-inscripción,educacion,egreso,variable,800,15-08-26
+colegiatura,educacion,egreso,fijo_vital,1500,15-08-26
+inscripcion,educacion,egreso,fijo_vital,800,15-08-26
 curso de inglés,educacion,egreso,variable,600,16-08-26
 curso de python,educacion,egreso,variable,700,16-08-26
 curso de excel,educacion,egreso,variable,400,16-08-26
-diplomado en administración,educacion,egreso,variable,1200,16-08-26
+diplomado en administracion,educacion,egreso,variable,1200,16-08-26
 maestría (abono),educacion,egreso,variable,800,17-08-26
-venta de electrónico,ingreso,ingreso,variable,200,17-08-26
+venta de electronico,ingreso,ingreso,variable,200,17-08-26
 libros de texto,educacion,egreso,variable,500,17-08-26
 útiles escolares (libretas),educacion,egreso,variable,100,17-08-26
 útiles escolares (lápices),educacion,egreso,variable,50,18-08-26
 mochila,educacion,egreso,variable,350,18-08-26
 plataforma coursera,educacion,egreso,variable,250,18-08-26
 plataforma platzi,educacion,egreso,variable,200,18-08-26
-certificación aws,educacion,egreso,variable,750,19-08-26
-certificación google,educacion,egreso,variable,650,19-08-26
+certificacion aws,educacion,egreso,variable,750,19-08-26
+certificacion google,educacion,egreso,variable,650,19-08-26
 material didáctico,educacion,egreso,variable,150,19-08-26
 fotocopias,educacion,egreso,variable,30,19-08-26
 impresiones,educacion,egreso,variable,40,20-08-26
@@ -851,34 +851,34 @@ concierto de banda,ocio,egreso,variable,500,23-08-26
 evento deportivo (fútbol),ocio,egreso,variable,450,23-08-26
 entrada a parque de diversiones,ocio,egreso,variable,300,24-08-26
 entrada a museo,ocio,egreso,variable,150,24-08-26
-entrada a zoológico,ocio,egreso,variable,100,24-08-26
+entrada a zoologico,ocio,egreso,variable,100,24-08-26
 reembolso de compras,ingreso,ingreso,variable,80,24-08-26
 salida a acampar,ocio,egreso,variable,250,25-08-26
 noche de juegos (lotería),ocio,egreso,variable,50,25-08-26
-noche de juegos (dominó),ocio,egreso,variable,30,25-08-26
+noche de juegos (domino),ocio,egreso,variable,30,25-08-26
 compra de videojuego,ocio,egreso,variable,450,25-08-26
-suscripción nintendo,ocio,egreso,variable,120,26-08-26
-suscripción xbox,ocio,egreso,variable,130,26-08-26
-membresía de gimnasio,ocio,egreso,variable,400,26-08-26
+suscripcion nintendo,ocio,egreso,fijo_no_vital,120,26-08-26
+suscripcion xbox,ocio,egreso,fijo_no_vital,130,26-08-26
+membresía de gimnasio,ocio,egreso,fijo_no_vital,400,26-08-26
 clase de yoga,ocio,egreso,variable,250,26-08-26
 clase de crossfit,ocio,egreso,variable,300,27-08-26
 sushi,ocio,egreso,variable,250,27-08-26
-trabajo freelance (programación),ingreso,ingreso,variable,150,27-08-26
+trabajo freelance (programacion),ingreso,ingreso,variable,150,27-08-26
 helado,ocio,egreso,variable,35,27-08-26
-pago tarjeta crédito bbva,deudas,egreso,variable,800,27-08-26
-pago tarjeta crédito santander,deudas,egreso,variable,600,28-08-26
-pago tarjeta crédito banamex,deudas,egreso,variable,450,28-08-26
-pago a coppel,deudas,egreso,variable,350,28-08-26
-pago a electra,deudas,egreso,variable,300,28-08-26
+pago tarjeta crédito bbva,deudas,egreso,fijo_vital,800,27-08-26
+pago tarjeta crédito santander,deudas,egreso,fijo_vital,600,28-08-26
+pago tarjeta crédito banamex,deudas,egreso,fijo_vital,450,28-08-26
+pago a coppel,deudas,egreso,fijo_vital,350,28-08-26
+pago a electra,deudas,egreso,fijo_vital,300,28-08-26
 pago a famsa,deudas,egreso,variable,250,29-08-26
-pago a préstamo personal,deudas,egreso,variable,500,29-08-26
+pago a préstamo personal,deudas,egreso,fijo_vital,500,29-08-26
 intereses de financiamiento,deudas,egreso,variable,200,29-08-26
-cuota mantenimiento tarjeta,deudas,egreso,variable,150,29-08-26
-pago a infonavit (abono),deudas,egreso,variable,400,30-08-26
+cuota mantenimiento tarjeta,deudas,egreso,fijo_no_vital,150,29-08-26
+pago a infonavit (abono),deudas,egreso,fijo_vital,400,30-08-26
 venta de bicicleta,ingreso,ingreso,variable,120,30-08-26
-pago crédito automotriz,deudas,egreso,variable,600,30-08-26
-pago crédito hipotecario (abono),deudas,egreso,variable,700,30-08-26
-comisión por anualidad,deudas,egreso,variable,100,30-08-26
+pago crédito automotriz,deudas,egreso,fijo_vital,600,30-08-26
+pago crédito hipotecario (abono),deudas,egreso,fijo_vital,700,30-08-26
+comision por anualidad,deudas,egreso,variable,100,30-08-26
 regalo de cumpleaños,ingreso,ingreso,variable,100,31-08-26
 coca-cola 2l,alimentacion,egreso,variable,25,31-08-26
 sabritas,alimentacion,egreso,variable,20,31-08-26
@@ -894,7 +894,7 @@ leche lala,alimentacion,egreso,variable,28,4/8/2026
 huevo san juan,alimentacion,egreso,variable,40,5/8/2026
 tortillas,alimentacion,egreso,variable,22,5/8/2026
 frutas y verduras (mercado),alimentacion,egreso,variable,150,6/8/2026
-interés de inversión,ingreso,ingreso,variable,80,6/8/2026
+interés de inversion,ingreso,ingreso,variable,80,6/8/2026
 jitomate,alimentacion,egreso,variable,25,6/8/2026
 cebolla,alimentacion,egreso,variable,18,7/8/2026
 ajo,alimentacion,egreso,variable,12,7/8/2026
@@ -919,7 +919,7 @@ pollo (pechuga),alimentacion,egreso,variable,80,11/8/2026
 carne de res,alimentacion,egreso,variable,120,12/8/2026
 cerdo,alimentacion,egreso,variable,100,12/8/2026
 pescado,alimentacion,egreso,variable,90,12/8/2026
-camarón,alimentacion,egreso,variable,200,12/8/2026
+camaron,alimentacion,egreso,variable,200,12/8/2026
 queso oaxaca,alimentacion,egreso,variable,55,13-08-26
 queso panela,alimentacion,egreso,variable,45,13-08-26
 crema,alimentacion,egreso,variable,25,13-08-26
@@ -952,7 +952,7 @@ tequila,alimentacion,egreso,variable,200,19-08-26
 mezcal,alimentacion,egreso,variable,250,20-08-26
 ron,alimentacion,egreso,variable,180,20-08-26
 vodka,alimentacion,egreso,variable,170,20-08-26
-trabajo freelance (redacción),ingreso,ingreso,variable,100,20-08-26
+trabajo freelance (redaccion),ingreso,ingreso,variable,100,20-08-26
 whisky,alimentacion,egreso,variable,300,21-08-26
 cerveza artesanal,alimentacion,egreso,variable,60,21-08-26
 vino tinto,alimentacion,egreso,variable,150,21-08-26
@@ -999,10 +999,10 @@ queso fresco,alimentacion,egreso,variable,50,31-08-26
 queso manchego,alimentacion,egreso,variable,60,31-08-26
 tren suburbano,transporte,egreso,variable,8,1/8/2026
 pago de tenencia,transporte,egreso,variable,300,2/8/2026
-verificación vehicular,transporte,egreso,variable,250,2/8/2026
+verificacion vehicular,transporte,egreso,variable,250,2/8/2026
 cambio de aceite,transporte,egreso,variable,350,3/8/2026
 llantas nuevas,transporte,egreso,variable,800,3/8/2026
-afinación de auto,transporte,egreso,variable,400,4/8/2026
+afinacion de auto,transporte,egreso,variable,400,4/8/2026
 lavado de auto,transporte,egreso,variable,100,4/8/2026
 encerado de auto,transporte,egreso,variable,80,5/8/2026
 reembolso de viaje,ingreso,ingreso,variable,150,5/8/2026
@@ -1010,7 +1010,7 @@ gasolina premium,transporte,egreso,variable,450,5/8/2026
 estacionamiento centro,transporte,egreso,variable,60,6/8/2026
 multa de tránsito,transporte,egreso,variable,150,6/8/2026
 pasaje de autobús foráneo,transporte,egreso,variable,200,6/8/2026
-pasaje de avión (doméstico),transporte,egreso,variable,800,7/8/2026
+pasaje de avion (doméstico),transporte,egreso,variable,800,7/8/2026
 taxi del aeropuerto,transporte,egreso,variable,300,7/8/2026
 mantenimiento de frenos,transporte,egreso,variable,250,7/8/2026
 batería nueva,transporte,egreso,variable,350,8/8/2026
@@ -1018,7 +1018,7 @@ motor-taxi,transporte,egreso,variable,60,8/8/2026
 trolebús,transporte,egreso,variable,4,8/8/2026
 bicicleta (compra),transporte,egreso,variable,1500,9/8/2026
 casco de bicicleta,transporte,egreso,variable,200,9/8/2026
-consulta de oftalmólogo,salud,egreso,variable,600,9/8/2026
+consulta de oftalmologo,salud,egreso,variable,600,9/8/2026
 lentes graduados,salud,egreso,variable,800,10/8/2026
 estudios de laboratorio,salud,egreso,variable,450,10/8/2026
 radiografía,salud,egreso,variable,300,10/8/2026
@@ -1027,25 +1027,25 @@ terapia de lenguaje,salud,egreso,variable,500,11/8/2026
 vacuna antirrábica,salud,egreso,variable,150,11/8/2026
 venta de arte local,ingreso,ingreso,variable,70,12/8/2026
 vacuna influenza,salud,egreso,variable,200,12/8/2026
-seguro de vida,salud,egreso,variable,300,12/8/2026
+seguro de vida,salud,egreso,fijo_vital,300,12/8/2026
 farmacia guadalajara,salud,egreso,variable,80,13-08-26
 farmacia simi,salud,egreso,variable,60,13-08-26
 curita y vendas,salud,egreso,variable,25,13-08-26
-termómetro,salud,egreso,variable,100,14-08-26
-tensiómetro,salud,egreso,variable,200,14-08-26
-glucómetro,salud,egreso,variable,250,14-08-26
+termometro,salud,egreso,variable,100,14-08-26
+tensiometro,salud,egreso,variable,200,14-08-26
+glucometro,salud,egreso,variable,250,14-08-26
 tiras de glucosa,salud,egreso,variable,150,15-08-26
 insulina,salud,egreso,variable,350,15-08-26
 inhalador,salud,egreso,variable,180,15-08-26
-reparación de gotera,vivienda,egreso,variable,500,16-08-26
+reparacion de gotera,vivienda,egreso,variable,500,16-08-26
 impermeabilizante,vivienda,egreso,variable,600,16-08-26
 pintura de pared,vivienda,egreso,variable,400,16-08-26
 compra de cortinas,vivienda,egreso,variable,300,17-08-26
 compra de alfombra,vivienda,egreso,variable,250,17-08-26
-fumigación,vivienda,egreso,variable,350,17-08-26
+fumigacion,vivienda,egreso,variable,350,17-08-26
 cerrojo nuevo,vivienda,egreso,variable,200,18-08-26
-reparación de plomería,vivienda,egreso,variable,450,18-08-26
-reparación eléctrica,vivienda,egreso,variable,400,18-08-26
+reparacion de plomería,vivienda,egreso,variable,450,18-08-26
+reparacion eléctrica,vivienda,egreso,variable,400,18-08-26
 regalo de familia,ingreso,ingreso,variable,100,19-08-26
 mantenimiento de jardín,vivienda,egreso,variable,300,19-08-26
 lavado de tanque de agua,vivienda,egreso,variable,250,19-08-26
@@ -1062,7 +1062,7 @@ cuota de taller de arte,educacion,egreso,variable,350,23-08-26
 cuota de taller de música,educacion,egreso,variable,400,23-08-26
 clase de guitarra,educacion,egreso,variable,300,23-08-26
 clase de piano,educacion,egreso,variable,350,24-08-26
-examen de admisión universidad,educacion,egreso,variable,600,24-08-26
+examen de admision universidad,educacion,egreso,variable,600,24-08-26
 pago de beca (parcial),educacion,egreso,variable,300,24-08-26
 venta de herramienta,ingreso,ingreso,variable,90,25-08-26
 libro de literatura,educacion,egreso,variable,250,25-08-26
@@ -1081,12 +1081,12 @@ goma de borrar,educacion,egreso,variable,8,29-08-26
 lápiz mecánico,educacion,egreso,variable,25,29-08-26
 pluma,educacion,egreso,variable,15,30-08-26
 corrector,educacion,egreso,variable,12,30-08-26
-ingreso por renta de cuarto,ingreso,ingreso,variable,1000,30-08-26
+ingreso por renta de cuarto,ingreso,ingreso,fijo_no_vital,1000,30-08-26
 fax y envíos,educacion,egreso,variable,20,31-08-26
 empastado de tesis,educacion,egreso,variable,150,31-08-26
-suscripción a hbo max,ocio,egreso,variable,120,31-08-26
-suscripción a disney+,ocio,egreso,variable,150,1/8/2026
-suscripción a amazon prime,ocio,egreso,variable,130,2/8/2026
+suscripcion a hbo max,ocio,egreso,fijo_no_vital,120,31-08-26
+suscripcion a disney+,ocio,egreso,fijo_no_vital,150,1/8/2026
+suscripcion a amazon prime,ocio,egreso,fijo_no_vital,130,2/8/2026
 salida a cenar (restaurante),ocio,egreso,variable,200,3/8/2026
 cafetería (starbucks),ocio,egreso,variable,80,4/8/2026
 cafetería (local),ocio,egreso,variable,40,5/8/2026
@@ -1105,31 +1105,31 @@ crepas (puesto),ocio,egreso,variable,45,17-08-26
 hot dog (callejero),ocio,egreso,variable,35,18-08-26
 hamburguesa (callejera),ocio,egreso,variable,50,19-08-26
 tacos de pescado,ocio,egreso,variable,60,20-08-26
-tacos de camarón,ocio,egreso,variable,70,21-08-26
-cóctel de frutas,ocio,egreso,variable,40,22-08-26
+tacos de camaron,ocio,egreso,variable,70,21-08-26
+coctel de frutas,ocio,egreso,variable,40,22-08-26
 aguas frescas (puesto),ocio,egreso,variable,15,23-08-26
-pago de predial,servicios,egreso,variable,600,24-08-26
+pago de predial,servicios,egreso,fijo_vital,600,24-08-26
 certificado de no adeudo,servicios,egreso,variable,100,25-08-26
-comisión bancaria,servicios,egreso,variable,50,26-08-26
+comision bancaria,servicios,egreso,variable,50,26-08-26
 manejo de cuenta,servicios,egreso,variable,80,27-08-26
-seguro de auto,servicios,egreso,variable,400,28-08-26
-afiliación a imss (cuota),servicios,egreso,variable,200,29-08-26
+seguro de auto,servicios,egreso,fijo_vital,400,28-08-26
+afiliacion a imss (cuota),servicios,egreso,fijo_vital,200,29-08-26
 tintorería (traje),servicios,egreso,variable,150,30-08-26
 lavandería ropa grande,servicios,egreso,variable,80,31-08-26
 mantenimiento de calentador,servicios,egreso,variable,350,1/8/2026
-servicio de plomería,servicios,egreso,variable,500,2/8/2026
-servicio eléctrico,servicios,egreso,variable,400,3/8/2026
-teléfono fijo (telmex),servicios,egreso,variable,180,4/8/2026
+servicio de plomería urgencia,servicios,egreso,variable,500,2/8/2026
+servicio eléctrico emergencia,servicios,egreso,variable,400,3/8/2026
+teléfono fijo (telmex),servicios,egreso,fijo_vital,180,4/8/2026
 recarga de saldo at&t celular,servicios,egreso,variable,60,5/8/2026
-recolección de basura (municipal),servicios,egreso,variable,150,6/8/2026
-mantenimiento de elevador,servicios,egreso,variable,200,7/8/2026
-cuota de condominio,servicios,egreso,variable,500,8/8/2026
-pago a tarjeta de crédito (banorte),deudas,egreso,variable,550,9/8/2026
-pago a tarjeta de crédito (hsbc),deudas,egreso,variable,480,10/8/2026
-abono a préstamo automotriz,deudas,egreso,variable,750,11/8/2026
-pago de crédito hipotecario,deudas,egreso,variable,900,12/8/2026
-intereses por mora,deudas,egreso,variable,150,8/1/2026
-pago a elektra (electrodoméstico),deudas,egreso,variable,320,8/14/2026
-pago a coppel (mueble),deudas,egreso,variable,280,15-08-26
+recoleccion de basura (municipal),servicios,egreso,fijo_vital,150,6/8/2026
+mantenimiento de elevador (condominio),servicios,egreso,fijo_vital,200,7/18/1900
+cuota de condominio,servicios,egreso,fijo_vital,500,8/8/2026
+pago a tarjeta de crédito (banorte),deudas,egreso,fijo_vital,550,9/8/2026
+pago a tarjeta de crédito (hsbc),deudas,egreso,fijo_vital,480,10/8/2026
+abono a préstamo automotriz,deudas,egreso,fijo_vital,750,11/8/2026
+pago de crédito hipotecario,deudas,egreso,fijo_vital,900,12/8/2026
+intereses por mora,deudas,egreso,variable,150,13-08-26
+pago a elektra (electrodoméstico),deudas,egreso,fijo_vital,320,14-08-26
+pago a coppel (mueble),deudas,egreso,fijo_vital,280,15-08-26
 pago a famsa (refrigerador),deudas,egreso,variable,300,16-08-26
-cuota de mantenimiento de tarjeta,deudas,egreso,variable,180,17-08-26
+cuota de mantenimiento de tarjeta,deudas,egreso,fijo_no_vital,180,17-08-26
