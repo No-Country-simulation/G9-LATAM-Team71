@@ -6,6 +6,12 @@
 /backend/mvnw
 /backend/mvnw.cmd
 
+# Flutter / FRONTEND
+/frontend/build/
+/frontend/.dart_tool/
+.dart_tool/
+build/
+
 #    PYTHON / DATA SCIENCE   
 /data-science/__pycache__/
 /data-science/*.py[cod]
