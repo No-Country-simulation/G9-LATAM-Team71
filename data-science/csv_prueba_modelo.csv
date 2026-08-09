@@ -72,7 +72,7 @@ antojo en la calle,alimentacion,egreso,variable,34.31,5/5/2026
 starbucks,alimentacion,egreso,variable,45.84,5/6/2026
 agua embotellada,alimentacion,egreso,variable,88.65,5/7/2026
 viaje en uber,transporte,egreso,variable,71.31,5/7/2026
-suscripción netflix standard,ocio,egreso,variable,219,5/8/2026
+suscripción netflix standard,ocio,egreso,fijo_no_vital,219,5/8/2026
 gasolina mobil,transporte,egreso,variable,746.27,5/8/2026
 uber de regreso de fiesta,transporte,egreso,variable,717.93,5/8/2026
 salida al antro,ocio,egreso,variable,493.06,5/9/2026
@@ -188,14 +188,15 @@ café matutino,alimentacion,egreso,variable,111.39,6/29/2026
 pago de quincena,servicios,ingreso,fijo_vital,8372.01,6/30/2026
 refresco en tienda,alimentacion,egreso,variable,82.45,6/30/2026
 rappi hamburguesas,alimentacion,egreso,variable,334.3,6/30/2026
-sueldo mensual,ingreso,ingreso,variable,10000,1/4/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/4/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/4/2026
 renta departamento,vivienda,egreso,variable,1800,1/4/2026
 pago de agua,vivienda,egreso,variable,250,2/4/2026
 pago luz cfe,vivienda,egreso,variable,150,2/4/2026
 gas lp,vivienda,egreso,variable,200,3/4/2026
 internet telmex,servicios,egreso,variable,500,3/4/2026
 plan de datos celular,servicios,egreso,variable,200,4/4/2026
-netflix,ocio,egreso,variable,150,4/4/2026
+netflix,ocio,egreso,fijo_no_vital,150,4/4/2026
 spotify,ocio,egreso,variable,120,5/4/2026
 gimnasio,ocio,egreso,variable,400,5/4/2026
 tacos de canasta,alimentacion,egreso,variable,60,6/4/2026
@@ -445,7 +446,7 @@ nomina,ingreso,ingreso,variable,10000,23-06-26
 youtube premium,ocio,egreso,variable,120,23-06-26
 compra gaseosa y galletas en tambo,alimentacion,gasto,variable,7.5,7/20/2026
 recibo de agua sedapal,servicios,gasto,variable,85,7/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,7/1/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,7/1/2026
 pasaje metropolitano a miraflores,transporte,gasto,variable,3.5,6/28/2026
 almuerzo menu ejecutivo san isidro,alimentacion,gasto,variable,16,7/19/2026
 pasaje combi por javier prado,transporte,gasto,variable,2.5,7/19/2026
@@ -465,8 +466,8 @@ pago mantenimiento del edificio,vivienda,gasto,variable,180,7/7/2026
 cobro trabajo freelance diseno web,servicios,ingreso,variable,850,7/5/2026
 pasaje corredor rojo,transporte,gasto,variable,2.3,7/4/2026
 compras de fruta en mercado de surquillo,alimentacion,gasto,variable,45,7/3/2026
-suscripcion netflix familiar,ocio,gasto,variable,44.9,7/2/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,6/30/2026
+suscripcion netflix familiar,ocio,gasto,fijo_no_vital,44.9,7/2/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,6/30/2026
 pago internet claro fibra optica,servicios,gasto,variable,95,6/29/2026
 corte de cabello en barberia,ocio,gasto,variable,35,6/27/2026
 desayuno chicharron en lurin,alimentacion,gasto,variable,65,6/26/2026
@@ -482,7 +483,7 @@ ingreso por venta de ropa usada,ocio,ingreso,variable,120,6/18/2026
 pension colegio de los ninos,educacion,gasto,variable,550,6/17/2026
 reparacion fuga de agua gasfitero,vivienda,gasto,variable,90,6/16/2026
 almuerzo chifa central lince,alimentacion,gasto,variable,38,6/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,6/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,6/15/2026
 compra de utiles escolares en tai loy,educacion,gasto,variable,78.5,6/14/2026
 entrada a concierto en estadio nacional,ocio,gasto,variable,180,6/12/2026
 viaje de fin de semana a lunahuana,ocio,gasto,variable,320,6/11/2026
@@ -495,7 +496,7 @@ venta de postres caseros,alimentacion,ingreso,variable,230,6/5/2026
 pago seguro de salud eps,salud,gasto,variable,210,6/4/2026
 compra de zapatillas en ripley,ocio,gasto,variable,229,6/3/2026
 salida a bar en barranco,ocio,gasto,variable,95,6/2/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,5/31/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,5/31/2026
 alquiler de cancha de padel,ocio,gasto,variable,60,5/30/2026
 recibo de agua sedapal,servicios,gasto,variable,82,5/28/2026
 compra en mercado de productores santa anita,alimentacion,gasto,variable,185,5/27/2026
@@ -508,12 +509,12 @@ plato mostrito en polleria de barrio,alimentacion,gasto,variable,14,5/21/2026
 atencion odontologica limpieza,salud,gasto,variable,100,5/20/2026
 pago de mantenimiento auto taller,transporte,gasto,variable,350,5/19/2026
 servicio de lavanderia por kilo,vivienda,gasto,variable,28,5/18/2026
-pago matricula senati,educacion,gasto,variable,320,5/17/2026
-pago alquiler departamento lince,vivienda,gasto,variable,1400,5/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,5/15/2026
+pago matricula senati,educacion,gasto,fijo_vital,320,5/17/2026
+pago alquiler departamento lince,vivienda,gasto,fijo_vital,1400,5/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,5/15/2026
 yape a empanadas y cafe en la calle,alimentacion,gasto,variable,9.5,5/14/2026
 gasolinera primax tanqueo parcial,transporte,gasto,variable,80,5/13/2026
-suscripcion spotify premium,ocio,gasto,variable,20.9,5/12/2026
+suscripcion spotify premium,ocio,gasto,fijo_no_vital,20.9,5/12/2026
 compra ropa de abrigo en gamarra,ocio,gasto,variable,145,5/11/2026
 manta de alpaca regalo,ocio,gasto,variable,85,5/10/2026
 pago impuesto predial sat,vivienda,gasto,variable,112,5/9/2026
@@ -523,7 +524,7 @@ compras semanales metro,alimentacion,gasto,variable,195,5/6/2026
 pasaje linea 1 metro de lima,transporte,gasto,variable,1.5,5/5/2026
 clases de natacion academia,educacion,gasto,variable,160,5/4/2026
 pago seguro vehicular rímac,transporte,gasto,variable,180,5/3/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,4/30/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,4/30/2026
 almuerzo makis libre miraflores,alimentacion,gasto,variable,65,4/29/2026
 recibo luz enel,servicios,gasto,variable,135,4/28/2026
 cambio de aceite carro,transporte,gasto,variable,110,4/27/2026
@@ -539,7 +540,7 @@ compras de verduras en mercado local,alimentacion,gasto,variable,42,4/18/2026
 platinazo de anticuchos en la esquina,alimentacion,gasto,variable,18,4/17/2026
 ingreso por asesoria profesional externa,servicios,ingreso,variable,600,4/16/2026
 pago alquiler departamento lince,vivienda,gasto,variable,1400,4/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,4/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,4/15/2026
 gastos de cerrajero cambio de chapa,vivienda,gasto,variable,75,4/14/2026
 pasaje aplicativo cabify,transporte,gasto,variable,22,4/13/2026
 recarga tarjeta metropolitano,transporte,gasto,variable,30,4/12/2026
@@ -552,7 +553,7 @@ matrícula taller de pintura,educacion,gasto,variable,120,4/6/2026
 medicina jarabe para la tos inkafarma,salud,gasto,variable,28,4/5/2026
 pago gas natural calidda,servicios,gasto,variable,35,4/4/2026
 taxi colectivo hacia centro de lima,transporte,gasto,variable,7,4/3/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,3/31/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,3/31/2026
 almuerzo caldo de gallina la victoria,alimentacion,gasto,variable,18,3/30/2026
 pension colegio de los ninos,educacion,gasto,variable,550,3/29/2026
 compra en makro por mayor,alimentacion,gasto,variable,340,3/28/2026
@@ -569,18 +570,18 @@ pago de luz enel,servicios,gasto,variable,128,3/18/2026
 pago mantenimiento departamento,vivienda,gasto,variable,180,3/17/2026
 venta de bicicleta usada olx,ocio,ingreso,variable,350,3/16/2026
 pago alquiler departamento lince,vivienda,gasto,variable,1400,3/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,3/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,3/15/2026
 desayuno tamales domingo,alimentacion,gasto,variable,16,3/14/2026
 peaje vía de evitamiento,transporte,gasto,variable,6.6,3/13/2026
 gasolina repsol 95 octanos,transporte,gasto,variable,120,3/12/2026
 compras wong fin de semana,alimentacion,gasto,variable,260,3/11/2026
-pago suscripcion hbo max,ocio,gasto,variable,29.9,3/10/2026
+pago suscripcion hbo max,ocio,gasto,fijo_no_vital,29.9,3/10/2026
 cuota prestamo banco de comercio,deudas,gasto,variable,220,3/9/2026
 reparacion de pintura de pared,vivienda,gasto,variable,150,3/8/2026
 atencion urgencias clinica,salud,gasto,variable,200,3/7/2026
 compra de cuaderno y lapiceros,educacion,gasto,variable,15,3/6/2026
 pago de celular postpago movistar,servicios,gasto,variable,65,3/5/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,2/28/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,2/28/2026
 salida a polleria norky's,alimentacion,gasto,variable,72,2/27/2026
 pasaje linea 1 metro,transporte,gasto,variable,1.5,2/26/2026
 tarjeta oh pago cuota,deudas,gasto,variable,180,2/25/2026
@@ -594,7 +595,7 @@ viaje en uber nocturno,transporte,gasto,variable,28,2/18/2026
 almuerzo menestron y segundo en mercado,alimentacion,gasto,variable,12,2/17/2026
 devolucion de dinero prestado por amigo,servicios,ingreso,variable,100,2/16/2026
 pago alquiler departamento lince,vivienda,gasto,variable,1400,2/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,2/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,2/15/2026
 compra de sabanas en falabella,vivienda,gasto,variable,110,2/14/2026
 cena romantica dia del amor san isidro,ocio,gasto,variable,220,2/14/2026
 pago plan internet bitel casa,servicios,gasto,variable,79,2/13/2026
@@ -606,7 +607,7 @@ compra en vivanda,alimentacion,gasto,variable,175,2/8/2026
 pago tarjeta cencosud,deudas,gasto,variable,140,2/7/2026
 inscripcion a maraton de lima,ocio,gasto,variable,80,2/6/2026
 curso udemy desarrollo web,educacion,gasto,variable,49.9,2/5/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,1/31/2026
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,1/31/2026
 pago seguro vida ley,salud,gasto,variable,85,1/30/2026
 compras en bodega cerca a casa,alimentacion,gasto,variable,28,1/29/2026
 salida a discoteca miraflores,ocio,gasto,variable,150,1/28/2026
@@ -623,7 +624,7 @@ compras quincena plaza vea,alimentacion,gasto,variable,290,1/18/2026
 pago matricula colegio ninos,educacion,gasto,variable,600,1/17/2026
 trabajo independiente traduccion texto,servicios,ingreso,variable,300,1/16/2026
 pago alquiler departamento lince,vivienda,gasto,variable,1400,1/15/2026
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,1/15/2026
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,1/15/2026
 compra ventilador sodimac,vivienda,gasto,variable,129,1/14/2026
 almuerzo ceviche y jora,alimentacion,gasto,variable,55,1/13/2026
 pago servicio agua sedapal,servicios,gasto,variable,83,1/12/2026
@@ -634,7 +635,7 @@ pago plan movistar hogar,servicios,gasto,variable,99,1/8/2026
 cuota credito consumo bbva,deudas,gasto,variable,410,1/7/2026
 pago gratificacion navidad acumulado,servicios,ingreso,variable,1800,1/5/2026
 salida a juego de escape room,ocio,gasto,variable,50,1/4/2026
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,12/31/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,12/31/2025
 cena fin de ano pavo y ensalada,alimentacion,gasto,variable,180,12/30/2025
 uvas y cotillon para senambles,ocio,gasto,variable,35,12/29/2025
 compras de regalos de navidad ripley,ocio,gasto,variable,420,12/24/2025
@@ -643,8 +644,8 @@ pago luz enel,servicios,gasto,variable,130,12/22/2025
 pago agua sedapal,servicios,gasto,variable,80,12/21/2025
 pago tarjeta bcp,deudas,gasto,variable,550,12/20/2025
 pago alquiler departamento lince,vivienda,gasto,variable,1400,12/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,12/15/2025
-ingreso gratificacion diciembre,servicios,ingreso,variable,1800,12/15/2025
+pago de sueldo quincena bcp,ingreso,ingreso,fijo_vital,1800,12/15/2025
+ingreso gratificacion diciembre,ingreso,ingreso,variable,1800,12/15/2025
 pago mantenimiento edificio,vivienda,gasto,variable,180,12/14/2025
 pasaje metropolitano,transporte,gasto,variable,3.5,12/13/2025
 compras metro utiles hogar,alimentacion,gasto,variable,210,12/12/2025
@@ -657,9 +658,9 @@ pension colegio de los ninos,educacion,gasto,variable,550,12/6/2025
 pasaje taxi indrive a miraflores,transporte,gasto,variable,18,12/5/2025
 venta de televisor viejo,ocio,ingreso,variable,400,12/4/2025
 pago gas calidda,servicios,gasto,variable,34,12/3/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,11/30/2025
-recibo luz enel,servicios,gasto,variable,125,11/28/2025
-recibo agua sedapal,servicios,gasto,variable,78,11/27/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,11/30/2025
+recibo luz enel,servicios,gasto,fijo_vital,125,11/28/2025
+recibo agua sedapal,servicios,gasto,fijo_vital,78,11/27/2025
 pasaje combi universitaria,transporte,gasto,variable,2,11/26/2025
 pago cuota prestamo interbank,deudas,gasto,variable,380,11/25/2025
 almuerzo buffet criollo,alimentacion,gasto,variable,62,11/24/2025
@@ -671,7 +672,7 @@ analisis de sangre laboratorio,salud,gasto,variable,90,11/19/2025
 compra foco y herramientas maestro,vivienda,gasto,variable,65,11/18/2025
 desayuno pan con chicharron esquina,alimentacion,gasto,variable,12,11/17/2025
 pago alquiler departamento lince,vivienda,gasto,variable,1400,11/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,11/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,11/15/2025
 ingreso cts deposito bancario,servicios,ingreso,variable,900,11/15/2025
 reparacion de freno de mano carro,transporte,gasto,variable,130,11/14/2025
 gasolina primax 90,transporte,gasto,variable,90,11/13/2025
@@ -683,7 +684,7 @@ pago tarjeta falabella cuota,deudas,gasto,variable,250,11/8/2025
 recarga bitel internet,servicios,gasto,variable,20,11/7/2025
 compra libro tecnico programacion,educacion,gasto,variable,85,11/6/2025
 pago gas calidda,servicios,gasto,variable,31,11/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,10/31/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,10/31/2025
 turron de dona pepa san josé,alimentacion,gasto,variable,25,10/30/2025
 almuerzo anticuchos señor de los milagros,alimentacion,gasto,variable,32,10/29/2025
 pasaje metropolitano alimentador,transporte,gasto,variable,1.5,10/28/2025
@@ -696,10 +697,10 @@ jarabe y vitaminas boticas peru,salud,gasto,variable,54,10/22/2025
 pension colegio de los ninos,educacion,gasto,variable,550,10/21/2025
 pago mantenimiento edificio,vivienda,gasto,variable,180,10/20/2025
 pago internet fibra optica,servicios,gasto,variable,89,10/19/2025
-suscripcion spotify,ocio,gasto,variable,20.9,10/18/2025
+suscripcion spotify,ocio,gasto,fijo_no_vital,20.9,10/18/2025
 almuerzo chifa menu familiar,alimentacion,gasto,variable,58,10/17/2025
 pago alquiler departamento lince,vivienda,gasto,variable,1400,10/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,10/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,10/15/2025
 ingreso por dictado de taller online,educacion,ingreso,variable,450,10/14/2025
 pasaje taxi yango,transporte,gasto,variable,14,10/13/2025
 gasolina shell 95,transporte,gasto,variable,100,10/12/2025
@@ -710,7 +711,7 @@ compra de pintura para retoque cuarto,vivienda,gasto,variable,68,10/8/2025
 recarga tarjeta lima pass,transporte,gasto,variable,20,10/7/2025
 pago gas calidda,servicios,gasto,variable,33,10/6/2025
 salida a cine uvk,ocio,gasto,variable,38,10/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,9/30/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,9/30/2025
 pago cuota credito hipotecario,deudas,gasto,variable,1650,9/29/2025
 recibo agua sedapal,servicios,gasto,variable,82,9/28/2025
 recibo luz enel,servicios,gasto,variable,131,9/27/2025
@@ -726,18 +727,18 @@ compra de escritorio para estudio,vivienda,gasto,variable,220,9/18/2025
 pago mantenimiento departamento,vivienda,gasto,variable,180,9/17/2025
 salida a concierto local de cumbia,ocio,gasto,variable,50,9/16/2025
 pago alquiler departamento lince,vivienda,gasto,variable,1400,9/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,9/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,9/15/2025
 ingreso por venta de muebles usados,vivienda,ingreso,variable,280,9/14/2025
 pasaje combi arequipa,transporte,gasto,variable,2.5,9/13/2025
 gasolina repsol 90,transporte,gasto,variable,85,9/12/2025
 compra en makro abarrotes,alimentacion,gasto,variable,310,9/11/2025
 pago tarjeta bbva cuota,deudas,gasto,variable,490,9/10/2025
-suscripcion netflix,ocio,gasto,variable,44.9,9/9/2025
+suscripcion netflix,ocio,gasto,fijo_no_vital,44.9,9/9/2025
 clases de ingles britanico mensual,educacion,gasto,variable,290,9/8/2025
 pago gas calidda,servicios,gasto,variable,36,9/7/2025
 almuerzo salchipapa especial tambo,alimentacion,gasto,variable,11.5,9/6/2025
 compra de polo en saga falabella,ocio,gasto,variable,49,9/5/2025
-pago de sueldo fin de mes bcp,servicios,ingreso,variable,1800,8/31/2025
+pago de sueldo fin de mes bcp,servicios,ingreso,fijo_vital,1800,8/31/2025
 pension colegio de los ninos,educacion,gasto,variable,550,8/30/2025
 recibo agua sedapal,servicios,gasto,variable,79,8/29/2025
 recibo luz luz del sur,servicios,gasto,variable,136,8/28/2025
@@ -750,7 +751,7 @@ pago plan movistar internet,servicios,gasto,variable,89,8/22/2025
 compra de juego de platos promart,vivienda,gasto,variable,75,8/21/2025
 yape a canchita popcorn cine,ocio,gasto,variable,15,8/20/2025
 pago alquiler departamento lince,vivienda,gasto,variable,1400,8/15/2025
-pago de sueldo quincena bcp,servicios,ingreso,variable,1800,8/15/2025
+pago de sueldo quincena bcp,servicios,ingreso,fijo_vital,1800,8/15/2025
 pasaje taxi aplicativo cabify,transporte,gasto,variable,20,8/14/2025
 gasolina primax,transporte,gasto,variable,100,8/13/2025
 compras semanales metro,alimentacion,gasto,variable,225,8/12/2025
@@ -760,8 +761,7 @@ taller de capacitacion profesional,educacion,gasto,variable,150,8/9/2025
 pago gas calidra,servicios,gasto,variable,30,8/8/2025
 almuerzo menu ejecutivo san borja,alimentacion,gasto,variable,17,8/7/2025
 compra en oxxo bebidas y snacks,alimentacion,gasto,variable,14.5,8/6/2025
-descripcion,categoria,tipo,variable,monto,fecha
-sueldo mensual,ingreso,ingreso,variable,10000,1/8/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/8/2026
 renta de departamento,vivienda,egreso,variable,3000,1/8/2026
 pago de luz cfe,vivienda,egreso,variable,350,2/8/2026
 pago de agua potable,vivienda,egreso,variable,200,2/8/2026
@@ -1130,6 +1130,30 @@ abono a préstamo automotriz,deudas,egreso,variable,750,11/8/2026
 pago de crédito hipotecario,deudas,egreso,variable,900,12/8/2026
 intereses por mora,deudas,egreso,variable,150,8/1/2026
 pago a elektra (electrodoméstico),deudas,egreso,variable,320,8/14/2026
-pago a coppel (mueble),deudas,egreso,variable,280,15-08-26
-pago a famsa (refrigerador),deudas,egreso,variable,300,16-08-26
-cuota de mantenimiento de tarjeta,deudas,egreso,variable,180,17-08-26
+pago a coppel (mueble),deudas,egreso,variable,280,8/8/2026
+pago a famsa (refrigerador),deudas,egreso,variable,300,8/8/2026
+cuota de mantenimiento de tarjeta,deudas,egreso,variable,180,8/8/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/4/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10000,1/4/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10001,1/5/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10002,1/6/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10003,1/7/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10004,1/8/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10005,1/9/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10006,1/10/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10007,2/11/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10008,3/12/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10009,4/13/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10010,5/14/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10011,6/15/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10012,7/16/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10013,1/17/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10014,1/18/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10015,1/19/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10016,1/20/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10017,1/21/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10018,1/22/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10019,1/23/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10020,1/24/2026
+sueldo mensual,ingreso,ingreso,fijo_vital,10021,1/25/2026
+sueldo semanal,ingreso,ingreso,fijo_vital,10000,2/26/2026
