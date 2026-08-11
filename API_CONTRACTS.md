@@ -207,33 +207,6 @@ Crea una meta financiera nueva en la base de datos.
   }
   ```
 
-
-### Registro de Transacciones
-Recibe una transacción. El Back-End guarda el registro y consulta al microservicio de Python para su categorización.
-* **Endpoint:** `POST /api/v1/transacciones`
-* **Headers:** `Authorization: Bearer <token>`
-* **Request:**
-    ```json
-    {
-      "tipo_flujo": "EGRESO",
-      "monto": 420.00,
-      "fecha": "2026-07-21",
-      "descripcion": "Compra en supermercado"
-    }
-    ```
-    No se deben aceptar valores vacíos en ningún campo.
-* **Response (201 Created):**
-    ```json
-    {
-      "id_transaccion": "123e4567-e89b-12d3-a456-426614174000",
-      "mensaje": "Transacción registrada y clasificada correctamente.",
-      "clasificacion_ia": {
-        "categoria": "Alimentación",
-        "cualidad": "VARIABLE"
-      }
-    }
-    ```
-
 ### Análisis y Reporte Financiero
 Devuelve el análisis consolidado, separando los gastos por categoría temática y comportamiento. Ideal para el Dashboard o envíos periódicos.
 * **Endpoint:** `GET /api/v1/reportes/ultimo`
