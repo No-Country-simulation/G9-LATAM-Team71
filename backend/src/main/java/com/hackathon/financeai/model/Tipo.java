@@ -1,5 +1,5 @@
 package com.hackathon.financeai.model;
 
-public enum Flujo {
+public enum Tipo {
     INGRESO, EGRESO
 }
