@@ -41,7 +41,7 @@ public class AnalisisService {
 
         for (TransaccionDTO transaccion : transacciones) {
             String categoria = clasificarDescripcion(transaccion.getDescripcion());
-            resumen.merge(categoria, transaccion.getValor(), Double::sum);
+            resumen.merge(categoria, transaccion.getMonto(), Double::sum);
         }
 
         return resumen;
