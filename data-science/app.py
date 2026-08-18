@@ -6,15 +6,18 @@ import pandas as pd
 app = FastAPI(
      title="API financiero"
 )
-    
-@app.post("/clasificar")                        # controlador para el modelo
+
+# controlador para el predecir la categoria
+@app.post("/api/v1/transacciones/predecir")
 def clasificar_transaccion(dato: TransaccionClasificacion):
     categoria, cualidad = clasificar(dato.descripcion)
     return {
         "categoria": categoria,
         "cualidad": cualidad
     }
-@app.post("/analizar")
+
+#Controlador para el reporte
+@app.post("/api/v1/reportes/ultimo")
 def analisis_financiero(datos: DatosAnalisis):
     data = pd.DataFrame([transacciones.model_dump for transacciones in datos.transacciones])
     return analizar(

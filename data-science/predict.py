@@ -701,7 +701,7 @@ def calcular_meta(data, metas):
 
     return resultados
 
-    }
+    
 print(f'''Meta: compra laptop, \nobjetivo: {monto_objetivo}\nahorrado: {monto_actual}
 restante: {monto_objetivo - monto_actual}
 ahorro promedio: {ahorro_promedio_mensual}

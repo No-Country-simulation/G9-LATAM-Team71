@@ -7,12 +7,6 @@
 -- Habilitar extensión nativa para la generación automática de llaves criptográficas UUIDv4
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
--- Categorias
-CREATE TABLE IF NOT EXISTS categorias (
-    id SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) UNIQUE NOT NULL
-);
-
 -- Usuarios
 CREATE TABLE IF NOT EXISTS usuarios (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -54,7 +48,7 @@ CREATE TABLE IF NOT EXISTS metas (
 CREATE TABLE IF NOT EXISTS transacciones (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     usuario_id UUID NOT NULL,
-    categoria_id INT, -- NULL inicial permitido mientras la API de Python procesa el texto
+    categoria VARCHAR(30) NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
     fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -66,28 +60,15 @@ CREATE TABLE IF NOT EXISTS transacciones (
     
     -- Llaves foráneas y reglas de eliminación
     CONSTRAINT fk_usuario_transaccion FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    CONSTRAINT fk_categoria_transaccion FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE SET NULL,
     
     -- Candados condicionales para la integridad del dinero
     CONSTRAINT chk_tipo_flujo CHECK (tipo_flujo IN ('INGRESO', 'EGRESO')),
     CONSTRAINT chk_cualidad_flujo CHECK (
         (tipo_flujo = 'EGRESO' AND cualidad_flujo IN ('FIJO_VITAL', 'FIJO_NO_VITAL', 'VARIABLE')) OR
-        (tipo_flujo = 'INGRESO' AND cualidad_flujo IN ('FIJO', 'VARIABLE'))
+        (tipo_flujo = 'INGRESO' AND cualidad_flujo IN ('FIJO_VITAL', 'VARIABLE'))
     )
 );
 
 -- INDICES
 CREATE INDEX IF NOT EXISTS idx_transacciones_usuario ON transacciones(usuario_id);
 CREATE INDEX IF NOT EXISTS idx_metas_usuario ON metas(usuario_id);
-
--- CATÁLOGO DE CATEGORÍAS
-INSERT INTO categorias (nombre) VALUES
-('Alimentación'),
-('Transporte'),
-('Salud'),
-('Vivienda'),
-('Educación'),
-('Ocio'),
-('Servicios'),
-('Otros')
-ON CONFLICT (nombre) DO NOTHING;
