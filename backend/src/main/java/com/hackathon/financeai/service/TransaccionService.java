@@ -44,13 +44,14 @@ public class TransaccionService {
             return response.getBody();
 
         } catch (Exception e) {
-            throw new RuntimeException("El servicio de predicción no está disponible: " + e.getMessage());
+            throw new FintechException("ERROR_API_PYTHON", "El servicio de predicción no está disponible: " + e.getMessage());
         }
     }
 
     public GuardarTransaccionResponse guardarTransaccion(GuardarTransaccionRequest request, UUID idUsuario) {
         try {
-            Usuario user = usuarioRepository.getReferenceById(idUsuario);
+            Usuario user = usuarioRepository.findById(idUsuario)
+                    .orElseThrow(() -> new FintechException("USUARIO_NO_ENCONTRADO", "El usuario no existe."));
 
             Transaccion transaccion = new Transaccion(request);
             transaccion.setUsuario(user);

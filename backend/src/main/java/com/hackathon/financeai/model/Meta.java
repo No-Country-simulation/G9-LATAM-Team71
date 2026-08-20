@@ -1,8 +1,8 @@
 package com.hackathon.financeai.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -21,13 +21,16 @@ public class Meta {
     private String nombre;
 
     @Column(name = "monto_objetivo", nullable = false, precision = 10, scale = 2)
-    private BigDecimal montoObjetivo;
+    private float montoObjetivo;
 
     @Column(name = "monto_actual", nullable = false, precision = 10, scale = 2)
-    private BigDecimal montoActual = BigDecimal.ZERO;
+    private float montoActual = 0.0f;
+
+    @Column(name = "fecha_inicio", nullable = false)
+    private LocalDateTime fechaInicio;
 
     @Column(name = "fecha_limite", nullable = false)
-    private LocalDate fechaLimite;
+    private LocalDateTime fechaLimite;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
@@ -38,12 +41,13 @@ public class Meta {
 
     public Meta() {}
 
-    public Meta(UUID id, Usuario usuario, String nombre, BigDecimal montoObjetivo, BigDecimal montoActual, LocalDate fechaLimite, Estado estado, Boolean activo) {
+    public Meta(UUID id, Usuario usuario, String nombre, float montoObjetivo, float montoActual, LocalDateTime fechaInicio, LocalDateTime fechaLimite, Estado estado, Boolean activo) {
         this.id = id;
         this.usuario = usuario;
         this.nombre = nombre;
         this.montoObjetivo = montoObjetivo;
         this.montoActual = montoActual;
+        this.fechaInicio = fechaInicio;
         this.fechaLimite = fechaLimite;
         this.estado = estado;
         this.activo = activo;
@@ -58,14 +62,17 @@ public class Meta {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public BigDecimal getMontoObjetivo() { return montoObjetivo; }
-    public void setMontoObjetivo(BigDecimal montoObjetivo) { this.montoObjetivo = montoObjetivo; }
+    public float getMontoObjetivo() { return montoObjetivo; }
+    public void setMontoObjetivo(float montoObjetivo) { this.montoObjetivo = montoObjetivo; }
 
-    public BigDecimal getMontoActual() { return montoActual; }
-    public void setMontoActual(BigDecimal montoActual) { this.montoActual = montoActual; }
+    public float getMontoActual() { return montoActual; }
+    public void setMontoActual(float montoActual) { this.montoActual = montoActual; }
 
-    public LocalDate getFechaLimite() { return fechaLimite; }
-    public void setFechaLimite(LocalDate fechaLimite) { this.fechaLimite = fechaLimite; }
+    public LocalDateTime getFechaInicio() { return fechaInicio; }
+    public void setFechaInicio(LocalDateTime fechaInicio) { this.fechaInicio = fechaInicio; }
+
+    public LocalDateTime getFechaLimite() { return fechaLimite; }
+    public void setFechaLimite(LocalDateTime fechaLimite) { this.fechaLimite = fechaLimite; }
 
     public Estado getEstado() { return estado; }
     public void setEstado(Estado estado) { this.estado = estado; }
