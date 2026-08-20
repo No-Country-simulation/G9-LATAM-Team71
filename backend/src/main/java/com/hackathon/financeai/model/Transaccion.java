@@ -55,15 +55,9 @@ public class Transaccion {
         this.cualidadFlujo = cualidadFlujo;
     }
 
-    public Transaccion(GuardarTransaccionRequest request){
-        this.categoria = request.categoria();
-        this.monto = request.monto();
-        this.descripcion = request.descripcion();
-        this.fecha = LocalDateTime.now();
-        this.activo = true;
-        this.tipoFlujo = request.tipo_flujo();
-        this.cualidadFlujo = request.cualidad_flujo();
+    public Transaccion(GuardarTransaccionRequest request) {
     }
+
 
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
