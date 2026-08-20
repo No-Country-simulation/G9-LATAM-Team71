@@ -1,13 +1,18 @@
 package com.hackathon.financeai.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -64,6 +69,8 @@ public class Usuario {
         this.fechaCreacion = fechaCreacion;
     }
 
+    // --- GETTERS Y SETTERS ORIGINALES ---
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
@@ -99,4 +106,41 @@ public class Usuario {
 
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
+
+    // --- MÉTODOS OBLIGATORIOS DE SPRING SECURITY (UserDetails) ---
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(); // Por ahora no usaremos roles complejos, devolvemos una lista vacía
+    }
+
+    @Override
+    public String getPassword() {
+        return this.contrasena; // Le indicamos a Spring que este es el campo de la contraseña
+    }
+
+    @Override
+    public String getUsername() {
+        return this.correo; // Le indicamos a Spring que usamos el correo como identificador principal
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.activo != null ? this.activo : true; // Lo conectamos con tu campo 'activo'
+    }
 }

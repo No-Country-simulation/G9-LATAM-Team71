@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS transacciones (
     CONSTRAINT chk_tipo_flujo CHECK (tipo_flujo IN ('INGRESO', 'EGRESO')),
     CONSTRAINT chk_cualidad_flujo CHECK (
         (tipo_flujo = 'EGRESO' AND cualidad_flujo IN ('FIJO_VITAL', 'FIJO_NO_VITAL', 'VARIABLE')) OR
-        (tipo_flujo = 'INGRESO' AND cualidad_flujo IN ('FIJO_VITAL', 'VARIABLE'))
+        (tipo_flujo = 'INGRESO' AND cualidad_flujo IN ('FIJO', 'VARIABLE'))
     )
 );
 
