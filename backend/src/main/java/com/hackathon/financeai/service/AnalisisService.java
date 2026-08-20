@@ -1,112 +1,125 @@
 package com.hackathon.financeai.service;
 
-import com.hackathon.financeai.dto.AnalisisFinancieroRequest;
-import com.hackathon.financeai.dto.AnalisisFinancieroResponse;
-import com.hackathon.financeai.dto.TransaccionDTO;
-import com.hackathon.financeai.model.PerfilFinanciero;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hackathon.financeai.dto.*;
+import com.hackathon.financeai.exception.FintechException;
+import com.hackathon.financeai.model.AnalisisFinanciero;
+import com.hackathon.financeai.model.Meta;
+import com.hackathon.financeai.model.Transaccion;
+import com.hackathon.financeai.model.Usuario;
+import com.hackathon.financeai.repositories.AnalisisFinancieroRepository;
+import com.hackathon.financeai.repositories.MetaRepository;
+import com.hackathon.financeai.repositories.TransaccionRepository;
+import com.hackathon.financeai.repositories.UsuarioRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.LinkedHashMap;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class AnalisisService {
 
-    private static final double UMBRAL_ENDEUDAMIENTO_ALTO = 40.0;
-    private static final double UMBRAL_ENDEUDAMIENTO_BAJO = 30.0;
-    private static final double PROBABILIDAD_EN_RIESGO = 0.85;
-    private static final double PROBABILIDAD_SALUDABLE = 0.92;
-    private static final double PROBABILIDAD_EN_OBSERVACION = 0.78;
+    private static final Logger log = LoggerFactory.getLogger(AnalisisService.class);
 
-    public AnalisisFinancieroResponse procesarAnalisis(AnalisisFinancieroRequest request) {
-        Map<String, Double> resumenGastos = resumirGastos(request.getTransacciones());
-        PerfilEvaluado perfilEvaluado = evaluarPerfilFinanciero(
-                request.getNivelEndeudamiento(),
-                request.getFrecuenciaAhorro()
-        );
-        List<String> recomendaciones = generarRecomendaciones(perfilEvaluado.perfil(), resumenGastos);
+    private final String pythonBaseUrl;
+    private final RestTemplate restTemplate;
+    private final AnalisisFinancieroRepository analisisFinancieroRepository;
+    private final TransaccionRepository transaccionRepository;
+    private final MetaRepository metaRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final ObjectMapper objectMapper;
 
-        AnalisisFinancieroResponse response = new AnalisisFinancieroResponse();
-        response.setPerfilFinanciero(perfilEvaluado.perfil());
-        response.setProbabilidad(perfilEvaluado.probabilidad());
-        response.setResumenGastos(resumenGastos);
-        response.setRecomendaciones(recomendaciones);
-        return response;
+    public AnalisisService(
+            @Value("${python.service.base-url}") String pythonBaseUrl,
+            RestTemplate restTemplate,
+            AnalisisFinancieroRepository analisisFinancieroRepository,
+            TransaccionRepository transaccionRepository,
+            MetaRepository metaRepository,
+            UsuarioRepository usuarioRepository,
+            ObjectMapper objectMapper) {
+        this.pythonBaseUrl = pythonBaseUrl;
+        this.restTemplate = restTemplate;
+        this.analisisFinancieroRepository = analisisFinancieroRepository;
+        this.transaccionRepository = transaccionRepository;
+        this.metaRepository = metaRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.objectMapper = objectMapper;
     }
 
-    private Map<String, Double> resumirGastos(List<TransaccionDTO> transacciones) {
-        Map<String, Double> resumen = new LinkedHashMap<>();
+    public void generarAnalisisParaUsuario(UUID usuarioId) {
+        // 1. Validar existencia del usuario
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new FintechException("USUARIO_NO_ENCONTRADO", "No se encontró el usuario con ID: " + usuarioId));
 
-        for (TransaccionDTO transaccion : transacciones) {
-            String categoria = clasificarDescripcion(transaccion.getDescripcion());
-            resumen.merge(categoria, transaccion.getMonto(), Double::sum);
-        }
+        // 2. Definir rango exacto del mes actual (primer y último segundo del mes)
+        LocalDateTime inicioMes = LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime finMes = LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth()).withHour(23).withMinute(59).withSecond(59);
 
-        return resumen;
-    }
+        // 3. Mapear transacciones (o filtrar por fecha si el repositorio lo soporta)
+        List<Transaccion> transacciones = transaccionRepository.findByUsuarioId(usuarioId);
+        List<TransaccionResumen> transaccionesDato = transacciones.stream()
+                .map(t -> new TransaccionResumen(
+                        t.getId(),
+                        t.getFecha(),
+                        t.getDescripcion(),
+                        t.getMonto(),
+                        t.getTipoFlujo(),
+                        t.getCualidadFlujo(),
+                        t.getCategoria()))
+                .collect(Collectors.toList());
 
-    private String clasificarDescripcion(String descripcion) {
-        String texto = descripcion.toLowerCase(Locale.ROOT);
+        // 4. Mapear metas del usuario
+        List<Meta> metas = metaRepository.findByUsuarioId(usuarioId);
+        List<MetaResumen> metasDato = metas.stream()
+                .map(MetaResumen::new)
+                .collect(Collectors.toList());
 
-        if (contieneAlguna(texto, "supermercado", "comida")) {
-            return "ALIMENTACION";
-        }
-        if (contieneAlguna(texto, "combustible", "uber")) {
-            return "TRANSPORTE";
-        }
-        if (contieneAlguna(texto, "streaming", "cine")) {
-            return "OCIO";
-        }
-        return "OTROS";
-    }
+        // 5. Ensamblar Request
+        AnalisisPythonRequest request = new AnalisisPythonRequest(transaccionesDato, inicioMes, finMes, metasDato);
 
-    private PerfilEvaluado evaluarPerfilFinanciero(Double nivelEndeudamiento, String frecuenciaAhorro) {
-        // Punto único de reemplazo para una llamada futura a un modelo Python por RestClient/RestTemplate.
-        double endeudamiento = nivelEndeudamiento != null ? nivelEndeudamiento : 0.0;
-        String ahorro = frecuenciaAhorro != null ? frecuenciaAhorro.trim().toLowerCase(Locale.ROOT) : "";
+        try {
+            String endpoint = pythonBaseUrl + "/analisis";
 
-        if (endeudamiento > UMBRAL_ENDEUDAMIENTO_ALTO) {
-            return new PerfilEvaluado(PerfilFinanciero.EN_RIESGO, PROBABILIDAD_EN_RIESGO);
-        }
+            // 6. Consumir API de Python
+            ResponseEntity<AnalisisPythonResponse> response = restTemplate.postForEntity(
+                    endpoint,
+                    request,
+                    AnalisisPythonResponse.class
+            );
 
-        if (endeudamiento <= UMBRAL_ENDEUDAMIENTO_BAJO
-                && ("alta".equals(ahorro) || "frecuente".equals(ahorro))) {
-            return new PerfilEvaluado(PerfilFinanciero.SALUDABLE, PROBABILIDAD_SALUDABLE);
-        }
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                // Convertir la respuesta tipada a Map para la columna JSONB
+                Map<String, Object> dataMap = objectMapper.convertValue(
+                        response.getBody(),
+                        new TypeReference<Map<String, Object>>() {}
+                );
 
-        return new PerfilEvaluado(PerfilFinanciero.EN_OBSERVACION, PROBABILIDAD_EN_OBSERVACION);
-    }
+                AnalisisFinanciero analisis = new AnalisisFinanciero();
+                analisis.setUsuario(usuario);
+                analisis.setFechaCreacion(LocalDateTime.now());
+                analisis.setDataAnalisis(dataMap);
 
-    private List<String> generarRecomendaciones(PerfilFinanciero perfil, Map<String, Double> resumenGastos) {
-        if (perfil == PerfilFinanciero.EN_RIESGO) {
-            String categoriaMayorGasto = obtenerCategoriaMayorGasto(resumenGastos);
-            return List.of("Reduce el gasto en " + categoriaMayorGasto + " porque es la categoría con mayor acumulado.");
-        }
-
-        return List.of(
-                "Controla los gastos recurrentes y revisa suscripciones o consumos periódicos.",
-                "Incrementa tu ahorro mensual de forma constante."
-        );
-    }
-
-    private String obtenerCategoriaMayorGasto(Map<String, Double> resumenGastos) {
-        return resumenGastos.entrySet()
-                .stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse("otros");
-    }
-
-    private boolean contieneAlguna(String texto, String... palabrasClave) {
-        for (String palabraClave : palabrasClave) {
-            if (texto.contains(palabraClave)) {
-                return true;
+                analisisFinancieroRepository.save(analisis);
+                System.out.println("✅ Análisis financiero exitosamente generado y guardado para usuario: " + usuarioId);
             }
+        } catch (Exception e) {
+            throw new FintechException("ERROR_API_ANALISIS", "No se pudo generar el análisis financiero. Detalle: " + e.getMessage());
         }
-        return false;
     }
 
-    private record PerfilEvaluado(PerfilFinanciero perfil, double probabilidad) {}
+    public Map<String, Object> obtenerUltimoAnalisis(UUID usuarioId) {
+        return analisisFinancieroRepository.findFirstByUsuarioIdOrderByFechaCreacionDesc(usuarioId)
+                .map(AnalisisFinanciero::getDataAnalisis)
+                .orElseThrow(() -> new FintechException("SIN_ANALISIS", "El usuario aún no tiene análisis financieros generados."));
+    }
 }

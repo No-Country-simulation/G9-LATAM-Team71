@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS metas (
     nombre VARCHAR(100) NOT NULL,
     monto_objetivo DECIMAL(10,2) NOT NULL,
     monto_actual DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    fecha_inicio DATE NOT NULL,
     fecha_limite DATE NOT NULL,
     estado VARCHAR(20) NOT NULL DEFAULT 'ACTIVA',
     activo BOOLEAN NOT NULL DEFAULT TRUE,
@@ -69,6 +70,17 @@ CREATE TABLE IF NOT EXISTS transacciones (
     )
 );
 
+-- Analisis Financieros (Histórico JSONB)
+CREATE TABLE IF NOT EXISTS analisis_financieros (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    usuario_id UUID NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    
+    -- El bloque completo que te entrega Python o el motor analítico
+    data_analisis JSONB NOT NULL
+);
+
 -- INDICES
 CREATE INDEX IF NOT EXISTS idx_transacciones_usuario ON transacciones(usuario_id);
 CREATE INDEX IF NOT EXISTS idx_metas_usuario ON metas(usuario_id);
+CREATE INDEX IF NOT EXISTS idx_analisis_usuario ON analisis_financieros(usuario_id);

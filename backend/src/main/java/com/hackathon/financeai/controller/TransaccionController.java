@@ -16,7 +16,6 @@ public class TransaccionController {
 
     private final TransaccionService transaccionService;
 
-    // Inyección por constructor (Buena práctica)
     public TransaccionController(TransaccionService transaccionService) {
         this.transaccionService = transaccionService;
     }

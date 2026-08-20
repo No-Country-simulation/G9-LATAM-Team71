@@ -207,31 +207,62 @@ Crea una meta financiera nueva en la base de datos.
   }
   ```
 
-### Análisis y Reporte Financiero
-Devuelve el análisis consolidado, separando los gastos por categoría temática y comportamiento. Ideal para el Dashboard o envíos periódicos.
-* **Endpoint:** `GET /api/v1/reportes/ultimo`
+### Análisis y Reporte Financiero (Histórico)
+Devuelve el último análisis financiero generado para el usuario por el motor de Python, estructurado y persistido en formato JSONB. Ideal para la vista detallada de finanzas.
+* **Endpoint:** `GET /api/v1/analisis/ultimo`
 * **Headers:** `Authorization: Bearer <token>`
 * **Response (200 OK):**
-    ```json
-    {
-      "perfil_financiero": "EN_OBSERVACION",
-      "resumen_gastos_por_categoria": {
-        "Alimentación": 420,
-        "Transporte": 300,
-        "Ocio": 40
-      },
-      "analisis_comportamiento": {
-        "total_ingresos": 4500,
-        "fijo_vital": 300, 
-        "fijo_no_vital": 40,
-        "variable": 420
-      },
-      "recomendaciones": [
-        "Detectamos $40 en suscripciones FIJO_NO_VITAL recurrentes; cancelarlas acelerará tu meta de ahorro.",
-        "Tus gastos VARIABLE representan un porcentaje sano de tus ingresos."
-      ]
-    }
-    ```
+  ```json
+  {
+    "periodo": {
+      "inicio": "2026-08-01",
+      "fin": "2026-08-31"
+    },
+    "indicadores": {
+      "tasa_ahorro": 18.5,
+      "nivel_endeudamiento": 12.3,
+      "porcentaje_ingreso_gastado": 76.4,
+      "categoria_mayor_gasto": "OCIO",
+      "porcentaje_categoria_mayor_gasto": 35.2,
+      "gasto_promedio": 850.0
+    },
+    "comparacion_periodo_anterior": {
+      "tasa_ahorro": { "actual": 18.5, "anterior": 15.2, "variacion": 3.3 },
+      "nivel_endeudamiento": { "actual": 12.3, "anterior": 14.8, "variacion": -2.5 },
+      "porcentaje_ingreso_gastado": { "actual": 76.4, "anterior": 81.2, "variacion": -4.8 },
+      "gasto_promedio_controlable": { "actual": 620.0, "anterior": 540.0, "variacion": 80.0, "variacion_porcentual": 14.81 },
+      "gasto_promedio": { "actual": 850.0, "anterior": 790.0, "variacion": 60.0, "variacion_porcentual": 7.59 },
+      "categoria_mayor_gasto": { "actual": "OCIO", "anterior": "TRANSPORTE", "cambio": true }
+    },
+    "perfil_financiero": {
+      "perfil": "Ahorrador",
+      "descripcion": "El usuario presenta una buena capacidad de ahorro y un nivel de endeudamiento controlado."
+    },
+    "recomendaciones": [
+      {
+        "tipo": "GASTOS",
+        "prioridad": "MEDIA",
+        "mensaje": "Tus gastos controlables aumentaron un 14.8% respecto al período anterior."
+      }
+    ],
+    "metas": [
+      {
+        "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+        "monto_objetivo": 12000.0,
+        "monto_actual": 7500.0,
+        "monto_restante": 4500.0,
+        "fecha_inicio": "2026-06-01",
+        "fecha_limite": "2026-12-31"
+      }
+    ]
+  }
+  ```
+
+### Generación Manual de Análisis Financiero
+Fuerza al motor a procesar las transacciones y metas actuales del usuario para generar un nuevo registro histórico en base de datos.
+* **Endpoint:** `POST /api/v1/analisis/generar`
+* **Headers:** `Authorization: Bearer <token>`
+* **Response (200 OK):** *(Sin cuerpo)*
 
 ### Respuesta Global de Errores (Ejemplo)
 Cualquier falla en los endpoints anteriores devolverá esta estructura estandarizada:
