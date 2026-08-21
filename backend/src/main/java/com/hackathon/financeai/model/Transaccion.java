@@ -1,5 +1,6 @@
 package com.hackathon.financeai.model;
 
+import com.hackathon.financeai.dto.GuardarTransaccionRequest;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -54,6 +55,8 @@ public class Transaccion {
         this.cualidadFlujo = cualidadFlujo;
     }
 
+    public Transaccion(GuardarTransaccionRequest request) {
+    }
 
 
     public UUID getId() { return id; }
