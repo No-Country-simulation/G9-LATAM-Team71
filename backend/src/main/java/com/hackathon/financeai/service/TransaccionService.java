@@ -17,7 +17,6 @@ import java.util.UUID;
 public class TransaccionService {
     private final RestTemplate restTemplate;
 
-    // Spring Boot inyecta aquí la URL que pusiste en el properties
     @Value("${python.service.base-url}")
     private String pythonBaseUrl;
 
@@ -53,20 +52,34 @@ public class TransaccionService {
             Usuario user = usuarioRepository.findById(idUsuario)
                     .orElseThrow(() -> new FintechException("USUARIO_NO_ENCONTRADO", "El usuario no existe."));
 
-            Transaccion transaccion = new Transaccion(request);
-            transaccion.setUsuario(user);
+            // 1. Instanciamos la entidad vacía
+            Transaccion transaccion = new Transaccion();
 
-            // 2. Guardamos la entidad en PostgreSQL a través del repositorio
+            // 2. Mapeamos los datos extrayéndolos del record (sin el prefijo "get")
+            transaccion.setUsuario(user);
+            transaccion.setMonto(request.monto());
+            transaccion.setDescripcion(request.descripcion());
+            transaccion.setFecha(request.fecha());
+            transaccion.setCategoria(request.categoria());
+            transaccion.setTipoFlujo(request.tipo_flujo());
+            transaccion.setCualidadFlujo(request.cualidad_flujo());
+            // El DTO no incluye esRecurrente, lo inicializamos en false
+            transaccion.setActivo(true);
+
+            // 3. Guardamos la entidad en PostgreSQL a través del repositorio
             Transaccion transaccionGuardada = transaccionRepository.save(transaccion);
 
-            // 3. Retornamos el DTO de respuesta con el ID autogenerado
+            // 4. Retornamos el DTO de respuesta con el ID autogenerado
             return new GuardarTransaccionResponse(
                     transaccionGuardada.getId(),
                     "Transacción registrada exitosamente."
             );
 
+        } catch (FintechException e) {
+            // Permitimos que nuestra excepción personalizada pase sin ser alterada
+            throw e;
         } catch (Exception e) {
-            // 4. Si la base de datos se cae, lanzamos nuestra excepción para que el Front-End reciba el JSON de error estándar
+            // 5. Capturamos errores de base de datos u otros inesperados
             throw new FintechException(
                     "ERROR_BASE_DATOS",
                     "No se pudo guardar la transacción. Por favor, intente nuevamente."
