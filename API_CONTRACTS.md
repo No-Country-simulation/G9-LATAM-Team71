@@ -207,6 +207,30 @@ Crea una meta financiera nueva en la base de datos.
   }
   ```
 
+### Aportar a Meta Financiera
+Añade dinero a una meta financiera existente. Automáticamente genera una transacción de egreso con categoría `INVERSION` descontándolo del dinero disponible. Si se alcanza el monto objetivo, la meta cambia su estado a `COMPLETADA`.
+
+* **Frontend Controller:** `GoalService.addFunds()`
+* **Backend Endpoint:** `POST /api/v1/metas/{id_meta}/aportar`
+* **Request:**
+  ```json
+  {
+    "monto_aporte": 500.00
+  }
+  ```
+* **Response (200 OK):**
+  ```json
+  {
+    "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+    "monto_actual": 5500.00,
+    "porcentaje_avance": 36.66,
+    "estado": "ACTIVA",
+    "mensaje": "Aporte registrado correctamente.",
+    "id_transaccion_generada": "e89b-12d3-a456-426614174000"
+  }
+  ```
+
+
 ### Análisis y Reporte Financiero (Histórico)
 Devuelve el último análisis financiero generado para el usuario por el motor de Python, estructurado y persistido en formato JSONB. Ideal para la vista detallada de finanzas.
 * **Endpoint:** `GET /api/v1/analisis/ultimo`
@@ -274,3 +298,61 @@ Cualquier falla en los endpoints anteriores devolverá esta estructura estandari
       "mensaje": "El monto de la meta no puede ser un valor negativo."
     }
     ```
+
+## API Interna: Comunicación Backend (Java) -> Data Science (Python)
+Esta sección describe los contratos de los endpoints expuestos por el microservicio de Python, los cuales son consumidos internamente por el Backend en Java. El Frontend de Flutter NO debe interactuar directamente con estos endpoints.
+
+### 1. Motor de Clasificación de Transacciones
+Endpoint encargado de predecir la categoría y cualidad de un gasto con base en su descripción.
+* **Backend Endpoint (Python):** `POST /transacciones/predecir`
+* **Request (Enviado por Java):**
+  ```json
+  {
+    "tipo_flujo": "EGRESO",
+    "monto": 420.00,
+    "descripcion": "Walmart Despensa"
+  }
+  ```
+* **Response (Devuelto a Java):**
+  ```json
+  {
+    "categoria": "ALIMENTACION",
+    "cualidad": "VARIABLE"
+  }
+  ```
+
+### 2. Motor de Análisis y Perfilamiento Financiero
+Endpoint que recibe el historial mensual del usuario y retorna un análisis profundo, indicadores y recomendaciones personalizadas.
+* **Backend Endpoint (Python):** `POST /analisis`
+* **Request (Enviado por Java):**
+  ```json
+  {
+    "fecha_inicio": "2026-08-01T00:00:00",
+    "fecha_fin": "2026-08-31T23:59:59",
+    "transacciones": [
+      {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "fecha": "2026-08-07T12:00:00",
+        "descripcion": "Walmart Despensa",
+        "monto": 420.00,
+        "tipo_flujo": "EGRESO",
+        "cualidad_flujo": "VARIABLE",
+        "categoria": "ALIMENTACION"
+      }
+    ],
+    "metas": [
+      {
+        "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+        "nombre_meta": "Comprar Laptop",
+        "monto_objetivo": 15000.0,
+        "monto_actual": 0.0,
+        "fecha_inicio": "2026-08-01T00:00:00",
+        "fecha_limite": "2027-02-15T00:00:00",
+        "estado": "ACTIVA"
+      }
+    ]
+  }
+  ```
+* **Response (Devuelto a Java):**
+*(El Response es el mismo JSON hiper-detallado de Análisis y Reporte Financiero documentado en la sección anterior, que incluye `periodo`, `indicadores`, `comparacion_periodo_anterior`, `perfil_financiero`, `recomendaciones` y `metas`).*
+

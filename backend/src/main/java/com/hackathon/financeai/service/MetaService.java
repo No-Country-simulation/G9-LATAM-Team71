@@ -18,10 +18,12 @@ public class MetaService {
 
     private final MetaRepository metaRepository;
     private final UsuarioRepository usuarioRepository;
+    private final com.hackathon.financeai.repositories.TransaccionRepository transaccionRepository;
 
-    public MetaService(MetaRepository metaRepository, UsuarioRepository usuarioRepository) {
+    public MetaService(MetaRepository metaRepository, UsuarioRepository usuarioRepository, com.hackathon.financeai.repositories.TransaccionRepository transaccionRepository) {
         this.metaRepository = metaRepository;
         this.usuarioRepository = usuarioRepository;
+        this.transaccionRepository = transaccionRepository;
     }
 
     public RegistrarMetaResponse registrarMeta(RegistrarMetaRequest request, UUID usuarioId) {
@@ -54,5 +56,56 @@ public class MetaService {
         } catch (Exception e) {
             throw new FintechException("ERROR_BD_META", "Ocurrió un error al intentar guardar la meta financiera.");
         }
+    }
+
+    public com.hackathon.financeai.dto.AportarMetaResponse aportarAMeta(UUID idMeta, UUID idUsuario, com.hackathon.financeai.dto.AportarMetaRequest request) {
+        Meta meta = metaRepository.findById(idMeta)
+                .orElseThrow(() -> new FintechException("META_NO_ENCONTRADA", "No se encontró la meta especificada."));
+
+        if (!meta.getUsuario().getId().equals(idUsuario)) {
+            throw new FintechException("ACCESO_DENEGADO", "La meta no pertenece al usuario.");
+        }
+
+        if (meta.getEstado() != com.hackathon.financeai.model.Estado.ACTIVA) {
+            throw new FintechException("META_INACTIVA", "No se pueden realizar aportes a una meta que no está ACTIVA.");
+        }
+
+        meta.setMontoActual(meta.getMontoActual() + request.monto_aporte());
+        
+        String mensaje = "Aporte registrado correctamente.";
+        if (meta.getMontoActual() >= meta.getMontoObjetivo()) {
+            meta.setEstado(com.hackathon.financeai.model.Estado.COMPLETADA);
+            mensaje = "¡Felicidades! Has completado tu meta financiera.";
+        }
+
+        // Registrar la transacción como EGRESO de INVERSION
+        com.hackathon.financeai.model.Transaccion transaccion = new com.hackathon.financeai.model.Transaccion();
+        transaccion.setUsuario(meta.getUsuario());
+        transaccion.setCategoria(com.hackathon.financeai.model.Categoria.INVERSION);
+        transaccion.setMonto(request.monto_aporte());
+        transaccion.setDescripcion("Aporte a meta: " + meta.getNombre());
+        transaccion.setTipoFlujo(com.hackathon.financeai.model.Tipo.EGRESO);
+        transaccion.setCualidadFlujo(com.hackathon.financeai.model.Cualidad.VARIABLE);
+        transaccion.setFecha(LocalDateTime.now());
+        transaccion.setActivo(true);
+        
+        try {
+            transaccionRepository.save(transaccion);
+            metaRepository.save(meta);
+        } catch(Exception e) {
+            throw new FintechException("ERROR_BD", "Ocurrió un error al procesar el aporte.");
+        }
+
+        float porcentaje = (meta.getMontoActual() / meta.getMontoObjetivo()) * 100;
+        if (porcentaje > 100) porcentaje = 100f;
+
+        return new com.hackathon.financeai.dto.AportarMetaResponse(
+                meta.getId(),
+                meta.getMontoActual(),
+                porcentaje,
+                meta.getEstado(),
+                mensaje,
+                transaccion.getId()
+        );
     }
 }

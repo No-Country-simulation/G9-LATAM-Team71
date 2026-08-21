@@ -30,4 +30,14 @@ public class MetaController {
         // Según API_CONTRACTS.md se debe devolver HTTP 201 Created
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @PostMapping("/{id}/aportar")
+    public ResponseEntity<com.hackathon.financeai.dto.AportarMetaResponse> aportarAMeta(
+            @PathVariable("id") UUID idMeta,
+            @RequestHeader("Usuario-ID") UUID usuarioId,
+            @Valid @RequestBody com.hackathon.financeai.dto.AportarMetaRequest request) {
+
+        com.hackathon.financeai.dto.AportarMetaResponse response = metaService.aportarAMeta(idMeta, usuarioId, request);
+        return ResponseEntity.ok(response);
+    }
 }
