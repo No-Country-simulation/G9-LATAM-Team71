@@ -1,6 +1,8 @@
 package com.hackathon.financeai.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -46,6 +48,7 @@ public class Usuario implements UserDetails {
     @Column(name = "perfil_financiero", nullable = false, length = 50)
     private PerfilFinanciero perfilFinanciero = PerfilFinanciero.EN_OBSERVACION;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private String recomendaciones;
 

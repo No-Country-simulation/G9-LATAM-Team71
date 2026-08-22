@@ -21,7 +21,7 @@ public class Transaccion {
     @Column(nullable = false, length = 30)
     private Categoria categoria;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private float monto;
 
     @Column(nullable = false)

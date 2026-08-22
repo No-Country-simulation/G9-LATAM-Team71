@@ -85,7 +85,7 @@ public class AnalisisService {
                 .collect(Collectors.toList());
 
         // 5. Ensamblar Request
-        AnalisisPythonRequest request = new AnalisisPythonRequest(transaccionesDato, inicioMes, finMes, metasDato);
+        AnalisisPythonRequest request = new AnalisisPythonRequest(inicioMes, finMes, transaccionesDato, metasDato);
 
         try {
             String endpoint = pythonBaseUrl + "/analisis";

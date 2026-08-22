@@ -20,10 +20,10 @@ public class Meta {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "monto_objetivo", nullable = false, precision = 10, scale = 2)
+    @Column(name = "monto_objetivo", nullable = false)
     private float montoObjetivo;
 
-    @Column(name = "monto_actual", nullable = false, precision = 10, scale = 2)
+    @Column(name = "monto_actual", nullable = false)
     private float montoActual = 0.0f;
 
     @Column(name = "fecha_inicio", nullable = false)
