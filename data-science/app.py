@@ -20,23 +20,24 @@ def analisis_financiero(datos: DatosAnalisis):
     return analizar(
         data, 
         datos.fecha_inicio,
-        datos.fecha_fin
+        datos.fecha_fin,
+        datos.metas
     )
 
 #faltan controladores
-@app.post("/metas")
-def endpoint_metas(datos: Meta):
+# @app.post("/metas")
+# def endpoint_metas(datos: Meta):
 
-    data = pd.DataFrame(
-        [t.model_dump() for t in datos.transacciones]
-    )
+#     data = pd.DataFrame(
+#         [t.model_dump() for t in datos.transacciones]
+#     )
 
-    metas = [
-        m.model_dump()
-        for m in datos.metas
-    ]
+#     metas = [
+#         m.model_dump()
+#         for m in datos.metas
+#     ]
 
-    return calcular_meta(
-        data,
-        metas
-    )
+#     return calcular_meta(
+#         data,
+#         metas
+#     )

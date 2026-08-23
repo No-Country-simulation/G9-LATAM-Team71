@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import date
 import joblib
 import pandas as pd
@@ -16,14 +16,16 @@ class TransaccionAnalisis(BaseModel):
     fecha: date
     descripcion: str
     monto: float
-    tipo: str
+    tipo: str = Field(alias = "tipo_flujo")
     categoria: str
-    cualidad: str
+    cualidad: str = Field(alias="cualidad_flujo")
 
 #validacion de meta
 class Meta(BaseModel):
     id_meta: int  # id de cada meta
+    nombre_meta: str
     monto_objetivo: float
+    monto_actual: float
     fecha_inicio: date
     fecha_limite: date
     estado: str
@@ -33,7 +35,7 @@ class DatosAnalisis(BaseModel):
     transacciones: list[TransaccionAnalisis]
     fecha_inicio: date
     fecha_fin: date
-    meta: list[Meta]
+    metas: list[Meta]
 
 def limpiar_texto(texto: str) -> str:
     return texto.lower().strip()
@@ -72,8 +74,8 @@ def calcular_variacion(actual, anterior):
 #
 def calcular_tasa_ahorro(data):
 
-    ingresos = data[data["tipo"] == "INGRESO"]["monto"].sum()
-    egresos = data[data["tipo"] == "EGRESO"]["monto"].sum()
+    ingresos = data[data.tipo == "INGRESO"].monto.sum()
+    egresos = data[data.tipo == "INGRESO"].monto.sum()
 
     if ingresos == 0:
         return 0
@@ -85,10 +87,10 @@ def calcular_tasa_ahorro(data):
 
 def calcular_nivel_endeudamiento(data):
 
-    ingresos = data[data["tipo"] == "INGRESO"]["monto"].sum()
+    ingresos = data[data.tipo == "INGRESO"].monto.sum()
     deudas = data[
         (data["tipo"] == "EGRESO") &
-        (data["categoria"] == "Deudas")
+        (data["categoria"] == "DEUDAS")
     ]["monto"].sum()
 
     if ingresos == 0:
@@ -144,15 +146,18 @@ def categoria_mayor_gasto(data):
         "porcentaje_categoria": porcentaje
     }
 
-def gasto_promedio(data):
+def gasto_promedio_controlable(data):
     # gasto_promedio
     gastos_controlables = data[                 #SEconsidera 
       (data["tipo"] == "EGRESO") &
       (data["cualidad"] != "FIJO_VITAL")
     ]
   
-    return gastos_controlables["monto"].mean()
+    return gastos_controlables.monto.mean()
 
+def gasto_promedio(data):
+    gastos_totales = data[data.tipo == "EGRESO"]
+    return gastos_totales.monto.mean()
 #
 # Comparacion
 #
@@ -309,6 +314,27 @@ def recomendacion_variacion_gasto(variacion_porcentual):
             "mensaje": (
                 f"Tus gastos aumentaron un "
                 f"{variacion_porcentual:.1f}% respecto al "
+                "período anterior. Puedes revisar que categoría"
+                "influyó en este comportamiento"
+                
+            )
+        }
+
+    return None
+
+def recomendacion_variacion_gasto_controlable(variacion_gasto_controlable_porcentual):
+
+    if variacion_gasto_controlable_porcentual is None:
+        return None
+
+    if variacion_gasto_controlable_porcentual >= 15:
+
+        return {
+            "tipo": "GASTOS",
+            "prioridad": "ALTA",
+            "mensaje": (
+                f"Tus gastos conntrolables aumentaron un "
+                f"{variacion_gasto_controlable_porcentual:.1f}% respecto al "
                 "período anterior. Revisa qué categorías "
                 "contribuyeron a este incremento."
             )
@@ -325,8 +351,8 @@ def generar_recomendaciones(
     categoria_mayor_gasto,
     porcentaje_categoria,
     nivel_endeudamiento,
-    variacion_gasto
-):
+    variacion_gasto,
+    ):
 
     recomendaciones = []
 
@@ -347,7 +373,7 @@ def generar_recomendaciones(
 
         recomendacion_variacion_gasto(
             variacion_gasto
-        )
+        ),
     ]
 
     for recomendacion in recomendaciones_posibles:
@@ -359,23 +385,23 @@ def generar_recomendaciones(
 
 
 
-def analizar(data, fecha_inicio, fecha_fin):
+def analizar(data, fecha_inicio, fecha_fin, metas):
     #obtener rango de fecha para calculo
-    fecha_inicio = pd.Timestamp(fecha_inicio)
-    fecha_fin = pd.Timestamp(fecha_fin)
+    fecha_fin = pd.Timestamp(fecha_fin).dt.normalize()
+    fecha_inicio_analisis = fecha_fin - pd.Timedelta(days = 30)
 
     data_actual = seleccionar_periodo(
         data,
-        fecha_inicio,
+        fecha_inicio_analisis,
         fecha_fin
     )
 
     #Anterior
 
-    duracion = fecha_fin - fecha_inicio
+    duracion = fecha_fin - fecha_inicio_analisis
 
     fecha_fin_anterior = (
-        fecha_inicio - pd.Timedelta(days=1)
+        fecha_inicio_analisis - pd.Timedelta(days=1)
     )
 
     fecha_inicio_anterior = (
@@ -412,6 +438,10 @@ def analizar(data, fecha_inicio, fecha_fin):
         data_actual
     )
 
+    gasto_promedio_controlable_actual = gasto_promedio_controlable(
+            data_actual
+        )
+    
     # 
     # Indicadores anteriores
     #
@@ -428,6 +458,12 @@ def analizar(data, fecha_inicio, fecha_fin):
 
     gasto_promedio_anterior = (
         gasto_promedio(
+            data_anterior
+        )
+    )
+
+    gasto_promedio_controlable_anterior = (
+        gasto_promedio_controlable(
             data_anterior
         )
     )
@@ -452,6 +488,17 @@ def analizar(data, fecha_inicio, fecha_fin):
         gasto_promedio_actual, gasto_promedio_anterior
         )
     )
+
+    variacion_gasto_controlable = calcular_variacion(
+            gasto_promedio_controlable_actual,
+            gasto_promedio_controlable_anterior
+        )
+    
+    variacion_gasto_controlable_porcentual = (calcular_variacion_porcentual(
+        gasto_promedio_controlable_actual, gasto_promedio_controlable_anterior
+        )
+    )
+
 
 
     comparacion = {
@@ -483,14 +530,21 @@ def analizar(data, fecha_inicio, fecha_fin):
             )
         },
 
-        "gasto_promedio": {
+        "gasto_promedio_controlable": {
+            "actual": gasto_promedio_controlable_actual,
+            "anterior": gasto_promedio_controlable_anterior,
+            "variacion": variacion_gasto_controlable,
+            "variacion_porcentual": variacion_gasto_controlable_porcentual
+        },
+        "gasto_promedio_general": {
             "actual": gasto_promedio_actual,
             "anterior": gasto_promedio_anterior,
             "variacion": variacion_gasto,
             "variacion_porcentual": variacion_gasto_porcentual
         },
 
-        "categoria_mayor_gasto": {
+
+       "categoria_mayor_gasto": {
             "actual": categoria_porcentaje_mayor_gasto_actual["categoria_mayor"],
             "anterior": categoria_porcentaje_mayor_gasto_anterior["categoria_mayor"],
             "cambio": (
@@ -520,10 +574,13 @@ def analizar(data, fecha_inicio, fecha_fin):
         categoria_porcentaje_mayor_gasto_actual["categoria_mayor"],
         categoria_porcentaje_mayor_gasto_actual["porcentaje_categoria"],
         nivel_endeudamiento_actual,
-        variacion_gasto_porcentual
+        variacion_gasto_controlable
     )
 
-
+    #
+    # Metas
+    #
+    metas_financieras = calcular_meta(data,metas)
     # 
     # RESULTADO
     #
@@ -552,7 +609,8 @@ def analizar(data, fecha_inicio, fecha_fin):
                 categoria_porcentaje_mayor_gasto_actual["porcentaje_categoria"],
 
             "gasto_promedio":
-                gasto_promedio_actual
+                gasto_promedio_actual,
+                
         },
         "comparacion_periodo_anterior":
             comparacion,
@@ -561,7 +619,10 @@ def analizar(data, fecha_inicio, fecha_fin):
             perfil,
 
         "recomendaciones":
-            recomendaciones
+            recomendaciones,
+
+        "metas":
+            metas_financieras
     }
 
 def calcular_meta(data, metas):
@@ -570,9 +631,9 @@ def calcular_meta(data, metas):
 
     data["fecha"] = pd.to_datetime(data["fecha"])
 
-    # --------------------------------
+    # 
     # SOLO TRANSACCIONES DE AHORRO
-    # --------------------------------
+    # 
 
     data_ahorro = data[
         data["categoria"].str.upper() == "AHORRO"
@@ -583,35 +644,35 @@ def calcular_meta(data, metas):
     # Fecha actual
     fecha_actual = pd.Timestamp.today().normalize()
 
-    # --------------------------------
+    # 
     # RECORRER CADA META
-    # --------------------------------
+    # 
 
     for meta in metas:
 
-        id_meta = meta["id_meta"]
+        nombre_meta = meta["nombre_meta"]
         monto_objetivo = meta["monto_objetivo"]
         fecha_inicio = pd.Timestamp(meta["fecha_inicio"])
         fecha_limite = pd.Timestamp(meta["fecha_limite"])
 
-        # --------------------------------
-        # TRANSACCIONES DE ESTA META
-        # --------------------------------
+        # 
+        # Transacciones de esta meta
+        # 
 
         transacciones_meta = data_ahorro[
             data_ahorro["descripcion"].astype(str)
-            == str(id_meta)
+            == str(nombre_meta)
         ]
 
-        # --------------------------------
-        # MONTO ACTUAL
-        # --------------------------------
+        # 
+        # Monto Actual
+        # 
 
         monto_actual = transacciones_meta["monto"].sum()
 
-        # --------------------------------
-        # PROGRESO
-        # --------------------------------
+        # 
+        # Progreso
+        # 
 
         if monto_objetivo > 0:
 
@@ -627,19 +688,18 @@ def calcular_meta(data, metas):
         # Evitar que muestre más de 100%
         progreso = min(progreso, 100)
 
-        # --------------------------------
-        # MONTO RESTANTE
-        # --------------------------------
+        # 
+        # Monto Restante
+        # 
 
         monto_restante = max(
             monto_objetivo - monto_actual,
             0
         )
 
-        # --------------------------------
+        # 
         # MESES RESTANTES
-        # --------------------------------
-
+        # 
         if fecha_actual >= fecha_limite:
 
             meses_restantes = 0
@@ -671,8 +731,7 @@ def calcular_meta(data, metas):
         # --------------------------------
 
         resultados.append({
-
-            "id_meta": id_meta,
+            "nombre_meta": nombre_meta,
 
             "monto_objetivo":
                 monto_objetivo,
@@ -686,126 +745,10 @@ def calcular_meta(data, metas):
             "progreso":
                 round(progreso, 2),
 
-            "fecha_inicio":
-                fecha_inicio.date(),
-
-            "fecha_limite":
-                fecha_limite.date(),
-
-            "meses_restantes":
-                meses_restantes,
-
             "ahorro_mensual_necesario":
-                round(ahorro_mensual_necesario, 2)
+                round(ahorro_mensual_necesario, 2),
+            "fecha_inicio": fecha_inicio,
+            "Fecha_limite": fecha_limite
         })
 
     return resultados
-
-    }
-print(f'''Meta: compra laptop, \nobjetivo: {monto_objetivo}\nahorrado: {monto_actual}
-restante: {monto_objetivo - monto_actual}
-ahorro promedio: {ahorro_promedio_mensual}
-tiempo estimado: {meses_estimados.round()} meses''')
-
-'''
-
-meta id en la descripcion
-
-LA transaccion es lo que usare
-
-{
-  "periodo": {
-    "mes": 8,
-    "año": 2026
-  },
-
-  "indicadores": {      # reporte financiero
-    "tasa_ahorro": 20.5,
-    "nivel_endeudamiento": 15.2,
-    "porcentaje_ingreso_gastado": 79.5,
-    "categoria_mayor_gasto": "Vivienda",
-    "gasto_promedio_controlable": 562.50,
-    "ahorro_promedio_mensual": 2300.00
-  },
-
-  "comparacion_periodo_anterior": {
-    "tasa_ahorro": {
-      "actual": 20.5,
-      "anterior": 17.0,
-      "variacion": 3.5
-    },
-    "nivel_endeudamiento": {
-      "actual": 15.2,
-      "anterior": 18.4,
-      "variacion": -3.2
-    },
-    "porcentaje_ingreso_gastado": {
-      "actual": 79.5,
-      "anterior": 82.0,
-      "variacion": -2.5
-    },
-    "gasto_promedio_controlable": {
-      "actual": 562.50,
-      "anterior": 620.00,
-      "variacion": -9.27
-    }
-  },
-
-  "patrones_consumo": [         # pedido del no country
-    {
-      "tipo": "mayor_gasto",        #gasto del periodo
-      "descripcion": "La categoría con mayor gasto fue Vivienda.",
-      "categoria": "Vivienda",
-      "porcentaje": 45.3
-    },
-    {
-      "tipo": "gasto_variable",
-      "descripcion": "Una proporción considerable de los gastos corresponde a gastos variables.",
-      "porcentaje": 38.7
-    }
-  ],
-
-  "perfil_financiero": {
-    "perfil": "Ahorrador",
-    "descripcion": "El usuario presenta una buena capacidad de ahorro y un nivel de endeudamiento moderado."
-  },
-  "metas_financieras": [
-    {
-        "id": 1,
-        "nombre": "Laptop",
-        "monto_objetivo": 20000,
-        "monto_actual": 6500,
-        "monto_faltante": 13500,
-        "progreso": 32.5,
-        "ahorro_promedio_mensual": 2300,
-        "meses_estimados": 5.87,                #suponiendo que el calculo de esto es mensual
-        "fecha_objetivo": "2026-12-31",
-        "estado": "EN_PROGRESO"
-    },
-    {
-        "id": 2,
-        "nombre": "Laptop",
-        "monto_objetivo":40000,
-        "monto_actual": 13000,
-        "monto_faltante": 27000,
-        "progreso": 12.5,
-        "ahorro_promedio_mensual": 2300,
-        "meses_estimados": 5.87,                #suponiendo que el calculo de esto es mensual
-        "fecha_objetivo": "2026-12-31",
-        "estado": "EN_PROGRESO"
-    }
-  ],
-  "recomendaciones": [
-    {
-      "tipo": "AHORRO",
-      "prioridad": "ALTA",
-      "mensaje": "Tu tasa de ahorro podría mejorar. Considera reducir gastos variables."
-    },
-    {
-      "tipo": "GASTOS",
-      "prioridad": "MEDIA",
-      "mensaje": "Vivienda representa una proporción importante de tus gastos."
-    }
-  ]
-}
-'''
