@@ -25,10 +25,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDTO> handleGenericException(Exception ex) {
+        ex.printStackTrace(); // Log in console
         ErrorDTO errorDTO = new ErrorDTO(
                 true,
                 "ERROR_INTERNO_SERVIDOR",
-                "Ocurrió un error inesperado. Por favor contacte a soporte."
+                "Error: " + ex.getMessage()
         );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
     }

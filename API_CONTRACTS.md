@@ -79,7 +79,25 @@ La URL inicial a la que se le añadirán los controladores es la siguiente
   }
   ```
 
-  #### Iniciar el Dashboard
+### Configuración Inicial de Perfil
+Permite actualizar la información inicial del usuario (ingreso mensual, nivel de endeudamiento y frecuencia de ahorro) para que el Dashboard y las Metas puedan realizar cálculos correctos. Es llamado cuando el ingreso mensual está en 0.
+
+* **Frontend Controller:** `ApiService.actualizarPerfil()`
+* **Backend Endpoint:** `PUT /api/v1/usuarios/perfil`
+* **Headers:** 
+  * `Authorization: Bearer <token>`
+  * `Usuario-ID: <uuid>`
+* **Request:**
+  ```json
+  {
+    "ingresoMensual": 15000.0,
+    "nivelEndeudamiento": 2000.0,
+    "frecuenciaAhorro": "MENSUAL"
+  }
+  ```
+* **Response (200 OK):** *(Sin cuerpo)*
+
+#### Iniciar el Dashboard
 Carga la información principal del usuario y sus transacciones recientes (últimos 7 días). Todo se consolida en un solo endpoint para evitar latencias en la app.
 
 * **Frontend Controller:** `DashboardService.getDashboardData()`
@@ -271,10 +289,12 @@ Devuelve el último análisis financiero generado para el usuario por el motor d
     ],
     "metas": [
       {
-        "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+        "nombre_meta": "Fondo de Emergencia",
         "monto_objetivo": 12000.0,
         "monto_actual": 7500.0,
         "monto_restante": 4500.0,
+        "progreso": "62.25%",
+        "ahorro_mensual_necesario": 1500.0,
         "fecha_inicio": "2026-06-01",
         "fecha_limite": "2026-12-31"
       }

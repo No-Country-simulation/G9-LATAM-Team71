@@ -8,8 +8,14 @@ import 'package:wallet_flutter/utils/WAColors.dart';
 class AppScaffold extends StatelessWidget {
   final Widget body;
   final String title;
+  final Widget? floatingActionButton;
 
-  const AppScaffold({super.key, required this.body, required this.title});
+  const AppScaffold({
+    super.key, 
+    required this.body, 
+    required this.title,
+    this.floatingActionButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +90,7 @@ class AppScaffold extends StatelessWidget {
         ),
       ),
       body: body,
+      floatingActionButton: floatingActionButton,
     );
   }
 }
