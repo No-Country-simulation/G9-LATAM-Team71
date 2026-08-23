@@ -13,6 +13,7 @@ import java.util.Locale;
 @Service
 public class ClasificacionService {
 
+
     public ClasificacionTransaccionesResponse procesarClasificacion(ClasificacionTransaccionesRequest request) {
         List<ClasificacionTransaccionesResponse.TransaccionClasificada> listaClasificada = new ArrayList<>();
 

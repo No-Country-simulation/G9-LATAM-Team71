@@ -207,31 +207,86 @@ Crea una meta financiera nueva en la base de datos.
   }
   ```
 
-### Análisis y Reporte Financiero
-Devuelve el análisis consolidado, separando los gastos por categoría temática y comportamiento. Ideal para el Dashboard o envíos periódicos.
-* **Endpoint:** `GET /api/v1/reportes/ultimo`
+### Aportar a Meta Financiera
+Añade dinero a una meta financiera existente. Automáticamente genera una transacción de egreso con categoría `INVERSION` descontándolo del dinero disponible. Si se alcanza el monto objetivo, la meta cambia su estado a `COMPLETADA`.
+
+* **Frontend Controller:** `GoalService.addFunds()`
+* **Backend Endpoint:** `POST /api/v1/metas/{id_meta}/aportar`
+* **Request:**
+  ```json
+  {
+    "monto_aporte": 500.00
+  }
+  ```
+* **Response (200 OK):**
+  ```json
+  {
+    "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+    "monto_actual": 5500.00,
+    "porcentaje_avance": 36.66,
+    "estado": "ACTIVA",
+    "mensaje": "Aporte registrado correctamente.",
+    "id_transaccion_generada": "e89b-12d3-a456-426614174000"
+  }
+  ```
+
+
+### Análisis y Reporte Financiero (Histórico)
+Devuelve el último análisis financiero generado para el usuario por el motor de Python, estructurado y persistido en formato JSONB. Ideal para la vista detallada de finanzas.
+* **Endpoint:** `GET /api/v1/analisis/ultimo`
 * **Headers:** `Authorization: Bearer <token>`
 * **Response (200 OK):**
-    ```json
-    {
-      "perfil_financiero": "EN_OBSERVACION",
-      "resumen_gastos_por_categoria": {
-        "Alimentación": 420,
-        "Transporte": 300,
-        "Ocio": 40
-      },
-      "analisis_comportamiento": {
-        "total_ingresos": 4500,
-        "fijo_vital": 300, 
-        "fijo_no_vital": 40,
-        "variable": 420
-      },
-      "recomendaciones": [
-        "Detectamos $40 en suscripciones FIJO_NO_VITAL recurrentes; cancelarlas acelerará tu meta de ahorro.",
-        "Tus gastos VARIABLE representan un porcentaje sano de tus ingresos."
-      ]
-    }
-    ```
+  ```json
+  {
+    "periodo": {
+      "inicio": "2026-08-01",
+      "fin": "2026-08-31"
+    },
+    "indicadores": {
+      "tasa_ahorro": 18.5,
+      "nivel_endeudamiento": 12.3,
+      "porcentaje_ingreso_gastado": 76.4,
+      "categoria_mayor_gasto": "OCIO",
+      "porcentaje_categoria_mayor_gasto": 35.2,
+      "gasto_promedio": 850.0
+    },
+    "comparacion_periodo_anterior": {
+      "tasa_ahorro": { "actual": 18.5, "anterior": 15.2, "variacion": 3.3 },
+      "nivel_endeudamiento": { "actual": 12.3, "anterior": 14.8, "variacion": -2.5 },
+      "porcentaje_ingreso_gastado": { "actual": 76.4, "anterior": 81.2, "variacion": -4.8 },
+      "gasto_promedio_controlable": { "actual": 620.0, "anterior": 540.0, "variacion": 80.0, "variacion_porcentual": 14.81 },
+      "gasto_promedio": { "actual": 850.0, "anterior": 790.0, "variacion": 60.0, "variacion_porcentual": 7.59 },
+      "categoria_mayor_gasto": { "actual": "OCIO", "anterior": "TRANSPORTE", "cambio": true }
+    },
+    "perfil_financiero": {
+      "perfil": "Ahorrador",
+      "descripcion": "El usuario presenta una buena capacidad de ahorro y un nivel de endeudamiento controlado."
+    },
+    "recomendaciones": [
+      {
+        "tipo": "GASTOS",
+        "prioridad": "MEDIA",
+        "mensaje": "Tus gastos controlables aumentaron un 14.8% respecto al período anterior."
+      }
+    ],
+    "metas": [
+      {
+        "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+        "monto_objetivo": 12000.0,
+        "monto_actual": 7500.0,
+        "monto_restante": 4500.0,
+        "fecha_inicio": "2026-06-01",
+        "fecha_limite": "2026-12-31"
+      }
+    ]
+  }
+  ```
+
+### Generación Manual de Análisis Financiero
+Fuerza al motor a procesar las transacciones y metas actuales del usuario para generar un nuevo registro histórico en base de datos.
+* **Endpoint:** `POST /api/v1/analisis/generar`
+* **Headers:** `Authorization: Bearer <token>`
+* **Response (200 OK):** *(Sin cuerpo)*
 
 ### Respuesta Global de Errores (Ejemplo)
 Cualquier falla en los endpoints anteriores devolverá esta estructura estandarizada:
@@ -243,3 +298,61 @@ Cualquier falla en los endpoints anteriores devolverá esta estructura estandari
       "mensaje": "El monto de la meta no puede ser un valor negativo."
     }
     ```
+
+## API Interna: Comunicación Backend (Java) -> Data Science (Python)
+Esta sección describe los contratos de los endpoints expuestos por el microservicio de Python, los cuales son consumidos internamente por el Backend en Java. El Frontend de Flutter NO debe interactuar directamente con estos endpoints.
+
+### 1. Motor de Clasificación de Transacciones
+Endpoint encargado de predecir la categoría y cualidad de un gasto con base en su descripción.
+* **Backend Endpoint (Python):** `POST /transacciones/predecir`
+* **Request (Enviado por Java):**
+  ```json
+  {
+    "tipo_flujo": "EGRESO",
+    "monto": 420.00,
+    "descripcion": "Walmart Despensa"
+  }
+  ```
+* **Response (Devuelto a Java):**
+  ```json
+  {
+    "categoria": "ALIMENTACION",
+    "cualidad": "VARIABLE"
+  }
+  ```
+
+### 2. Motor de Análisis y Perfilamiento Financiero
+Endpoint que recibe el historial mensual del usuario y retorna un análisis profundo, indicadores y recomendaciones personalizadas.
+* **Backend Endpoint (Python):** `POST /analisis`
+* **Request (Enviado por Java):**
+  ```json
+  {
+    "fecha_inicio": "2026-08-01T00:00:00",
+    "fecha_fin": "2026-08-31T23:59:59",
+    "transacciones": [
+      {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "fecha": "2026-08-07T12:00:00",
+        "descripcion": "Walmart Despensa",
+        "monto": 420.00,
+        "tipo_flujo": "EGRESO",
+        "cualidad_flujo": "VARIABLE",
+        "categoria": "ALIMENTACION"
+      }
+    ],
+    "metas": [
+      {
+        "id_meta": "8a2deb4d-5c7e-4bad-9bdd-3b0d7b3dcb6a",
+        "nombre_meta": "Comprar Laptop",
+        "monto_objetivo": 15000.0,
+        "monto_actual": 0.0,
+        "fecha_inicio": "2026-08-01T00:00:00",
+        "fecha_limite": "2027-02-15T00:00:00",
+        "estado": "ACTIVA"
+      }
+    ]
+  }
+  ```
+* **Response (Devuelto a Java):**
+*(El Response es el mismo JSON hiper-detallado de Análisis y Reporte Financiero documentado en la sección anterior, que incluye `periodo`, `indicadores`, `comparacion_periodo_anterior`, `perfil_financiero`, `recomendaciones` y `metas`).*
+
