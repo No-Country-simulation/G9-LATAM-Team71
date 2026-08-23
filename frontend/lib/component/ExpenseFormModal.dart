@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:wallet_flutter/utils/WAColors.dart';
+import 'package:wallet_flutter/services/api_service.dart';
+import 'package:wallet_flutter/models/transaction_models.dart';
 
 class ExpenseFormModal extends StatefulWidget {
   const ExpenseFormModal({super.key});
@@ -12,9 +14,11 @@ class ExpenseFormModal extends StatefulWidget {
 class _ExpenseFormModalState extends State<ExpenseFormModal> {
   final TextEditingController amountController = TextEditingController();
   final TextEditingController descController = TextEditingController();
-  String selectedCategory = 'ALIMENTACION';
+  
+  String selectedTipo = 'EGRESO'; // INGRESO o EGRESO
+  bool isLoading = false;
 
-  List<String> categories = [
+  final List<String> categories = [
     'ALIMENTACION',
     'TRANSPORTE',
     'SALUD',
@@ -22,7 +26,15 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
     'EDUCACION',
     'OCIO',
     'SERVICIOS',
-    'DEUDAS'
+    'DEUDAS',
+    'SALARIO',
+    'INVERSION',
+    'OTRO'
+  ];
+
+  final List<String> qualities = [
+    'FIJO',
+    'VARIABLE'
   ];
 
   @override
@@ -40,11 +52,40 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Registrar Gasto", style: boldTextStyle(size: 18)),
+              Text("Registrar Operación", style: boldTextStyle(size: 18)),
               IconButton(onPressed: () => finish(context), icon: const Icon(Icons.close)),
             ],
           ),
           16.height,
+          
+          // Selector de Tipo de Flujo
+          Row(
+            children: [
+              Expanded(
+                child: AppButton(
+                  text: "Ingreso",
+                  color: selectedTipo == 'INGRESO' ? Colors.green : Colors.grey[200],
+                  textStyle: boldTextStyle(color: selectedTipo == 'INGRESO' ? Colors.white : Colors.black),
+                  onTap: () {
+                    setState(() => selectedTipo = 'INGRESO');
+                  },
+                ),
+              ),
+              16.width,
+              Expanded(
+                child: AppButton(
+                  text: "Egreso",
+                  color: selectedTipo == 'EGRESO' ? Colors.red : Colors.grey[200],
+                  textStyle: boldTextStyle(color: selectedTipo == 'EGRESO' ? Colors.white : Colors.black),
+                  onTap: () {
+                    setState(() => selectedTipo = 'EGRESO');
+                  },
+                ),
+              ),
+            ],
+          ),
+          16.height,
+
           AppTextField(
             controller: amountController,
             textFieldType: TextFieldType.NUMBER,
@@ -57,66 +98,138 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
             decoration: waInputDecoration(hint: "Descripción", prefixIcon: Icons.description),
           ),
           16.height,
-          AppButton(
-            text: "Registrar gasto",
-            color: WAPrimaryColor,
-            textStyle: boldTextStyle(color: Colors.white),
-            width: context.width(),
-            onTap: () {
-              // Simulación de confirmación de IA
-              _showAIConfirmation();
-            },
-          ),
+          isLoading 
+            ? const Center(child: CircularProgressIndicator(color: WAPrimaryColor))
+            : AppButton(
+                text: "Predecir y Registrar",
+                color: WAPrimaryColor,
+                textStyle: boldTextStyle(color: Colors.white),
+                width: context.width(),
+                onTap: _onPredecir,
+              ),
           SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
         ],
       ),
     );
   }
 
-  void _showAIConfirmation() {
-    finish(context);
+  Future<void> _onPredecir() async {
+    if (amountController.text.isEmpty || descController.text.isEmpty) {
+      toast("Por favor ingresa monto y descripción");
+      return;
+    }
+    
+    double? monto = double.tryParse(amountController.text);
+    if (monto == null) {
+      toast("Monto inválido");
+      return;
+    }
+
+    setState(() => isLoading = true);
+
+    final response = await ApiService.predecirTransaccion(
+      tipoFlujo: selectedTipo,
+      monto: monto,
+      descripcion: descController.text,
+    );
+
+    setState(() => isLoading = false);
+
+    if (!mounted) return;
+
+    if (response != null) {
+      finish(context); // Cierra modal actual
+      _showAIConfirmation(response);
+    } else {
+      toast("Error al predecir transacción");
+    }
+  }
+
+  void _showAIConfirmation(ClasificarTransaccionResponse response) {
+    String currentCategory = response.categoria;
+    String currentQuality = response.cualidad;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.auto_awesome, color: WAPrimaryColor, size: 50),
-              16.height,
-              Text("Confirmación de transacción", style: boldTextStyle(size: 18)),
-              8.height,
-              Text(
-                "Hemos clasificado tu gasto como VARIABLE en la categoría OCIO. ¿Es correcto?",
-                textAlign: TextAlign.center,
-                style: secondaryTextStyle(),
-              ),
-              24.height,
-              Row(
-                children: [
-                  AppButton(
-                    text: "Editar",
-                    color: Colors.grey[200],
-                    textStyle: boldTextStyle(),
-                    onTap: () => finish(context),
-                  ).expand(),
-                  16.width,
-                  AppButton(
-                    text: "Confirmar",
-                    color: WAPrimaryColor,
-                    textStyle: boldTextStyle(color: Colors.white),
-                    onTap: () {
-                      finish(context);
-                      toast("Transacción guardada exitosamente");
-                    },
-                  ).expand(),
-                ],
-              ),
-            ],
-          ),
-        );
+      builder: (ctx) {
+        return StatefulBuilder(builder: (BuildContext ctx, StateSetter setModalState) {
+          return Container(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.auto_awesome, color: WAPrimaryColor, size: 50),
+                16.height,
+                Text("Confirmación de IA", style: boldTextStyle(size: 18)),
+                8.height,
+                Text(
+                  "Hemos clasificado tu operación como ${currentQuality} en la categoría ${currentCategory}.",
+                  textAlign: TextAlign.center,
+                  style: secondaryTextStyle(),
+                ),
+                16.height,
+                
+                // Edición de Categoría
+                DropdownButtonFormField<String>(
+                  value: categories.contains(currentCategory) ? currentCategory : 'OTRO',
+                  decoration: waInputDecoration(hint: "Categoría"),
+                  items: categories.map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
+                  onChanged: (val) {
+                    if (val != null) setModalState(() => currentCategory = val);
+                  },
+                ),
+                16.height,
+                
+                // Edición de Cualidad
+                DropdownButtonFormField<String>(
+                  value: qualities.contains(currentQuality) ? currentQuality : 'VARIABLE',
+                  decoration: waInputDecoration(hint: "Cualidad"),
+                  items: qualities.map((q) => DropdownMenuItem(value: q, child: Text(q))).toList(),
+                  onChanged: (val) {
+                    if (val != null) setModalState(() => currentQuality = val);
+                  },
+                ),
+                
+                24.height,
+                Row(
+                  children: [
+                    AppButton(
+                      text: "Cancelar",
+                      color: Colors.grey[200],
+                      textStyle: boldTextStyle(),
+                      onTap: () => finish(ctx),
+                    ).expand(),
+                    16.width,
+                    AppButton(
+                      text: "Confirmar",
+                      color: WAPrimaryColor,
+                      textStyle: boldTextStyle(color: Colors.white),
+                      onTap: () async {
+                        // Llamar a guardar
+                        bool success = await ApiService.guardarTransaccion(
+                          tipoFlujo: response.tipoFlujo,
+                          cualidadFlujo: currentQuality,
+                          categoria: currentCategory,
+                          monto: response.monto,
+                          descripcion: response.descripcion,
+                        );
+                        
+                        if (ctx.mounted) finish(ctx);
+                        if (success) {
+                          toast("Transacción guardada exitosamente");
+                        } else {
+                          toast("Error al guardar la transacción");
+                        }
+                      },
+                    ).expand(),
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(ctx).viewInsets.bottom),
+              ],
+            ),
+          );
+        });
       },
     );
   }
@@ -136,3 +249,4 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
     );
   }
 }
+

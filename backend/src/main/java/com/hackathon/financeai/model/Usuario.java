@@ -6,7 +6,6 @@ import org.hibernate.type.SqlTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -32,14 +31,14 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private String contrasena;
 
-    @Column(name = "ingreso_mensual", nullable = false, precision = 10, scale = 2)
-    private BigDecimal ingresoMensual = BigDecimal.ZERO;
+    @Column(name = "ingreso_mensual", nullable = false)
+    private float ingresoMensual = 0.0f;
 
     @Column(name = "frecuencia_ahorro", nullable = false, length = 50)
     private String frecuenciaAhorro = "MEDIA";
 
-    @Column(name = "nivel_endeudamiento", nullable = false, precision = 5, scale = 2)
-    private BigDecimal nivelEndeudamiento = BigDecimal.ZERO;
+    @Column(name = "nivel_endeudamiento", nullable = false)
+    private float nivelEndeudamiento = 0.0f;
 
     @Column(nullable = false)
     private Boolean activo = true;
@@ -57,7 +56,7 @@ public class Usuario implements UserDetails {
 
     public Usuario() {}
 
-    public Usuario(UUID id, String nombre, String apellido, String correo, String contrasena, BigDecimal ingresoMensual, String frecuenciaAhorro, BigDecimal nivelEndeudamiento, Boolean activo, PerfilFinanciero perfilFinanciero, String recomendaciones, LocalDateTime fechaCreacion) {
+    public Usuario(UUID id, String nombre, String apellido, String correo, String contrasena, float ingresoMensual, String frecuenciaAhorro, float nivelEndeudamiento, Boolean activo, PerfilFinanciero perfilFinanciero, String recomendaciones, LocalDateTime fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -89,14 +88,14 @@ public class Usuario implements UserDetails {
     public String getContrasena() { return contrasena; }
     public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
-    public BigDecimal getIngresoMensual() { return ingresoMensual; }
-    public void setIngresoMensual(BigDecimal ingresoMensual) { this.ingresoMensual = ingresoMensual; }
+    public float getIngresoMensual() { return ingresoMensual; }
+    public void setIngresoMensual(float ingresoMensual) { this.ingresoMensual = ingresoMensual; }
 
     public String getFrecuenciaAhorro() { return frecuenciaAhorro; }
     public void setFrecuenciaAhorro(String frecuenciaAhorro) { this.frecuenciaAhorro = frecuenciaAhorro; }
 
-    public BigDecimal getNivelEndeudamiento() { return nivelEndeudamiento; }
-    public void setNivelEndeudamiento(BigDecimal nivelEndeudamiento) { this.nivelEndeudamiento = nivelEndeudamiento; }
+    public float getNivelEndeudamiento() { return nivelEndeudamiento; }
+    public void setNivelEndeudamiento(float nivelEndeudamiento) { this.nivelEndeudamiento = nivelEndeudamiento; }
 
     public Boolean getActivo() { return activo; }
     public void setActivo(Boolean activo) { this.activo = activo; }

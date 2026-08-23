@@ -43,20 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 
-                24.height,
-                Text("Operaciones Rápidas", style: boldTextStyle()),
-                16.height,
-                
-                // Grid de operaciones (simulado)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildQuickAction(Icons.swap_horiz, "Transfer"),
-                    _buildQuickAction(Icons.confirmation_number, "Vouchers"),
-                    _buildQuickAction(Icons.account_balance_wallet, "Top Up"),
-                    _buildQuickAction(Icons.receipt_long, "Bill Pay"),
-                  ],
-                ),
+
                 
                 24.height,
                 Row(
@@ -97,19 +84,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _buildQuickAction(IconData icon, String label) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: boxDecorationRoundedWithShadow(12, backgroundColor: Colors.white),
-          child: Icon(icon, color: WAPrimaryColor),
-        ),
-        8.height,
-        Text(label, style: secondaryTextStyle(size: 12)),
-      ],
-    );
-  }
+
 
   Widget _buildTransactionItem(String title, String subtitle, String amount, Color amountColor) {
     return Container(

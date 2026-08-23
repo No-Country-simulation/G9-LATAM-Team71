@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:wallet_flutter/screen/DashboardScreen.dart';
+import 'package:wallet_flutter/screen/LoginScreen.dart';
+import 'package:wallet_flutter/services/api_service.dart';
 import 'package:wallet_flutter/utils/WAColors.dart';
 
 void main() async {
@@ -8,15 +10,22 @@ void main() async {
 
   // Inicialización de nb_utils
   await initialize();
+  
+  // Cargar sesión guardada en SharedPreferences
+  await ApiService.loadSession();
+  
+  // Verificamos si tenemos token
+  bool isLoggedIn = getStringAsync('jwt_token').isNotEmpty;
 
   // Nota: Firebase se inicializaría aquí una vez configurado el archivo google-services.json
   // await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+  const MyApp({super.key, this.isLoggedIn = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       navigatorKey: navigatorKey,
-      home: const DashboardScreen(), // Empezaremos directamente en el Dashboard para el maquetado
+      home: isLoggedIn ? const DashboardScreen() : const LoginScreen(),
     );
   }
 }

@@ -77,7 +77,7 @@ public class DashboardService {
                 .mapToDouble(Transaccion::getMonto)
                 .sum();
         
-        float dineroDisponible = usuario.getIngresoMensual().floatValue() - totalEgresos;
+        float dineroDisponible = usuario.getIngresoMensual() - totalEgresos;
 
         // 5. Extraer recomendaciones del último análisis
         List<RecomendacionResumen> recomendaciones = Collections.emptyList();
@@ -94,8 +94,8 @@ public class DashboardService {
         DashboardResponse.AnalisisResumen analisisResumen = new DashboardResponse.AnalisisResumen(
                 dineroDisponible,
                 usuario.getPerfilFinanciero(),
-                usuario.getNivelEndeudamiento().floatValue(),
-                usuario.getIngresoMensual().floatValue(),
+                usuario.getNivelEndeudamiento(),
+                usuario.getIngresoMensual(),
                 transaccionesResumen,
                 recomendaciones
         );

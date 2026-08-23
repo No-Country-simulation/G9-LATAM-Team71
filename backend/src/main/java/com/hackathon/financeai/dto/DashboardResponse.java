@@ -5,7 +5,6 @@ import com.hackathon.financeai.model.Cualidad;
 import com.hackathon.financeai.model.PerfilFinanciero;
 import com.hackathon.financeai.model.Tipo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
