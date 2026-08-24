@@ -226,7 +226,7 @@ Crea una meta financiera nueva en la base de datos.
   ```
 
 ### Aportar a Meta Financiera
-Añade dinero a una meta financiera existente. Automáticamente genera una transacción de egreso con categoría `INVERSION` descontándolo del dinero disponible. Si se alcanza el monto objetivo, la meta cambia su estado a `COMPLETADA`.
+Añade dinero a una meta financiera existente. Automáticamente genera una transacción de egreso con categoría `AHORRO` descontándolo del dinero disponible. Si se alcanza el monto objetivo, la meta cambia su estado a `COMPLETADA`.
 
 * **Frontend Controller:** `GoalService.addFunds()`
 * **Backend Endpoint:** `POST /api/v1/metas/{id_meta}/aportar`

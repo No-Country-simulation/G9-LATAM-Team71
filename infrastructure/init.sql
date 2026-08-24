@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
     -- Campos administrados por el pipeline predictivo
     perfil_financiero VARCHAR(50) NOT NULL DEFAULT 'NO_EVALUADO',
-    recomendaciones JSONB, -- Almacenamiento indexable para el historial de reportes
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     -- Candados de integridad a nivel motor base de datos

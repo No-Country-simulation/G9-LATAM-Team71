@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:wallet_flutter/screen/UserInfoScreen.dart';
 import 'package:wallet_flutter/screen/DashboardScreen.dart';
 import 'package:wallet_flutter/screen/MetasScreen.dart';
 import 'package:wallet_flutter/screen/SituacionScreen.dart';
+import 'package:wallet_flutter/screen/LoginScreen.dart';
+import 'package:wallet_flutter/services/api_service.dart';
 import 'package:wallet_flutter/utils/WAColors.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -75,14 +78,17 @@ class AppScaffold extends StatelessWidget {
               title: const Text("Información del Usuario"),
               onTap: () {
                 finish(context);
+                const UserInfoScreen().launch(context);
               },
             ),
             const Spacer(),
             ListTile(
               leading: const Icon(Icons.logout, color: Colors.red),
               title: const Text("Cerrar Sesión", style: TextStyle(color: Colors.red)),
-              onTap: () {
-                finish(context);
+              onTap: () async {
+                await ApiService.logout();
+                if (!context.mounted) return;
+                const LoginScreen().launch(context, isNewTask: true);
               },
             ),
             20.height,

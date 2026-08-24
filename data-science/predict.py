@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from datetime import date
+from datetime import date, datetime
 import joblib
 import pandas as pd
 
@@ -13,7 +13,7 @@ class TransaccionClasificacion(BaseModel):
 
 #validacion de transaccion
 class TransaccionAnalisis(BaseModel):
-    fecha: date
+    fecha: datetime
     descripcion: str
     monto: float
     tipo: str = Field(alias = "tipo_flujo")
@@ -22,19 +22,19 @@ class TransaccionAnalisis(BaseModel):
 
 #validacion de meta
 class Meta(BaseModel):
-    id_meta: int  # id de cada meta
+    id_meta: str = Field(alias="idMeta")  # id de cada meta
     nombre_meta: str
     monto_objetivo: float
     monto_actual: float
-    fecha_inicio: date
-    fecha_limite: date
+    fecha_inicio: datetime
+    fecha_limite: datetime
     estado: str
 
 #validacion de muchas transacciones
 class DatosAnalisis(BaseModel):
+    fecha_inicio: datetime
+    fecha_fin: datetime
     transacciones: list[TransaccionAnalisis]
-    fecha_inicio: date
-    fecha_fin: date
     metas: list[Meta]
 
 def limpiar_texto(texto: str) -> str:
@@ -74,8 +74,8 @@ def calcular_variacion(actual, anterior):
 #
 def calcular_tasa_ahorro(data):
 
-    ingresos = data[data.tipo == "INGRESO"].monto.sum()
-    egresos = data[data.tipo == "INGRESO"].monto.sum()
+    ingresos = data[data.tipo_flujo == "INGRESO"].monto.sum()
+    egresos = data[data.tipo_flujo == "EGRESO"].monto.sum()
 
     if ingresos == 0:
         return 0
@@ -87,37 +87,31 @@ def calcular_tasa_ahorro(data):
 
 def calcular_nivel_endeudamiento(data):
 
-    ingresos = data[data.tipo == "INGRESO"].monto.sum()
-    deudas = data[
-        (data["tipo"] == "EGRESO") &
-        (data["categoria"] == "DEUDAS")
-    ]["monto"].sum()
+    ingresos = data[data.tipo_flujo == "INGRESO"].monto.sum()
+    
+    #gastos dirigidos a deudas
+    gastos_deudas = data[(data.tipo_flujo == "EGRESO") & (data.categoria == "DEUDAS")].monto.sum()
 
     if ingresos == 0:
         return 0
 
-    return (deudas / ingresos) * 100
+    return (gastos_deudas / ingresos) * 100
 
 
 def calcular_porcentaje_ingreso_gastado(data):
-
-    ingresos = data[
-        data["tipo"] == "INGRESO"
-    ]["monto"].sum()
-
-    egresos = data[
-        data["tipo"] == "EGRESO"
-    ]["monto"].sum()
+    
+    ingresos = data[data.tipo_flujo == "INGRESO"].monto.sum()
+    gastos_totales = data[data.tipo_flujo == "EGRESO"].monto.sum()
 
     if ingresos == 0:
         return 0
 
-    return (egresos / ingresos) * 100
+    return (gastos_totales / ingresos) * 100
 
 def categoria_mayor_gasto(data):
     gastos_controlables = data[
-        (data["tipo"] == "EGRESO") &
-        (data["cualidad"] != "FIJO_VITAL")
+        (data["tipo_flujo"] == "EGRESO") &
+        (data["cualidad_flujo"] != "FIJO_VITAL")
     ]
     if gastos_controlables.empty:
         return {
@@ -147,17 +141,12 @@ def categoria_mayor_gasto(data):
     }
 
 def gasto_promedio_controlable(data):
-    # gasto_promedio
-    gastos_controlables = data[                 #SEconsidera 
-      (data["tipo"] == "EGRESO") &
-      (data["cualidad"] != "FIJO_VITAL")
-    ]
-  
-    return gastos_controlables.monto.mean()
+    gastos_controlables = data[(data["tipo_flujo"] == "EGRESO") & (data["cualidad_flujo"] != "FIJO_VITAL")]
+    return gastos_controlables["monto"].mean() if not gastos_controlables.empty else 0
 
 def gasto_promedio(data):
-    gastos_totales = data[data.tipo == "EGRESO"]
-    return gastos_totales.monto.mean()
+    gastos_totales = data[data.tipo_flujo == "EGRESO"]
+    return gastos_totales["monto"].mean() if not gastos_totales.empty else 0
 #
 # Comparacion
 #
@@ -167,7 +156,7 @@ def calcular_variacion(actual, anterior):
 
 def calcular_variacion_porcentual(actual, anterior):
     if anterior ==0:
-        return None
+        return 0
     return ((actual - anterior)/anterior)*100
 
     
@@ -175,19 +164,19 @@ def calcular_variacion_porcentual(actual, anterior):
 def clasificar_perfil(tasa_ahorro, nivel_endeudamiento, porcentaje_ingreso_gastado):
 
     if nivel_endeudamiento >= 40:
-        perfil = "Endeudado"
+        perfil = "EN_RIESGO"
         descripcion = "El usuario presenta un nivel elevado de endeudamiento."
 
     elif tasa_ahorro >= 20 and nivel_endeudamiento < 30:
-        perfil = "Ahorrador"
+        perfil = "SALUDABLE"
         descripcion = "El usuario presenta una buena capacidad de ahorro y un nivel de endeudamiento controlado."
 
     elif porcentaje_ingreso_gastado >= 90:
-        perfil = "Gasto elevado"
+        perfil = "EN_OBSERVACION"
         descripcion = "La mayor parte de los ingresos del usuario se destina a gastos."
 
     else:
-        perfil = "Equilibrado"
+        perfil = "SALUDABLE"
         descripcion = "El usuario mantiene un comportamiento financiero relativamente equilibrado."
 
     return {
@@ -386,8 +375,13 @@ def generar_recomendaciones(
 
 
 def analizar(data, fecha_inicio, fecha_fin, metas):
-    #obtener rango de fecha para calculo
-    fecha_fin = pd.Timestamp(fecha_fin).dt.normalize()
+    # Asegurar que data no est vaco
+    if data.empty:
+        data = pd.DataFrame(columns=['fecha', 'monto', 'tipo_flujo', 'categoria', 'descripcion', 'cualidad_flujo'])
+    
+    # Aseguramos que la fecha fin y fecha inicio tengan formato correcto
+    fecha_fin = pd.Timestamp(fecha_fin).normalize()
+    fecha_inicio = pd.Timestamp(fecha_inicio).normalize()
     fecha_inicio_analisis = fecha_fin - pd.Timedelta(days = 30)
 
     data_actual = seleccionar_periodo(
@@ -536,7 +530,7 @@ def analizar(data, fecha_inicio, fecha_fin, metas):
             "variacion": variacion_gasto_controlable,
             "variacion_porcentual": variacion_gasto_controlable_porcentual
         },
-        "gasto_promedio_general": {
+        "gasto_promedio": {
             "actual": gasto_promedio_actual,
             "anterior": gasto_promedio_anterior,
             "variacion": variacion_gasto,
@@ -588,8 +582,8 @@ def analizar(data, fecha_inicio, fecha_fin, metas):
     return {
 
         "periodo": {
-            "inicio": fecha_inicio.date(),
-            "fin": fecha_fin.date()
+            "inicio": fecha_inicio,
+            "fin": fecha_fin
         },
 
         "indicadores": {
@@ -650,10 +644,10 @@ def calcular_meta(data, metas):
 
     for meta in metas:
 
-        nombre_meta = meta["nombre_meta"]
-        monto_objetivo = meta["monto_objetivo"]
-        fecha_inicio = pd.Timestamp(meta["fecha_inicio"])
-        fecha_limite = pd.Timestamp(meta["fecha_limite"])
+        nombre_meta = meta.nombre_meta
+        monto_objetivo = meta.monto_objetivo
+        fecha_inicio = pd.Timestamp(meta.fecha_inicio)
+        fecha_limite = pd.Timestamp(meta.fecha_limite)
 
         # 
         # Transacciones de esta meta
@@ -732,23 +726,14 @@ def calcular_meta(data, metas):
 
         resultados.append({
             "nombre_meta": nombre_meta,
-
-            "monto_objetivo":
-                monto_objetivo,
-
-            "monto_actual":
-                monto_actual,
-
-            "monto_restante":
-                monto_restante,
-
-            "progreso":
-                round(progreso, 2),
-
+            "monto_objetivo": monto_objetivo,
+            "monto_actual": monto_actual,
+            "monto_restante": max(0, monto_objetivo - monto_actual),
+            "progreso": str(round(progreso, 2)),
             "ahorro_mensual_necesario":
                 round(ahorro_mensual_necesario, 2),
             "fecha_inicio": fecha_inicio,
-            "Fecha_limite": fecha_limite
+            "fecha_limite": fecha_limite
         })
 
     return resultados

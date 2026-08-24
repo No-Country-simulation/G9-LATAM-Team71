@@ -7,6 +7,10 @@ import 'package:nb_utils/nb_utils.dart';
 
 class ApiService {
   static String get baseUrl {
+    const fromEnv = String.fromEnvironment('API_BASE_URL');
+    if (fromEnv.isNotEmpty) {
+      return fromEnv;
+    }
     return 'http://192.168.1.6:8080/api/v1';
   }
   
@@ -209,6 +213,83 @@ class ApiService {
     } catch (e) {
       print("Error en actualizarPerfil: $e");
       return false;
+    }
+  }
+
+  static Future<bool> generarAnalisisManual() async {
+    final url = Uri.parse('$baseUrl/analisis/generar');
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
+          if (_usuarioId != null) 'Usuario-ID': _usuarioId!,
+        },
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      print("Error en generarAnalisisManual: $e");
+      return false;
+    }
+  }
+
+  static Future<bool> registrarMeta({
+    required String nombre,
+    required double montoObjetivo,
+    required String fechaLimite,
+  }) async {
+    final url = Uri.parse('$baseUrl/metas');
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
+          if (_usuarioId != null) 'Usuario-ID': _usuarioId!,
+        },
+        body: jsonEncode({
+          'nombre': nombre,
+          'monto_objetivo': montoObjetivo,
+          'fecha_limite': fechaLimite,
+          'estado': 'ACTIVA'
+        }),
+      );
+      return response.statusCode == 201;
+    } catch (e) {
+      print("Error en registrarMeta: $e");
+      return false;
+    }
+  }
+
+  static Future<String?> aportarAMeta({
+    required String idMeta,
+    required double monto,
+  }) async {
+    final url = Uri.parse('$baseUrl/metas/$idMeta/aportar');
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
+          if (_usuarioId != null) 'Usuario-ID': _usuarioId!,
+        },
+        body: jsonEncode({
+          'monto_aporte': monto,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        return data['mensaje'] ?? 'Aporte registrado';
+      } else {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        return "Error: ${data['error'] ?? data['message'] ?? 'Desconocido'}";
+      }
+    } catch (e) {
+      print("Error en aportarAMeta: $e");
+      return "Error de red: $e";
     }
   }
 }

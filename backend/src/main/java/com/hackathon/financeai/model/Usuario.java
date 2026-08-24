@@ -47,16 +47,12 @@ public class Usuario implements UserDetails {
     @Column(name = "perfil_financiero", nullable = false, length = 50)
     private PerfilFinanciero perfilFinanciero = PerfilFinanciero.EN_OBSERVACION;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb")
-    private String recomendaciones;
-
     @Column(name = "fecha_creacion", insertable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 
     public Usuario() {}
 
-    public Usuario(UUID id, String nombre, String apellido, String correo, String contrasena, float ingresoMensual, String frecuenciaAhorro, float nivelEndeudamiento, Boolean activo, PerfilFinanciero perfilFinanciero, String recomendaciones, LocalDateTime fechaCreacion) {
+    public Usuario(UUID id, String nombre, String apellido, String correo, String contrasena, float ingresoMensual, String frecuenciaAhorro, float nivelEndeudamiento, Boolean activo, PerfilFinanciero perfilFinanciero, LocalDateTime fechaCreacion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -67,7 +63,6 @@ public class Usuario implements UserDetails {
         this.nivelEndeudamiento = nivelEndeudamiento;
         this.activo = activo;
         this.perfilFinanciero = perfilFinanciero;
-        this.recomendaciones = recomendaciones;
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -102,9 +97,6 @@ public class Usuario implements UserDetails {
 
     public PerfilFinanciero getPerfilFinanciero() { return perfilFinanciero; }
     public void setPerfilFinanciero(PerfilFinanciero perfilFinanciero) { this.perfilFinanciero = perfilFinanciero; }
-
-    public String getRecomendaciones() { return recomendaciones; }
-    public void setRecomendaciones(String recomendaciones) { this.recomendaciones = recomendaciones; }
 
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }

@@ -70,6 +70,23 @@ public class MetaService {
             throw new FintechException("META_INACTIVA", "No se pueden realizar aportes a una meta que no está ACTIVA.");
         }
 
+        // Validate available funds
+        float totalIngresos = (float) transaccionRepository.findByUsuarioId(idUsuario).stream()
+                .filter(t -> t.getTipoFlujo() == com.hackathon.financeai.model.Tipo.INGRESO)
+                .mapToDouble(com.hackathon.financeai.model.Transaccion::getMonto)
+                .sum();
+                
+        float totalEgresos = (float) transaccionRepository.findByUsuarioId(idUsuario).stream()
+                .filter(t -> t.getTipoFlujo() == com.hackathon.financeai.model.Tipo.EGRESO)
+                .mapToDouble(com.hackathon.financeai.model.Transaccion::getMonto)
+                .sum();
+        
+        float dineroDisponible = totalIngresos - totalEgresos;
+
+        if (dineroDisponible < request.monto_aporte()) {
+            throw new FintechException("FONDOS_INSUFICIENTES", "No tienes suficiente dinero disponible. Tienes $" + String.format("%.2f", dineroDisponible));
+        }
+
         meta.setMontoActual(meta.getMontoActual() + request.monto_aporte());
         
         String mensaje = "Aporte registrado correctamente.";
@@ -78,12 +95,12 @@ public class MetaService {
             mensaje = "¡Felicidades! Has completado tu meta financiera.";
         }
 
-        // Registrar la transacción como EGRESO de INVERSION
+        // Registrar la transacción como EGRESO de AHORRO
         com.hackathon.financeai.model.Transaccion transaccion = new com.hackathon.financeai.model.Transaccion();
         transaccion.setUsuario(meta.getUsuario());
-        transaccion.setCategoria(com.hackathon.financeai.model.Categoria.INVERSION);
+        transaccion.setCategoria(com.hackathon.financeai.model.Categoria.AHORRO);
         transaccion.setMonto(request.monto_aporte());
-        transaccion.setDescripcion("Aporte a meta: " + meta.getNombre());
+        transaccion.setDescripcion("Ahorro en la meta: " + meta.getNombre());
         transaccion.setTipoFlujo(com.hackathon.financeai.model.Tipo.EGRESO);
         transaccion.setCualidadFlujo(com.hackathon.financeai.model.Cualidad.VARIABLE);
         transaccion.setFecha(LocalDateTime.now());

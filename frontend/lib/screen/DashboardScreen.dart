@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:wallet_flutter/component/AppScaffold.dart';
 import 'package:wallet_flutter/component/ExpenseFormModal.dart';
@@ -16,6 +17,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   late Future<DashboardResponse?> _dashboardFuture;
+  int _visibleCount = 5;
 
   @override
   void initState() {
@@ -24,6 +26,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   void _fetchData() {
+    _visibleCount = 5;
     _dashboardFuture = ApiService.getDashboardData();
   }
 
@@ -57,7 +60,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           final data = snapshot.data!;
           final analisis = data.analisis;
 
-          // Si el ingreso mensual es 0, significa que el usuario es nuevo y necesita configuración
+          // Si el ingreso mensual es 0, significa que el usuario es nuevo y necesita configuraciÃ³n
           if (analisis.ingresoMensual == 0) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               const InitialSetupScreen().launch(context, isNewTask: true);
@@ -102,9 +105,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => const ExpenseFormModal(),
+      builder: (context) => ExpenseFormModal(
+        onSaved: () {
+          setState(() => _fetchData());
+        },
+      ),
     ).then((_) {
-      // Recargar datos al cerrar modal por si agregó algo
+      // Recargar por si acaso
       setState(() => _fetchData());
     });
   }
@@ -133,7 +140,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            "\$ \${balance.toStringAsFixed(2)}",
+            "\$${NumberFormat('#,##0.00', 'en_US').format(balance)}",
             style: boldTextStyle(color: Colors.white, size: 32),
           ),
         ],
@@ -153,33 +160,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
       );
     }
 
+    final visibleTransactions = transacciones.take(_visibleCount).toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Transacciones Recientes",
-              style: boldTextStyle(size: 20),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Ver Todo",
-                style: primaryTextStyle(color: WAPrimaryColor),
-              ),
-            )
-          ],
-        ),
-        const SizedBox(height: 16),
-        ...transacciones.map((t) => _buildTransactionItem(
+        Text("Transacciones Recientes", style: boldTextStyle(size: 20)),
+        16.height,
+        ...visibleTransactions.map((t) => _buildTransactionItem(
           icon: Icons.receipt_long,
           title: t.descripcion,
           date: t.fecha.split('T').first,
-          amount: t.monto.toStringAsFixed(2),
+          amount: NumberFormat('#,##0.00', 'en_US').format(t.monto),
           isExpense: t.tipoFlujo == "EGRESO",
         )),
+        if (transacciones.length > _visibleCount) ...[
+          const SizedBox(height: 8),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  _visibleCount += 10;
+                });
+              },
+              child: Text(
+                "Ver Más",
+                style: primaryTextStyle(color: WAPrimaryColor),
+              ),
+            ),
+          )
+        ]
       ],
     );
   }
@@ -241,7 +251,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           const SizedBox(width: 16),
           Text(
-            "\${isExpense ? '-' : '+'}\$\$amount",
+            "${isExpense ? '-' : '+'}\$$amount",
             style: boldTextStyle(
               size: 16,
               color: isExpense ? Colors.red : Colors.green,

@@ -5,7 +5,8 @@ import 'package:wallet_flutter/services/api_service.dart';
 import 'package:wallet_flutter/models/transaction_models.dart';
 
 class ExpenseFormModal extends StatefulWidget {
-  const ExpenseFormModal({super.key});
+  final VoidCallback? onSaved;
+  const ExpenseFormModal({super.key, this.onSaved});
 
   @override
   State<ExpenseFormModal> createState() => _ExpenseFormModalState();
@@ -27,9 +28,8 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
     'OCIO',
     'SERVICIOS',
     'DEUDAS',
-    'SALARIO',
-    'INVERSION',
-    'OTRO'
+    'INGRESO',
+    'AHORRO'
   ];
 
   final List<String> qualities = [
@@ -146,7 +146,15 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
   }
 
   void _showAIConfirmation(ClasificarTransaccionResponse response) {
-    String currentCategory = response.categoria;
+    String currentCategory = categories.contains(response.categoria) 
+        ? response.categoria 
+        : (selectedTipo == 'INGRESO' ? 'INGRESO' : 'ALIMENTACION');
+        
+    // Si es ingreso y la IA contestó algo loco o SALARIO, lo forzamos a INGRESO para que pase bien
+    if (selectedTipo == 'INGRESO' && !categories.contains(currentCategory)) {
+        currentCategory = 'INGRESO';
+    }
+
     String currentQuality = response.cualidad;
 
     showModalBottomSheet(
@@ -172,7 +180,7 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
                 
                 // Edición de Categoría
                 DropdownButtonFormField<String>(
-                  value: categories.contains(currentCategory) ? currentCategory : 'OTRO',
+                  value: currentCategory,
                   decoration: waInputDecoration(hint: "Categoría"),
                   items: categories.map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
                   onChanged: (val) {
@@ -218,6 +226,9 @@ class _ExpenseFormModalState extends State<ExpenseFormModal> {
                         if (ctx.mounted) finish(ctx);
                         if (success) {
                           toast("Transacción guardada exitosamente");
+                          if (widget.onSaved != null) {
+                            widget.onSaved!();
+                          }
                         } else {
                           toast("Error al guardar la transacción");
                         }

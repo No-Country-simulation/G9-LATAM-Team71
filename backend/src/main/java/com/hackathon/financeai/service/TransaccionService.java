@@ -61,8 +61,16 @@ public class TransaccionService {
             transaccion.setDescripcion(request.descripcion());
             transaccion.setFecha(request.fecha());
             transaccion.setCategoria(request.categoria());
-            transaccion.setTipoFlujo(request.tipo_flujo());
-            transaccion.setCualidadFlujo(request.cualidad_flujo());
+            
+            if (request.categoria() == com.hackathon.financeai.model.Categoria.INGRESO) {
+                transaccion.setTipoFlujo(com.hackathon.financeai.model.Tipo.INGRESO);
+            } else if (request.tipoFlujo() != null && !request.tipoFlujo().isBlank()) {
+                transaccion.setTipoFlujo(com.hackathon.financeai.model.Tipo.valueOf(request.tipoFlujo().toUpperCase()));
+            } else {
+                transaccion.setTipoFlujo(com.hackathon.financeai.model.Tipo.EGRESO);
+            }
+
+            transaccion.setCualidadFlujo(request.cualidadFlujo());
             // El DTO no incluye esRecurrente, lo inicializamos en false
             transaccion.setActivo(true);
 

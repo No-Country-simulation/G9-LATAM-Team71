@@ -25,10 +25,39 @@ class ClasificarTransaccionResponse {
   }
 }
 
+class MetaResumen {
+  final String idMeta;
+  final String nombreMeta;
+  final double montoObjetivo;
+  final double montoActual;
+  final String? fechaLimite;
+  final String estado;
+
+  MetaResumen({
+    required this.idMeta,
+    required this.nombreMeta,
+    required this.montoObjetivo,
+    required this.montoActual,
+    this.fechaLimite,
+    required this.estado,
+  });
+
+  factory MetaResumen.fromJson(Map<String, dynamic> json) {
+    return MetaResumen(
+      idMeta: json['id_meta'] ?? '',
+      nombreMeta: json['nombre_meta'] ?? '',
+      montoObjetivo: (json['monto_objetivo'] ?? 0).toDouble(),
+      montoActual: (json['monto_actual'] ?? 0).toDouble(),
+      fechaLimite: json['fecha_limite'],
+      estado: json['estado'] ?? '',
+    );
+  }
+}
+
 class DashboardResponse {
   final UsuarioResumen usuario;
   final AnalisisResumen analisis;
-  final List<dynamic> metasActivas; // Puedes crear un modelo para MetaResumen luego
+  final List<MetaResumen> metasActivas;
 
   DashboardResponse({
     required this.usuario,
@@ -40,21 +69,46 @@ class DashboardResponse {
     return DashboardResponse(
       usuario: UsuarioResumen.fromJson(json['usuario'] ?? {}),
       analisis: AnalisisResumen.fromJson(json['analisis'] ?? {}),
-      metasActivas: json['metasActivas'] ?? [],
+      metasActivas: (json['metas_activas'] as List?)
+              ?.map((e) => MetaResumen.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 }
 
 class UsuarioResumen {
   final String nombre;
+  final String apellido;
   final String correo;
 
-  UsuarioResumen({required this.nombre, required this.correo});
+  UsuarioResumen({required this.nombre, required this.apellido, required this.correo});
 
   factory UsuarioResumen.fromJson(Map<String, dynamic> json) {
     return UsuarioResumen(
       nombre: json['nombre'] ?? '',
+      apellido: json['apellido'] ?? '',
       correo: json['correo'] ?? '',
+    );
+  }
+}
+
+class RecomendacionResumen {
+  final String tipo;
+  final String prioridad;
+  final String mensaje;
+
+  RecomendacionResumen({
+    required this.tipo,
+    required this.prioridad,
+    required this.mensaje,
+  });
+
+  factory RecomendacionResumen.fromJson(Map<String, dynamic> json) {
+    return RecomendacionResumen(
+      tipo: json['tipo'] ?? '',
+      prioridad: json['prioridad'] ?? '',
+      mensaje: json['mensaje'] ?? '',
     );
   }
 }
@@ -62,23 +116,30 @@ class UsuarioResumen {
 class AnalisisResumen {
   final double dineroDisponible;
   final double ingresoMensual;
+  final double nivelEndeudamiento;
   final String perfilFinanciero;
   final List<TransaccionResumen> transaccionesDelMes;
+  final List<RecomendacionResumen> recomendaciones;
 
   AnalisisResumen({
     required this.dineroDisponible,
     required this.ingresoMensual,
+    required this.nivelEndeudamiento,
     required this.perfilFinanciero,
     required this.transaccionesDelMes,
+    required this.recomendaciones,
   });
 
   factory AnalisisResumen.fromJson(Map<String, dynamic> json) {
     var transacciones = json['transacciones_del_mes'] as List? ?? [];
+    var recs = json['recomendaciones'] as List? ?? [];
     return AnalisisResumen(
       dineroDisponible: (json['dinero_disponible'] ?? 0).toDouble(),
       ingresoMensual: (json['ingreso_mensual'] ?? 0).toDouble(),
+      nivelEndeudamiento: (json['nivel_endeudamiento'] ?? 0).toDouble(),
       perfilFinanciero: json['perfil_financiero'] ?? '',
       transaccionesDelMes: transacciones.map((t) => TransaccionResumen.fromJson(t)).toList(),
+      recomendaciones: recs.map((r) => RecomendacionResumen.fromJson(r)).toList(),
     );
   }
 }

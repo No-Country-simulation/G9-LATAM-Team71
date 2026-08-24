@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record GuardarTransaccionRequest(
-        Tipo tipo_flujo,
-        Cualidad cualidad_flujo,
+        String tipoFlujo,
+        Cualidad cualidadFlujo,
         Categoria categoria,
         LocalDateTime fecha,
         float monto,
@@ -17,7 +17,7 @@ public record GuardarTransaccionRequest(
 ) {
     public GuardarTransaccionRequest(ClasificarTransaccionResponse response) {
         this(
-                response.tipoFlujo(),
+                response.tipoFlujo().name(),
                 response.prediccion().cualidad(),
                 response.prediccion().categoria(),
                 LocalDateTime.now(),

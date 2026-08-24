@@ -61,13 +61,27 @@ public class AnalisisService {
         Usuario usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new FintechException("USUARIO_NO_ENCONTRADO", "No se encontró el usuario con ID: " + usuarioId));
 
-        // 2. Definir rango exacto del mes actual (primer y último segundo del mes)
-        LocalDateTime inicioMes = LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0).withMinute(0).withSecond(0);
-        LocalDateTime finMes = LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth()).withHour(23).withMinute(59).withSecond(59);
+        // 4. Mapear metas del usuario
+        List<Meta> metas = metaRepository.findByUsuarioId(usuarioId);
+        List<MetaResumen> metasDato = metas.stream()
+                .map(MetaResumen::new)
+                .collect(Collectors.toList());
 
-        // 3. Mapear transacciones (o filtrar por fecha si el repositorio lo soporta)
+        // 2. Definir rango (Fecha de inicio: la meta activa más antigua si es mayor a 1 mes, sino 1 mes de base. Fecha de fin: ahora)
+        LocalDateTime haceUnMes = LocalDateTime.now().minusMonths(1);
+        LocalDateTime inicioRango = metas.stream()
+                .filter(m -> m.getEstado() == com.hackathon.financeai.model.Estado.ACTIVA)
+                .map(Meta::getFechaInicio)
+                .min(LocalDateTime::compareTo)
+                .map(fecha -> fecha.isBefore(haceUnMes) ? fecha : haceUnMes)
+                .orElse(haceUnMes);
+        
+        LocalDateTime finRango = LocalDateTime.now();
+
+        // 3. Mapear transacciones
         List<Transaccion> transacciones = transaccionRepository.findByUsuarioId(usuarioId);
         List<TransaccionResumen> transaccionesDato = transacciones.stream()
+                .filter(t -> !t.getFecha().isBefore(inicioRango) && !t.getFecha().isAfter(finRango))
                 .map(t -> new TransaccionResumen(
                         t.getId(),
                         t.getFecha(),
@@ -78,14 +92,8 @@ public class AnalisisService {
                         t.getCategoria()))
                 .collect(Collectors.toList());
 
-        // 4. Mapear metas del usuario
-        List<Meta> metas = metaRepository.findByUsuarioId(usuarioId);
-        List<MetaResumen> metasDato = metas.stream()
-                .map(MetaResumen::new)
-                .collect(Collectors.toList());
-
         // 5. Ensamblar Request
-        AnalisisPythonRequest request = new AnalisisPythonRequest(inicioMes, finMes, transaccionesDato, metasDato);
+        AnalisisPythonRequest request = new AnalisisPythonRequest(inicioRango, finRango, transaccionesDato, metasDato);
 
         try {
             String endpoint = pythonBaseUrl + "/analisis";
@@ -113,6 +121,7 @@ public class AnalisisService {
                 System.out.println("✅ Análisis financiero exitosamente generado y guardado para usuario: " + usuarioId);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             throw new FintechException("ERROR_API_ANALISIS", "No se pudo generar el análisis financiero. Detalle: " + e.getMessage());
         }
     }

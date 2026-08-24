@@ -68,16 +68,22 @@ public class DashboardService {
                 .collect(Collectors.toList());
 
         List<TransaccionResumen> transaccionesResumen = transaccionesDelMes.stream()
+                .sorted(java.util.Comparator.comparing(Transaccion::getFecha).reversed())
                 .map(t -> new TransaccionResumen(t.getId(), t.getFecha(), t.getDescripcion(), t.getMonto(), t.getTipoFlujo(), t.getCualidadFlujo(), t.getCategoria()))
                 .collect(Collectors.toList());
 
-        // 4. Calcular dinero disponible (Ingreso Mensual - Egresos del mes)
-        float totalEgresos = (float) transaccionesDelMes.stream()
+        // 4. Calcular dinero disponible (Ingresos Totales - Egresos Totales)
+        float totalIngresos = (float) todasTransacciones.stream()
+                .filter(t -> t.getTipoFlujo() == Tipo.INGRESO)
+                .mapToDouble(Transaccion::getMonto)
+                .sum();
+                
+        float totalEgresos = (float) todasTransacciones.stream()
                 .filter(t -> t.getTipoFlujo() == Tipo.EGRESO)
                 .mapToDouble(Transaccion::getMonto)
                 .sum();
         
-        float dineroDisponible = usuario.getIngresoMensual() - totalEgresos;
+        float dineroDisponible = totalIngresos - totalEgresos;
 
         // 5. Extraer recomendaciones del último análisis
         List<RecomendacionResumen> recomendaciones = Collections.emptyList();
