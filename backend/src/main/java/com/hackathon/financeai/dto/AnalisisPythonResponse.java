@@ -12,7 +12,7 @@ public record AnalisisPythonResponse(
     ComparacionPeriodoAnterior comparacion_periodo_anterior,
     PerfilFinancieroDTO perfil_financiero,
     List<RecomendacionResumen> recomendaciones,
-    List<MetaResumen> metas
+    List<MetaAnalisis> metas
 ) {
     public record Periodo(
         LocalDateTime inicio,
@@ -59,5 +59,16 @@ public record AnalisisPythonResponse(
     public record PerfilFinancieroDTO(
         PerfilFinanciero perfil,
         String descripcion
+    ) {}
+
+    public record MetaAnalisis(
+        String nombre_meta,
+        float monto_objetivo,
+        float monto_actual,
+        float monto_restante,
+        String progreso,
+        float ahorro_mensual_necesario,
+        String fecha_inicio,
+        String fecha_limite
     ) {}
 }

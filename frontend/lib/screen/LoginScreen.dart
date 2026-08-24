@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isRegister = false;
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController apellidoController = TextEditingController();
   bool isLoading = false;
 
   @override
@@ -43,6 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: nameController,
                   textFieldType: TextFieldType.NAME,
                   decoration: _inputDeco(hint: "Nombre", icon: Icons.person),
+                ),
+                16.height,
+                AppTextField(
+                  controller: apellidoController,
+                  textFieldType: TextFieldType.NAME,
+                  decoration: _inputDeco(hint: "Apellido", icon: Icons.person_outline),
                 ),
                 16.height,
               ],
@@ -104,14 +111,15 @@ class _LoginScreenState extends State<LoginScreen> {
     bool success = false;
     
     if (isRegister) {
-      if (nameController.text.isEmpty) {
-        toast("Ingresa tu nombre");
+      if (nameController.text.isEmpty || apellidoController.text.isEmpty) {
+        toast("Ingresa tu nombre y apellido");
         setState(() => isLoading = false);
         return;
       }
       try {
         success = await ApiService.register(
           nombre: nameController.text, 
+          apellido: apellidoController.text,
           correo: emailController.text, 
           contrasena: passController.text
         );

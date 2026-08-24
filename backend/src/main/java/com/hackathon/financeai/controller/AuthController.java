@@ -52,9 +52,13 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Usuario nuevoUsuario) {
+    public ResponseEntity<?> register(@RequestBody com.hackathon.financeai.dto.RegistroRequest request) {
+        Usuario nuevoUsuario = new Usuario();
+        nuevoUsuario.setNombre(request.nombre());
+        nuevoUsuario.setApellido(request.apellido() != null ? request.apellido() : "");
+        nuevoUsuario.setCorreo(request.correo());
         // Encriptamos la contraseña antes de guardarla
-        nuevoUsuario.setContrasena(passwordEncoder.encode(nuevoUsuario.getContrasena()));
+        nuevoUsuario.setContrasena(passwordEncoder.encode(request.contrasena()));
         Usuario guardado = usuarioRepository.save(nuevoUsuario);
 
         String token = jwtService.generateToken(guardado);

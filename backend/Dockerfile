@@ -1,17 +1,13 @@
-# Version de Java 17
-FROM eclipse-temurin:17-jre-jammy
-
-# Establecer el directorio de trabajo dentro del contenedor
+# Build stage
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copiar el archivo ejecutable compilado (JAR) al contenedor
-# Nota: Se debe compilar el proyecto antes de ejecutar Docker
-#       se recomienda renombrar el .jar a app para facilitar todo, si no se quiere cambiar
-#       solo cambia el nombre en la parte de abajo
-COPY target/financeai-0.0.1-SNAPSHOT.jar app.jar
-
-# Puerto que usa Spring Boot
+# Run stage
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/financeai-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Comando para ejecutar la aplicación 
 ENTRYPOINT ["java", "-jar", "app.jar"]

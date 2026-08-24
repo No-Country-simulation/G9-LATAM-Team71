@@ -111,11 +111,13 @@ INSERT INTO analisis_financieros (usuario_id, fecha_creacion, data_analisis) VAL
     ],
     "metas": [
       {
-        "id_meta": "00000000-0000-0000-0000-000000000000",
-        "monto_objetivo": 12000.0,
-        "monto_actual": 7500.0,
-        "monto_restante": 4500.0,
-        "fecha_inicio": "2026-06-01",
+        "nombre_meta": "Fondo de Emergencia",
+        "monto_objetivo": 20000.0,
+        "monto_actual": 5000.0,
+        "monto_restante": 15000.0,
+        "progreso": "25.00%",
+        "ahorro_mensual_necesario": 3750.0,
+        "fecha_inicio": "2026-01-01",
         "fecha_limite": "2026-12-31"
       }
     ]

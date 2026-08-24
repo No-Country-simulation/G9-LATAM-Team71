@@ -6,8 +6,6 @@ import 'package:wallet_flutter/models/transaction_models.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class ApiService {
-  // Como estás probando en un teléfono físico conectado a la misma red WiFi,
-  // usamos la IP local de tu computadora en la red en lugar de localhost.
   static String get baseUrl {
     return 'http://192.168.1.6:8080/api/v1';
   }
@@ -15,7 +13,6 @@ class ApiService {
   static String? _jwtToken;
   static String? _usuarioId;
 
-  // Cargar sesión guardada
   static Future<void> loadSession() async {
     _jwtToken = getStringAsync('jwt_token');
     _usuarioId = getStringAsync('usuario_id');
@@ -23,7 +20,6 @@ class ApiService {
     if (_usuarioId!.isEmpty) _usuarioId = null;
   }
 
-  // Cerrar sesión
   static Future<void> logout() async {
     _jwtToken = null;
     _usuarioId = null;
@@ -31,7 +27,6 @@ class ApiService {
     await removeKey('usuario_id');
   }
 
-  // Hacer login real
   static Future<bool> login(String correo, String contrasena) async {
     try {
       final response = await http.post(
@@ -60,9 +55,9 @@ class ApiService {
     }
   }
 
-  // Hacer registro real
   static Future<bool> register({
-    required String nombre, 
+    required String nombre,
+    required String apellido,
     required String correo, 
     required String contrasena
   }) async {
@@ -72,7 +67,7 @@ class ApiService {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'nombre': nombre,
-          'apellido': '', // Añadido porque en el modelo es obligatorio
+          'apellido': apellido,
           'correo': correo,
           'contrasena': contrasena,
         }),
@@ -100,7 +95,6 @@ class ApiService {
     required double monto,
     required String descripcion,
   }) async {
-
     
     final url = Uri.parse('$baseUrl/transacciones/predecir');
     
@@ -112,7 +106,7 @@ class ApiService {
           if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
         },
         body: jsonEncode({
-          'tipoFlujo': tipoFlujo,
+          'tipo_flujo': tipoFlujo,
           'monto': monto,
           'descripcion': descripcion,
         }),
@@ -122,11 +116,11 @@ class ApiService {
         final data = jsonDecode(utf8.decode(response.bodyBytes));
         return ClasificarTransaccionResponse.fromJson(data);
       } else {
-        print("Error predecir: \${response.body}");
+        print("Error predecir: ${response.body}");
         return null;
       }
     } catch (e) {
-      print("Error en predecirTransaccion: \$e");
+      print("Error en predecirTransaccion: $e");
       return null;
     }
   }
@@ -138,7 +132,6 @@ class ApiService {
     required double monto,
     required String descripcion,
   }) async {
-
     
     final url = Uri.parse('$baseUrl/transacciones');
     
@@ -160,9 +153,61 @@ class ApiService {
         }),
       );
 
-      return response.statusCode == 201; // Created
+      return response.statusCode == 201;
     } catch (e) {
-      print("Error en guardarTransaccion: \$e");
+      print("Error en guardarTransaccion: $e");
+      return false;
+    }
+  }
+
+  static Future<DashboardResponse?> getDashboardData() async {
+    final url = Uri.parse('$baseUrl/analisis/dashboard');
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
+          if (_usuarioId != null) 'Usuario-ID': _usuarioId!,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        return DashboardResponse.fromJson(data);
+      } else {
+        print("Error obteniendo dashboard: ${response.body}");
+        return null;
+      }
+    } catch (e) {
+      print("Error de red en getDashboardData: $e");
+      return null;
+    }
+  }
+
+  static Future<bool> actualizarPerfil({
+    required double ingresoMensual,
+    required double deuda,
+    required String frecuenciaAhorro,
+  }) async {
+    final url = Uri.parse('$baseUrl/usuarios/perfil');
+    try {
+      final response = await http.put(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          if (_jwtToken != null) 'Authorization': 'Bearer $_jwtToken',
+          if (_usuarioId != null) 'Usuario-ID': _usuarioId!,
+        },
+        body: jsonEncode({
+          'ingreso_mensual': ingresoMensual,
+          'nivel_endeudamiento': deuda,
+          'frecuencia_ahorro': frecuenciaAhorro,
+        }),
+      );
+      return response.statusCode == 200 || response.statusCode == 204;
+    } catch (e) {
+      print("Error en actualizarPerfil: $e");
       return false;
     }
   }
