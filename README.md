@@ -5,7 +5,6 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Oracle Cloud](https://img.shields.io/badge/Oracle_Cloud-F80000?style=for-the-badge&logo=oracle&logoColor=white)
 
 > **Asistente financiero personal inteligente. Sin términos complejos, solo decisiones inteligentes.**
 
@@ -28,9 +27,6 @@ Para garantizar un rendimiento fluido y escalabilidad, el sistema adopta una arq
 
 1. **Spring Boot - Java:** Maneja la lógica de negocio, la seguridad, la persistencia en base de datos PostgreSQL y la comunicación con el cliente.
 2. **Prediction API con Python:** Microservicio dedicado exclusivamente a la Ciencia de Datos. Recibe las transacciones crudas del API con Java, aplica modelos de predicción y devuelve perfiles predictivos al instante.
-3. **Infraestructura OCI:**
-   * **OCI Compute:** Alojamiento centralizado de los contenedores Docker.
-   * **OCI Object Storage:** Repositorio dinámico para almacenar los archivos serializados del modelo de IA (`.pkl`), permitiendo mejoras en las predicciones sin recompilar el código.
 
 ---
 
