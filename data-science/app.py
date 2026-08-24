@@ -8,7 +8,7 @@ app = FastAPI(
 )
 
 # controlador para el predecir la categoria
-@app.post("/api/v1/transacciones/predecir")
+@app.post("/transacciones/predecir")
 def clasificar_transaccion(dato: TransaccionClasificacion):
     categoria, cualidad = clasificar(dato.descripcion)
     return {
@@ -17,7 +17,7 @@ def clasificar_transaccion(dato: TransaccionClasificacion):
     }
 
 #Controlador para el reporte
-@app.post("/api/v1/reportes/ultimo")
+@app.post("/analisis")
 def analisis_financiero(datos: DatosAnalisis):
     data = pd.DataFrame([transacciones.model_dump for transacciones in datos.transacciones])
     return analizar(
@@ -26,21 +26,3 @@ def analisis_financiero(datos: DatosAnalisis):
         datos.fecha_fin,
         datos.metas
     )
-
-#faltan controladores
-# @app.post("/metas")
-# def endpoint_metas(datos: Meta):
-
-#     data = pd.DataFrame(
-#         [t.model_dump() for t in datos.transacciones]
-#     )
-
-#     metas = [
-#         m.model_dump()
-#         for m in datos.metas
-#     ]
-
-#     return calcular_meta(
-#         data,
-#         metas
-#     )
