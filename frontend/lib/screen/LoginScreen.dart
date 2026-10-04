@@ -31,6 +31,23 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/wa_app_logo.png',
+                      height: 80,
+                      width: 80,
+                    ),
+                    8.height,
+                    Text(
+                      "FinanceAI",
+                      style: boldTextStyle(size: 28, color: WAPrimaryColor),
+                    ),
+                  ],
+                ),
+              ),
+              24.height,
               Text(isRegister ? "Crear cuenta" : "Iniciar Sesión", style: boldTextStyle(size: 30)),
               8.height,
               Text(

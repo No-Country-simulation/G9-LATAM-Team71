@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wallet Hackathon',
+      title: 'FinanceAI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: WAPrimaryColor,
